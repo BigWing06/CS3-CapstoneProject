@@ -11,8 +11,8 @@ func isResource(resource: String): #Checks to see if resource is a valid resourc
 func getResourceProperty(resource: String, property: String): #Returns the value for the resoruce and property specified out of the resource JSON file
 	if resource in getResources():
 		if property in _resouceJSON[resource].keys():
-			return _resouceJSON[resource]
+			return _resouceJSON[resource][property]
 		else:
 			push_error(property + " is not a valid resource property")
 	else:
-		push_error(resource + " is not a valid resource")
+		push_error(resource + " is not a valid reasource")
