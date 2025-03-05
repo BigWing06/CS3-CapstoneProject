@@ -1,13 +1,13 @@
 extends Node2D
-export(Vector2) var mapSize  = Vector2(3, 2)	
-export(int) var mapSeed = 345
-export(Vector2) var chunkSize = Vector2(10, 10)
-export(int) var octaves = 3
-export(int) var period = 3
-export(float) var persistence = 4
-export(float) var lacunarity = .4
-export(float) var noiseThreshold = .3
-export(int) var groundLevelOffset = 0
+var mapSize  = Vector2(3, 2)	
+var mapSeed = 345
+var chunkSize = Vector2(10, 10)
+var octaves = 3
+var period = 3
+var persistence = 4
+var lacunarity = .4
+var noiseThreshold = .3
+var groundLevelOffset = 0
 var mainTileReference = {"land":tile_set.find_tile_by_name("planet0Land")}
 var resourceTileReference = {"stone":tile_set.find_tile_by_name("stone")}
 var noise = OpenSimplexNoise.new()
