@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://da8r8qt5moqv6"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_6ct88"]
+[ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="2_2d0gc"]
+[ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://Enemy/istockphoto-175389602-612x612.jpg" id="3_kj7ng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhs80"]
+size = Vector2(577.778, 356.522)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1y70"]
+radius = 151.0
+height = 302.0
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_6ct88")
+
+[node name="base" type="Sprite2D" parent="."]
+position = Vector2(571, 328)
+scale = Vector2(0.27, 0.345)
+texture = ExtResource("3_kj7ng")
+
+[node name="Area2D" type="Area2D" parent="base"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base/Area2D"]
+position = Vector2(0, -1.44928)
+shape = SubResource("RectangleShape2D_fhs80")
+
+[node name="enemyBody" type="CharacterBody2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="enemySpr" type="Sprite2D" parent="enemyBody"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_2d0gc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody"]
+shape = SubResource("CapsuleShape2D_q8gpv")
+
+[node name="Area2D" type="Area2D" parent="enemyBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody/Area2D"]
+shape = SubResource("CapsuleShape2D_e1y70")
+
+[connection signal="body_entered" from="enemyBody/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="enemyBody/Area2D" to="." method="_on_area_2d_body_exited"]
