@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbcpk0a8t4ern"]
 
-[ext_resource type="Script" path="res://World/Player.gd" id="1_jrc2e"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_jrc2e"]
 [ext_resource type="Texture2D" uid="uid://1yx5qdqunywd" path="res://Player/square.png" id="2_2n0jd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ro8j"]
@@ -8,14 +8,14 @@ size = Vector2(224, 225.5)
 
 [node name="World" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Player" type="Area2D" parent="."]
 script = ExtResource("1_jrc2e")
 
-[node name="Square" type="Sprite2D" parent="Area2D"]
+[node name="Square" type="Sprite2D" parent="Player"]
 position = Vector2(0, -4)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_2n0jd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Square Collision" type="CollisionShape2D" parent="Player"]
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_0ro8j")
