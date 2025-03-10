@@ -3,7 +3,7 @@
 		"name":"Beaver",
 		"movement":"hybrid",
 		"health":90,
-		"speed":5,
+		"speed":500,
 		"drops":"wood chips"
 	},
 	
