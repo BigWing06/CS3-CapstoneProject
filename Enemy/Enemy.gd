@@ -16,14 +16,14 @@ var _resouceJSON = JSON.parse_string(_resourceJSONText)
 
 func _ready():
 	_enemyData = _resouceJSON
-	_update("polar_bear") #choose animal from json file
+	_update("beaver") #choose animal from json file
 
 func _physics_process(delta):
 	#changes target and specifies hybrid
 	if _movementType == "baseFocused":
 		_target = global.basePosition
 	elif _movementType == "playerFocused":
-		_target = global.playerPosition
+		_target = global.player.position
 	else:
 		_target = global.basePosition
 		_hybrid = true 
