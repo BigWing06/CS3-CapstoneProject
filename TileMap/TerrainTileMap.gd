@@ -5,10 +5,7 @@ var _width = 50
 var _height = 50
 func _ready() -> void:
 	_noise.seed = 32432
-
-func _process(delta: float) -> void:
 	_generate_chunk(position)
-	
 
 func _generate_chunk(position):
 	var _tile_pos = local_to_map(position)

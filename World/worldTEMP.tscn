@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://dbcpk0a8t4ern"]
+[gd_scene load_steps=16 format=4 uid="uid://dbcpk0a8t4ern"]
 
-[ext_resource type="PackedScene" uid="uid://chhadtxo8k0ks" path="res://Player/Player.tscn" id="1_7ipjy"]
+[ext_resource type="PackedScene" uid="uid://uysewo71bcap" path="res://Player/Player.tscn" id="1_7ipjy"]
 [ext_resource type="Texture2D" uid="uid://bgpy5xnefosva" path="res://TileMap/Image Resources/TileMapTest.png" id="2_gtcpo"]
 [ext_resource type="Script" path="res://World/tile_maps.gd" id="2_j6hhn"]
 [ext_resource type="Script" path="res://TileMap/TerrainTileMap.gd" id="4_2umjb"]
 [ext_resource type="Texture2D" uid="uid://dsf0gjcs25oe" path="res://TileMap/Image Resources/AnimatedWater.png" id="4_g34gg"]
 [ext_resource type="Texture2D" uid="uid://dav70wk2wjnsj" path="res://TileMap/Image Resources/ForestPlants.png" id="4_m0stm"]
+[ext_resource type="Script" path="res://World/TreesTileMap.gd" id="6_afvqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2cnym"]
 texture = ExtResource("2_gtcpo")
-texture_region_size = Vector2i(64, 64)
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -516,7 +517,7 @@ texture_region_size = Vector2i(64, 64)
 23:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_nj143"]
-tile_size = Vector2i(64, 64)
+tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Snow"
 terrain_set_0/terrain_0/color = Color(3.46541e-06, 0.422014, 0.560777, 1)
@@ -585,8 +586,8 @@ tile_set = SubResource("TileSet_nj143")
 script = ExtResource("4_2umjb")
 
 [node name="Trees" type="TileMapLayer" parent="TileMaps"]
-tile_map_data = PackedByteArray("AAADAP3/AQAAAAEAAAAHAP//AQAAAAEAAAAKAP3/AQAAAAEAAAD9//3/AQAAAAEAAAABAAAAAQAAAAEAAAD6//7/AQAAAAEAAAD3/wAAAQAAAAEAAAAJAAQAAQAAAAEAAAAKAAcAAQAAAAEAAAAHAAgAAQAAAAEAAAD4/wcAAQABAAMAAAD9/wYAAQABAAMAAAACAAcAAQABAAMAAAD4/wQAAQABAAIAAAAKAAEAAQABAAIAAAAEAP//AQAAAAEAAAD+//3/AQABAAIAAAA=")
 tile_set = SubResource("TileSet_idgq3")
+script = ExtResource("6_afvqm")
 
 [node name="Decorations" type="TileMapLayer" parent="TileMaps"]
 tile_map_data = PackedByteArray("AAAFAAgAAAACAAEAAAAEAAgAAAACAAEAAAADAAgAAAACAAEAAAADAAkAAAACAAEAAAACAAkAAAACAAEAAAABAAkAAAACAAEAAAABAAgAAAACAAEAAAAHAAYAAAACAAEAAAAKAAUAAAACAAEAAAD//wIAAAAEAAIAAAD+/wIAAAAEAAIAAAD9/wIAAAAEAAIAAAD9/wEAAAAEAAIAAAD+/wEAAAAEAAIAAAA=")
