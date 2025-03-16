@@ -15,15 +15,9 @@ expand_mode = 2
 
 [node name="amountLbl" type="Label" parent="."]
 layout_mode = 0
-offset_left = 55.0
+offset_left = 8.0
 offset_top = 5.0
 offset_right = 95.0
 offset_bottom = 28.0
 text = "65"
 horizontal_alignment = 2
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0

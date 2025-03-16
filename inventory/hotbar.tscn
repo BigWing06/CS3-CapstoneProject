@@ -3,5 +3,9 @@
 [ext_resource type="Script" path="res://inventory/hotbar.gd" id="1_uc466"]
 
 [node name="Hotbar" type="HBoxContainer"]
+offset_left = -506.0
+offset_right = 508.0
+offset_bottom = 100.0
 theme_override_constants/separation = 2
+alignment = 1
 script = ExtResource("1_uc466")

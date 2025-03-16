@@ -1,5 +1,10 @@
 {
 	"exampleResource":{
-		"name":"Example Resource"
+		"name":"Example Resource",
+		"icon":"res://inventory/resourceIcons/exampleResource.png"
+	},
+	"exampleResource1":{
+		"name":"Example Resource1",
+		"icon":"res://inventory/resourceIcons/exampleResource.png"
 	}
 }
