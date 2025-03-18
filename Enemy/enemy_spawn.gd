@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var base_location: Vector2
 @export var min_spawn_distance: float = 400 #Can be increased or decreased as needed
 @export var max_spawn_distance: float = 700
 
@@ -11,6 +10,9 @@ extends Node2D
 
 @onready var timer: Timer = $Timer
 @onready var timer2: Timer = $Timer2
+
+func _ready() -> void:
+	start_spawning()
 
 func start_spawning(): #called when ever enemies should start spawning
 	timer.timeout.connect(_spawn_enemy) #Timer system that calls the spawn_enemy function everytime it runs.
@@ -30,10 +32,10 @@ func _spawn_enemy(): #Using the spawn_area this randomizes a place to spawn enem
 
 func _spawn_enemy2(): #Does the same thing as the last function but for the enemies that spawn farther away. (Change to real enemies in actual game)
 	if enemy2_scene:
-		var enemy2 = enemy2_scene.instantiate()
+		var enemy2 = enemy_scene.instantiate()
 		var angle = randf() * TAU 
 		var distance = randf_range(min_spawn_distance, max_spawn_distance) #keeps distance from the base
 		
-		var spawn_position2 = base_location + Vector2(cos(angle), sin(angle)) * distance #creates an area around the base that enemies cant spawn
+		var spawn_position2 = global.basePosition + Vector2(cos(angle), sin(angle)) * distance #creates an area around the base that enemies cant spawn
 		enemy2.position = spawn_position2
 		get_parent().add_child(enemy2)
