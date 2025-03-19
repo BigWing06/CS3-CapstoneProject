@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://b2i7tavue7pbu"]
+[gd_scene load_steps=5 format=3 uid="uid://da8r8qt5moqv6"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_o0oyn"]
+[ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="3_xwvj0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1y70"]
+radius = 210.0
+height = 420.0
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_o0oyn")
+
+[node name="enemyBody" type="CharacterBody2D" parent="."]
+position = Vector2(1000, 300)
+
+[node name="enemySpr" type="Sprite2D" parent="enemyBody"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_xwvj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody"]
+shape = SubResource("CapsuleShape2D_q8gpv")
+
+[node name="Area2D" type="Area2D" parent="enemyBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody/Area2D"]
+shape = SubResource("CapsuleShape2D_e1y70")
+
+[connection signal="area_shape_entered" from="enemyBody/Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemyBody/Area2D" to="." method="_on_area_2d_area_shape_exited"]
