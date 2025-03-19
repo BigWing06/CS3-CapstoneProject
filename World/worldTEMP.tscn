@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://dbcpk0a8t4ern"]
+[gd_scene load_steps=14 format=3 uid="uid://dbcpk0a8t4ern"]
 
 [ext_resource type="PackedScene" uid="uid://uysewo71bcap" path="res://Player/Player.tscn" id="1_7ipjy"]
 [ext_resource type="Texture2D" uid="uid://bgpy5xnefosva" path="res://TileMap/Image Resources/TileMapTest.png" id="2_gtcpo"]
-[ext_resource type="Script" path="res://World/tile_maps.gd" id="2_j6hhn"]
 [ext_resource type="Script" path="res://TileMap/TerrainTileMap.gd" id="4_2umjb"]
 [ext_resource type="Texture2D" uid="uid://dav70wk2wjnsj" path="res://TileMap/Image Resources/ForestPlants.png" id="4_m0stm"]
 [ext_resource type="Script" path="res://World/TreesTileMap.gd" id="6_afvqm"]
 [ext_resource type="Script" path="res://World/DecorationsTileMap.gd" id="7_dt1y0"]
+
+[sub_resource type="GDScript" id="GDScript_34mrt"]
+script/source = "extends Node2D
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2cnym"]
 texture = ExtResource("2_gtcpo")
@@ -566,10 +569,9 @@ sources/0 = SubResource("TileSetAtlasSource_4vyo6")
 [node name="Player" parent="." instance=ExtResource("1_7ipjy")]
 
 [node name="TileMaps" type="Node2D" parent="."]
-script = ExtResource("2_j6hhn")
+script = SubResource("GDScript_34mrt")
 
 [node name="Snow" type="TileMapLayer" parent="TileMaps"]
-tile_map_data = PackedByteArray("AAD7/wAAAAAIAAEAAAD8/wAAAAALAAIAAAD8/wEAAAALAAIAAAD8/wIAAAAGAAEAAAD9/wIAAAALAAAAAAD9/wMAAAAGAAEAAAD+/wMAAAAKAAAAAAD//wMAAAAKAAAAAAAAAAMAAAAKAAAAAAABAAMAAAAKAAAAAAACAAMAAAAKAAAAAAADAAMAAAAKAAAAAAAEAAMAAAAFAAEAAAAEAAIAAAAIAAEAAAAEAAEAAAAIAAEAAAAEAAAAAAAFAAIAAAADAAAAAAAJAAMAAAACAAAAAAAJAAMAAAABAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAP//AAAFAAIAAAD/////AAAJAAMAAAD+////AAAJAAMAAAD9////AAAJAAMAAAD8////AAAJAAEAAAD7/wEAAAAIAAEAAAD7////AAAIAAAAAAD8//7/AAAIAAAAAAD9//7/AAAKAAAAAAD+//7/AAAKAAAAAAD///7/AAAKAAAAAAAAAP7/AAAKAAAAAAABAP7/AAAKAAAAAAABAP//AAAJAAIAAAACAP//AAAJAAIAAAADAP//AAAJAAIAAAADAP7/AAAKAAAAAAACAP7/AAAKAAAAAAAEAP7/AAAKAAAAAAAEAP//AAAJAAIAAAAFAP//AAALAAIAAAAFAP7/AAALAAAAAAAFAAAAAAALAAIAAAAFAAEAAAALAAIAAAAFAAIAAAALAAIAAAAFAAMAAAALAAIAAAAEAAQAAAAJAAMAAAADAAQAAAAJAAMAAAAFAAQAAAALAAMAAAACAAQAAAAJAAMAAAABAAQAAAAJAAMAAAAAAAQAAAAJAAMAAAD//wQAAAAJAAMAAAD+/wQAAAAJAAMAAAD9/wQAAAAJAAMAAAD8/wQAAAAJAAMAAAD8/wMAAAAJAAIAAAD7/wMAAAAIAAEAAAD7/wIAAAAIAAEAAAD7/wQAAAAIAAMAAAD9/wAAAAAAAAQAAAD+/wAAAAAAAAQAAAD//wAAAAAAAAQAAAD+/wEAAAAAAAQAAAD9/wEAAAAAAAQAAAD//wEAAAAAAAQAAAAAAAEAAAAAAAQAAAABAAEAAAAAAAQAAAACAAEAAAAAAAQAAAADAAEAAAAAAAQAAAADAAIAAAAAAAQAAAACAAIAAAAAAAQAAAABAAIAAAAAAAQAAAAAAAIAAAAAAAQAAAD//wIAAAAAAAQAAAD+/wIAAAAAAAQAAAA=")
 tile_set = SubResource("TileSet_nj143")
 script = ExtResource("4_2umjb")
 
@@ -578,6 +580,6 @@ tile_set = SubResource("TileSet_idgq3")
 script = ExtResource("6_afvqm")
 
 [node name="Decorations" type="TileMapLayer" parent="TileMaps"]
-tile_map_data = PackedByteArray("AAAFAAgAAAACAAEAAAAEAAgAAAACAAEAAAADAAgAAAACAAEAAAADAAkAAAACAAEAAAACAAkAAAACAAEAAAABAAkAAAACAAEAAAABAAgAAAACAAEAAAAHAAYAAAACAAEAAAAKAAUAAAACAAEAAAD//wIAAAAEAAIAAAD+/wIAAAAEAAIAAAD9/wIAAAAEAAIAAAD9/wEAAAAEAAIAAAD+/wEAAAAEAAIAAAA=")
+tile_map_data = PackedByteArray(0, 0, 255, 255, 2, 0, 0, 0, 4, 0, 2, 0, 0, 0, 254, 255, 2, 0, 0, 0, 4, 0, 2, 0, 0, 0, 253, 255, 2, 0, 0, 0, 4, 0, 2, 0, 0, 0, 253, 255, 1, 0, 0, 0, 4, 0, 2, 0, 0, 0, 254, 255, 1, 0, 0, 0, 4, 0, 2, 0, 0, 0)
 tile_set = SubResource("TileSet_nuhvg")
 script = ExtResource("7_dt1y0")

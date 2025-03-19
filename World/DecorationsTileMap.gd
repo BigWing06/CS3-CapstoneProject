@@ -5,7 +5,7 @@ var _height = 50 # height of the chunk to generate
 var _rand = RandomNumberGenerator.new() # random generator object
 
 func _ready() -> void:
-	_rand.seed = 1234 # seed for the chunk
+	_rand.seed = global.WORLD_SEED # seed for the chunk
 	_generate_chunk(position)
 	
 

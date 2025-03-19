@@ -4,7 +4,7 @@ var _noise = FastNoiseLite.new() # noise generator
 var _width = 50 # width of the chunk
 var _height = 50 # height of the chunk
 func _ready() -> void:
-	_noise.seed = 32432 # seed for the generator
+	_noise.seed = global.WORLD_SEED # seed for the generator
 	_generate_chunk(position)
 
 func _generate_chunk(position): # generates the terrain based on position
