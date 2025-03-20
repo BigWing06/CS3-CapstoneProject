@@ -7,27 +7,27 @@
 radius = 32.0
 height = 64.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1y70"]
-radius = 210.0
-height = 420.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2iqhj"]
+radius = 1024.0
 
-[node name="Enemy" type="Node2D"]
+[node name="enemyBody" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_o0oyn")
 
-[node name="enemyBody" type="CharacterBody2D" parent="."]
-position = Vector2(1000, 300)
-
-[node name="enemySpr" type="Sprite2D" parent="enemyBody"]
+[node name="enemySpr" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_xwvj0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q8gpv")
 
-[node name="Area2D" type="Area2D" parent="enemyBody"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBody/Area2D"]
-shape = SubResource("CapsuleShape2D_e1y70")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2iqhj")
 
-[connection signal="area_shape_entered" from="enemyBody/Area2D" to="." method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_exited" from="enemyBody/Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
