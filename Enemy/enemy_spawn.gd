@@ -16,7 +16,7 @@ func _ready() -> void:
 func start_spawning(): #called when ever enemies should start spawning
 	_timer.timeout.connect(_spawn_enemy) #Timer system that calls the spawn_enemy function everytime it runs.
 	_timer2.timeout.connect(_spawn_enemy2)
-	_timer2.start()
+	#_timer2.start()
 	_timer.start()
 
 func _spawn_enemy(): #Using the spawn_area this randomizes a place to spawn enemy.

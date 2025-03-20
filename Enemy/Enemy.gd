@@ -1,6 +1,4 @@
-extends Node2D
-
-@onready var enemy = $enemyBody
+extends CharacterBody2D
 
 var _enemyData = {}
 var _speed
@@ -28,17 +26,16 @@ func _physics_process(delta):
 		_target = global.basePosition
 		_hybrid = true 
 
-	enemy.position += (_target - enemy.position)/_speed #sets a target for enemy to follow
+	position += (_target - position)/_speed #sets a target for enemy to follow
 	
 func _update(x): #updates enemy variables
 	_speed = _enemyData[x]["speed"]
 	_movementType = _enemyData[x]["movement"]
 	_startingHealth = _enemyData[x]["health"]
 
-func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "playerFocused"
-
-func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_area_2d_body_exited(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "baseFocused"
