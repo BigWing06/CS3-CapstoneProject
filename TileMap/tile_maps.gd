@@ -16,20 +16,27 @@ func _ready() -> void:
 	_treeRand.seed = global.WORLD_SEED 
 	_flowerRand.seed = global.WORLD_SEED
 	for chunk in _initalChunks:
-		print(chunk)
 		_generate_chunk(chunk)
 	
 func getMainTilemap() -> TileMapLayer: #This function returns the terrain tilemap node for reference outside of this scene
 	return get_node("Terrain")
+	
+func getChunk(position: Vector2) -> Vector2i: #Returns the chunk that the inputted cordinates are contained in
+	var tileMapPos = $Terrain.local_to_map(to_local(position))
+	return Vector2i(floor(tileMapPos.x/chunkSize.x), floor(tileMapPos.y/chunkSize.y))
 
 func playerRenderNeighborChunks(playerChunk: Vector2i): #This function should be called by player scene instances so that more of the world is rendered when they leave the rendered area
-	pass
+	for x in range(playerChunk.x-chunkPlayerBuffer, playerChunk.x+chunkPlayerBuffer):
+		for y in range(playerChunk.y-chunkPlayerBuffer, playerChunk.y+chunkPlayerBuffer):
+			var chunk = Vector2i(x, y)
+			if chunk not in _renderedChunks:
+				_generate_chunk(chunk)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-func _generate_chunk(chunkPosition: Vector2):
+func _generate_chunk(chunkPosition: Vector2i):
 	_renderedChunks.append(chunkPosition)
 	var position = Vector2i(chunkPosition.x * chunkSize.x, chunkPosition.y * chunkSize.y)
 	_generate_terrain_chunk(position, chunkSize)
@@ -37,7 +44,6 @@ func _generate_chunk(chunkPosition: Vector2):
 	_generate_decorations_chunk(position, chunkSize)
 	
 func _generate_terrain_chunk(position: Vector2i, chunkSize: Vector2i): # generates the terrain based on position
-	print(position)
 	var _tile_pos = $Terrain.local_to_map(position)
 	var _snowToSet = [] # tiles to set to snow
 	var _waterToSet = [] # tiles to set to water

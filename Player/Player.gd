@@ -22,11 +22,12 @@ func processMovement(delta: float) -> void: #Proceses the player movement
 	position += velocity*delta
 	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
-	return global.world.get_node("TileMaps").getMainTilemap().local_to_map(position)
+	return global.world.get_node("TileMaps").getChunk(position)
 
 func _physics_process(delta: float) -> void:
 	processMovement(delta)
 
 func _process(delta):
 	chunk = getCurrentChunk()
+	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	
