@@ -8,7 +8,7 @@ var _startingHealth
 var _hybrid = false
 var _player
 
-var _resourceJSONPath = "res://Enemy/enemyTypes.json"
+var _resourceJSONPath = "res://gameplayReferences/enemyTypes.json"
 var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
 var _resouceJSON = JSON.parse_string(_resourceJSONText)
 

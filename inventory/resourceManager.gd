@@ -1,4 +1,4 @@
-var _resourceJSONPath = "res://inventory/resources.json"
+var _resourceJSONPath = "res://gameplayReferences/resources.json"
 var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
 var _resourceJSON = JSON.parse_string(_resourceJSONText)
 
