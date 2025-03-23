@@ -9,6 +9,7 @@
 [node name="World" type="Node2D"]
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
+scale = Vector2(1.7, 1.7)
 
 [node name="Player" parent="." instance=ExtResource("2_wbp8x")]
 
