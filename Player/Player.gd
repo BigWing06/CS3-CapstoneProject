@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 400
 var screen_size
+var chunk: Vector2i
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -27,5 +28,5 @@ func _physics_process(delta: float) -> void:
 	processMovement(delta)
 
 func _process(delta):
-	print(getCurrentChunk())
+	chunk = getCurrentChunk()
 	
