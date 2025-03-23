@@ -10,6 +10,9 @@ func _ready() -> void:
 	_treeRand.seed = global.WORLD_SEED 
 	_flowerRand.seed = global.WORLD_SEED
 	_generate_chunk(position, Vector2(50, 50))
+	
+func getMainTilemap() -> TileMapLayer: #This function returns the terrain tilemap node for reference outside of this scene
+	return get_node("Terrain")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
