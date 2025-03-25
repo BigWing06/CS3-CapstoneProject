@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkiwocbjjv1h7"]
+
+[ext_resource type="Script" path="res://startscreen/start_screen.gd" id="1_d4sq3"]
+[ext_resource type="Texture2D" uid="uid://bc7u4q4s7x5fj" path="res://startscreen/beaver2.jpg" id="2_xfdnv"]
+[ext_resource type="Theme" uid="uid://c7w5xhvixrmwm" path="res://startscreen/button_theme.tres" id="2_yacbi"]
+[ext_resource type="Texture2D" uid="uid://bma835tvg721v" path="res://Player/screen.png" id="4_6ce7g"]
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4sq3")
+
+[node name="Beaver2" type="Sprite2D" parent="."]
+position = Vector2(577.5, 331)
+scale = Vector2(1.80156, 1.5493)
+texture = ExtResource("2_xfdnv")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 424.0
+offset_right = 1111.0
+offset_bottom = 502.0
+theme = ExtResource("2_yacbi")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="EndButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 538.0
+offset_right = 1111.0
+offset_bottom = 616.0
+theme = ExtResource("2_yacbi")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 57.0
+offset_right = 911.0
+offset_bottom = 191.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 90
+text = "Beaver Battles"
+
+[node name="SwitchButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 569.0
+offset_right = 246.0
+offset_bottom = 638.0
+theme = ExtResource("2_yacbi")
+theme_override_font_sizes/font_size = 50
+text = "<-->"
+
+[node name="Character Viewer" type="Sprite2D" parent="."]
+position = Vector2(193, 482)
+scale = Vector2(0.822917, 0.78125)
+texture = ExtResource("4_6ce7g")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="EndButton" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="SwitchButton" to="." method="_on_button_pressed"]
