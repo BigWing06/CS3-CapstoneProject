@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dqircrgqtelkr"]
+
+[node name="root" type="Control"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="towerDisplay" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="Label" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Hello"
+vertical_alignment = 1

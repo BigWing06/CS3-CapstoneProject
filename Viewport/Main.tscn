@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dohb7sohljxyf"]
+[gd_scene load_steps=3 format=3 uid="uid://dohb7sohljxyf"]
 
 [ext_resource type="PackedScene" uid="uid://dbcpk0a8t4ern" path="res://World/world.tscn" id="1_n8kvi"]
+[ext_resource type="PackedScene" uid="uid://dwlgjkxoffi3l" path="res://inventory/craftingMenu/craftingMenu.tscn" id="2_afsl5"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_n8kvi")]
+
+[node name="UIParent" type="CanvasLayer" parent="."]
+
+[node name="CraftingMenu" parent="UIParent" instance=ExtResource("2_afsl5")]
+grow_horizontal = 1
+grow_vertical = 1
