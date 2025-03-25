@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://dqircrgqtelkr"]
+[gd_scene load_steps=2 format=3 uid="uid://dqircrgqtelkr"]
+
+[ext_resource type="Script" path="res://inventory/craftingMenu/crafting_menu_tower_list_instance.gd" id="1_o6pfn"]
 
 [node name="root" type="Control"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_o6pfn")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
