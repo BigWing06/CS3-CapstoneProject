@@ -10,8 +10,8 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 43.0
-offset_top = 391.0
-offset_right = 83.0
-offset_bottom = 431.0
+offset_left = 13.0
+offset_top = 598.0
+offset_right = 53.0
+offset_bottom = 638.0
 script = ExtResource("2_mmlkw")

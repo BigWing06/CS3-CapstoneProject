@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 signal chunkChanged
-
+signal healthChanged
+signal death
 @export var speed = 400
 var screen_size
 var _chunk: Vector2i
@@ -35,10 +36,27 @@ func _process(delta):
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
 		
-func damage(_damage:float): # Funciton to cause damage to player
+func _damage(_damage:float): # Funciton to cause damage to player
 	_health-=_damage
-func heal(_health:float): # Function to heal player
+	healthChanged.emit()
+	if _health<=0:
+		death.emit()
+	$DamageAnimation.play("Damage")
+func _heal(_health:float): # Function to heal player
 	_health-=_health
-
+	healthChanged.emit()
+	$DamageAnimation.play("Heal")
+	
+func getHealth() -> int:
+	return _health
 func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
+
+
+func _on_death() -> void:
+	self.queue_free()
+
+
+
+func _on_enemy_collision_shape_body_entered(body: Node2D) -> void:
+	_damage(1)

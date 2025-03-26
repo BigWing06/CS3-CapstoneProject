@@ -14,7 +14,7 @@ var _resouceJSON = JSON.parse_string(_resourceJSONText)
 
 func _ready():
 	_enemyData = _resouceJSON
-	_update("beaver") #choose animal from json file
+	_update("penguin") #choose animal from json file
 
 func _physics_process(delta):
 	#changes target and specifies hybrid
@@ -32,7 +32,12 @@ func _update(x): #updates enemy variables
 	_speed = _enemyData[x]["speed"]
 	_movementType = _enemyData[x]["movement"]
 	_startingHealth = _enemyData[x]["health"]
-
+	_updateAttackType(_enemyData[x]["attackType"])
+func _updateAttackType(type: String):
+	if type == "melee":
+		set_collision_layer_value(5,true)
+	elif type == "ranged":
+		set_collision_layer_value(5,false)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "playerFocused"
