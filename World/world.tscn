@@ -9,6 +9,8 @@
 [node name="World" type="Node2D"]
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
+chunkSize = Vector2i(5, 5)
+chunkPlayerBuffer = 20
 
 [node name="Player" parent="." instance=ExtResource("2_wbp8x")]
 
