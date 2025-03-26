@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bih3oxi2o4anu"]
+
+[ext_resource type="Texture2D" uid="uid://c2qk5xsfvhhx8" path="res://Player/FullHeart.png" id="1_y0lri"]
+
+[node name="HealthHeart" type="TextureRect"]
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_y0lri")
+expand_mode = 1

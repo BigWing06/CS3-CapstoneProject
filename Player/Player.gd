@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 400
 var screen_size
-
+var _health
+@export var _STARTING_HEALTH = 20
 func _ready():
 	screen_size = get_viewport_rect().size
-
+	_health= _STARTING_HEALTH
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
@@ -22,3 +23,8 @@ func _process(delta):
 	
 	position += velocity*delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+func damage(_damage:float): # Funciton to cause damage to player
+	_health-=_damage
+func heal(_health:float): # Function to heal player
+	_health-=_health
