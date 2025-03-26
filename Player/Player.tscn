@@ -22,3 +22,5 @@ scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_0ro8j")
 
 [node name="playerCamera" type="Camera2D" parent="."]
+
+[connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
