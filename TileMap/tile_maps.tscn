@@ -559,6 +559,8 @@ sources/0 = SubResource("TileSetAtlasSource_4vyo6")
 
 [node name="TileMaps" type="Node2D"]
 script = ExtResource("1_bl065")
+chunkSize = Vector2i(25, 25)
+chunkPlayerBuffer = 8
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_nj143")
