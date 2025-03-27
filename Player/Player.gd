@@ -36,13 +36,13 @@ func _process(delta):
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
 		
-func _damage(_damage:float): # Funciton to cause damage to player
+func damage(_damage:float): # Funciton to cause damage to player
 	_health-=_damage
 	healthChanged.emit()
 	if _health<=0:
 		death.emit()
 	$DamageAnimation.play("Damage")
-func _heal(_health:float): # Function to heal player
+func heal(_health:float): # Function to heal player
 	_health-=_health
 	healthChanged.emit()
 	$DamageAnimation.play("Heal")
@@ -56,12 +56,3 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 func _on_death() -> void:
 	#self.queue_free()
 	pass
-
-
-
-func _on_enemy_collision_shape_body_entered(body: Node2D) -> void:
-	_damage(1)
-
-
-func _on_enemy_collision_shape_area_entered(area: Area2D) -> void:
-	_damage(1)

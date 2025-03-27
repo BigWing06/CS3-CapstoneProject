@@ -1,11 +1,16 @@
 {
 	"laserEye":{
-		"attackType":"ranged",
-		"attackCooldown":0.5,
-		"speed":300
+		"type":"ranged",
+		"cooldown":0.5,
+		"speed":300,
+		"damage":1,
+		"lifetime":1,
+		"radius":100
 	},
 	"claw":{
-		"attackType":"melee",
-		"attackCooldown":0.5,
+		"type":"melee",
+		"cooldown":0.5,
+		"damage":1,
+		"radius":75
 	}
 }
