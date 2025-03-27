@@ -54,9 +54,14 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 
 
 func _on_death() -> void:
-	self.queue_free()
+	#self.queue_free()
+	pass
 
 
 
 func _on_enemy_collision_shape_body_entered(body: Node2D) -> void:
+	_damage(1)
+
+
+func _on_enemy_collision_shape_area_entered(area: Area2D) -> void:
 	_damage(1)
