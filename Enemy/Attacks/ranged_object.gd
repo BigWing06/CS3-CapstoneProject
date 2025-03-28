@@ -22,6 +22,9 @@ func setSpeed(_x:float):
 	_speed=_x
 func setLifetime(_x:float):
 	_timeOut = _x
+func setSprite(_texture:String,_collisionSize:Vector2):
+	$Sprite2D.texture=load(_texture)
+	$CollisionShape2D.shape.size = _collisionSize
 func setDamage(_x:float):
 	_damage = _x
 func _on_time_out_timeout() -> void:

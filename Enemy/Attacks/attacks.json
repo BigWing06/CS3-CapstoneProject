@@ -5,7 +5,9 @@
 		"speed":300,
 		"damage":1,
 		"lifetime":1,
-		"radius":100
+		"radius":100,
+		"projectileSprite":"res://Player/FullHeart.png",
+		"projectileSize":[25,15]
 	},
 	"claw":{
 		"type":"melee",

@@ -13,7 +13,7 @@
 		"health":220,
 		"speed":60,
 		"drops":"beaver cola",
-		"attacks":{"claw":0.7,"laserEye":0.3}
+		"attacks":{"claw":2,"laserEye":3}
 	},
 	
 	"wolf": {

@@ -49,6 +49,7 @@ func heal(_health:float): # Function to heal player
 	
 func getHealth() -> int:
 	return _health
+	
 func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
