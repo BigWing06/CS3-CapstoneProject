@@ -3,6 +3,9 @@ extends CharacterBody2D
 signal chunkChanged
 signal healthChanged
 signal death
+
+@onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
+
 @export var speed = 400
 var screen_size
 var _chunk: Vector2i
@@ -41,12 +44,19 @@ func damage(_damage:float): # Funciton to cause damage to player
 	healthChanged.emit()
 	if _health<=0:
 		death.emit()
+	_displayHealthChange(_damage*-1)
 	$DamageAnimation.play("Damage")
 func heal(_health:float): # Function to heal player
 	_health-=_health
+	_displayHealthChange(_health)
 	healthChanged.emit()
+
+func _displayHealthChange(_amount: float): # Creates a scene to display an animation of the health change near the player
+	var _healthChange = _healthChangeScene.instantiate()
+	add_child(_healthChange)
+	_healthChange.display(_amount,$HealthChangePoint.position)
 	$DamageAnimation.play("Heal")
-	
+
 func getHealth() -> int:
 	return _health
 	
