@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0o0be4hbyhe5"]
+[gd_scene load_steps=10 format=3 uid="uid://b2bh5qelwyye8"]
 
 [ext_resource type="Script" path="res://TileMap/tile_maps.gd" id="1_bl065"]
 [ext_resource type="Texture2D" uid="uid://bgpy5xnefosva" path="res://TileMap/Image Resources/TileMapTest.png" id="1_qb1td"]
@@ -405,6 +405,7 @@ texture_region_size = Vector2i(32, 32)
 0:3/0/terrain_set = 0
 0:3/0/terrain = 0
 0:4/animation_columns = 6
+0:4/animation_speed = 0.001
 0:4/animation_frame_0/duration = 0.2
 0:4/animation_frame_1/duration = 0.2
 0:4/animation_frame_2/duration = 0.2

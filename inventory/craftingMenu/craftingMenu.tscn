@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
 
 [node name="CraftingMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchor_left = 0.75
 anchor_right = 1.0

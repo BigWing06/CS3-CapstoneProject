@@ -4,35 +4,61 @@ signal selectedTowerChanged(FOCUS_CLICK)
 
 var _towerListScene = preload("res://inventory/craftingMenu/craftingMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
 @onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
+@onready var _towerInstanceScene = preload("res://Tower/tower.tscn")
+@onready var _towerTypesList = utils._towerTypesJSON.keys()
+var _selectedTowerInt = 0
+var _towerInstance = null
 
-var _towerTypesJSONPath = "res://gameplayReferences/towerTypes.json"
-var _towerTypesJSONText = FileAccess.get_file_as_string(_towerTypesJSONPath)
-var _towerTypesJSON = JSON.parse_string(_towerTypesJSONText)
-var _towerTypesList = _towerTypesJSON.keys()
-var _selectedTowerType = 0
 
 func _ready() -> void:
 	set_focus_mode(FOCUS_NONE)
 	for key in _towerTypesList: #Instances the craftingMenuTowerListInstance to create the list in the crafting menu
 		var towerListSceneInstance = _towerListScene.instantiate()
-		towerListSceneInstance.update(key, _towerTypesJSON[key])
+		towerListSceneInstance.update(key, utils._towerTypesJSON[key])
 		selectedTowerChanged.connect(towerListSceneInstance.selectedTowerUpdate)
 		_towerDisplayList.add_child(towerListSceneInstance)
-	selectedTowerChanged.emit(_towerTypesList[_selectedTowerType])
+	
+func _onScrollDown() -> void:
+	_selectedTowerInt = (_selectedTowerInt + 1) % len(_towerTypesList) #Adds one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
+	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
+	
+func _onScrollUp() -> void:
+	_selectedTowerInt = (_selectedTowerInt - 1) % len(_towerTypesList) #Subtracts one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
+	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
+	
+func _build() -> void: #Runs when the left mouse button is clicked and checks to see if the player can built the tower and then builds it
+	_towerInstance.build()
+	_towerInstance = null
+	_updatePlacingTower(_towerTypesList[_selectedTowerInt])
 	
 func _process(delta: float) -> void:
-	#If statements to change the selected tower on mouse scroll
-	if Input.is_action_just_pressed("craftingScrollDown"):
-		_selectedTowerType = (_selectedTowerType + 1) % len(_towerTypesList)
-		selectedTowerChanged.emit(_towerTypesList[_selectedTowerType])
-	if Input.is_action_just_pressed("craftingScrollUp"):
-		_selectedTowerType = (_selectedTowerType - 1) % len(_towerTypesList)
-		selectedTowerChanged.emit(_towerTypesList[_selectedTowerType])
 	if Input.is_action_just_pressed("toggleBuildMenu"):
-		toggleMenu()
+		_toggleMenu()
 	
 func _on_selected_tower_changed(tower: Variant) -> void:
-	$Control/towerTitle.text = _towerTypesJSON[tower]['name']
+	$Control/towerTitle.text = utils._towerTypesJSON[tower]['name']
+	_updatePlacingTower(tower)
 		
-func toggleMenu():
+func _toggleMenu() -> void: #Toggles the menu's visibility
 	visible = !visible
+	if visible: #Code that runs if the menu is going to be shown
+		selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
+		input.scrollDown.connect(_onScrollDown)
+		input.scrollUp.connect(_onScrollUp)
+		input.leftClick.connect(_build)
+	else: #Code that closes the build menu
+		_updatePlacingTower(null)
+		input.scrollDown.disconnect(_onScrollDown)
+		input.scrollUp.disconnect(_onScrollUp)
+		input.leftClick.disconnect(_build)
+
+func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type changes
+	if _towerInstance != null:
+		_towerInstance.queue_free()
+	_towerInstance = null
+	if tower != null:
+		_towerInstance = _towerInstanceScene.instantiate()
+		_towerInstance.setup(tower)
+		global.world.add_child(_towerInstance)
+	
+		

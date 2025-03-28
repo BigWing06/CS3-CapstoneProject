@@ -8,12 +8,8 @@ var _startingHealth
 var _hybrid = false
 var _player
 
-var _resourceJSONPath = "res://gameplayReferences/enemyTypes.json"
-var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
-var _resouceJSON = JSON.parse_string(_resourceJSONText)
-
 func _ready():
-	_enemyData = _resouceJSON
+	_enemyData = utils._enemyJSON
 	_update("beaver") #choose animal from json file
 
 func _physics_process(delta):
