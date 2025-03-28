@@ -1,27 +1,48 @@
 {
-	"basic":{
-		"name":"Basic Tower"
+	"basicSnowball": {
+		"name": "Snowball Tower",
+		"recipe": {
+			"wood": 8,
+			"snowball": 25
+		}
 	},
-	
-	"heavy":{
-		"name":"Heavy Tower"
+	"heavySnowball": {
+		"name": "Giant Snowball Catapult",
+		"recipe": {
+			"wood": 15,
+			"compactedStone": 8,
+			"snowball": 30
+		}
 	},
-	"sniper":{
-		"name":"Sniper Tower"
+	"basicIcicle": {
+		"name": "Icicle Slingshot",
+		"recipe": {
+			"wood": 8,
+			"iceGem": 5
+		}
 	},
-	"pierce":{
-		"name":"Pierce Tower"
+	"heavyIcicle": {
+		"name": "tempHeavyIcicle",
+		"recipe": {
+			"wood": 15,
+			"compactedStone": 8,
+			"iceGem": 10
+		}
 	},
-	"freeze":{
-		"name":"Freeze Tower"
-	}, 
-	"test":{
-		"name":"tester"
+	"pierceTower": {
+		"name": "Icicle Shooter",
+		"recipe": {
+			"wood": 20,
+			"compactedStone": 10,
+			"iceGem": 5
+		}
 	},
-	"lksadjfsla":{
-		"name":"faklsdfjaslkfdjflks"
-	}, 
-	"tedst":{
-		"name":"tdester"
+	"freezeTower": {
+		"name": "Snow Blower",
+		"recipe": {
+			"wood": 15,
+			"compactedStone": 5,
+			"iceGem": 2
+		}
 	}
 }
