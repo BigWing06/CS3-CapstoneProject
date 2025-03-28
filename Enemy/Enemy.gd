@@ -58,7 +58,7 @@ func _attack(_attackData): # The function to attack
 	_raycast.target_position = to_local(global.player.position) # Points the raycast towards the player
 	if _attackData["type"] == "ranged": # If a ranged attack set up and adopt a projectile instance
 		var projectile = _rangedObject.instantiate()
-		projectile.setDirection((_raycast.target_position).normalized())
+		projectile.setTarget((_raycast.target_position).normalized(),global.player.position)
 		projectile.setSpeed(_attackData["speed"])
 		projectile.setLifetime(_attackData["lifetime"])
 		projectile.setDamage(_attackData["damage"])
