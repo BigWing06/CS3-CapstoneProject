@@ -21,7 +21,7 @@ var _nearPlayer = false # If the player is within the attack radius
 
 func _ready():
 	_enemyData = _resouceJSON
-	_update("polar_bear") #choose animal from json file
+	_update("penguin") #choose animal from json file
 	_loadNextAttack() # Loads in the first attack
 
 func _physics_process(delta):
