@@ -7,6 +7,8 @@
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 75.0
 script = ExtResource("1_o6pfn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -14,9 +16,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
 offset_top = 5.0
-offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -35,10 +35,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="towerDisplay" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(65, 0)
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 texture = ExtResource("2_pj0g1")
 expand_mode = 5
+stretch_mode = 5
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2

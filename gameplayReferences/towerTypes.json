@@ -1,9 +1,28 @@
 {
-	"example":{
-		"name":"example"
+	"basic":{
+		"name":"Basic Tower"
 	},
 	
-	"example1":{
-		"name":"example one"
+	"heavy":{
+		"name":"Heavy Tower"
+	},
+	"sniper":{
+		"name":"Sniper Tower"
+	},
+	
+	"pierce":{
+		"name":"Pierce Tower"
+	},
+	"freeze":{
+		"name":"Freeze Tower"
+	}, 
+	"test":{
+		"name":"tester"
+	},
+	"lksadjfsla":{
+		"name":"faklsdfjaslkfdjflks"
+	}, 
+	"tedst":{
+		"name":"tdester"
 	}
 }
