@@ -5,7 +5,7 @@ signal selectedTowerChanged(FOCUS_CLICK)
 var _towerListScene = preload("res://inventory/craftingMenu/craftingMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
 @onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
 @onready var _towerInstanceScene = preload("res://Tower/tower.tscn")
-@onready var _towerTypesList = utils._towerTypesJSON.keys()
+@onready var _towerTypesList = utils.towerTypesJSON.keys()
 var _selectedTowerInt = 0
 var _towerInstance = null
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 	set_focus_mode(FOCUS_NONE)
 	for key in _towerTypesList: #Instances the craftingMenuTowerListInstance to create the list in the crafting menu
 		var towerListSceneInstance = _towerListScene.instantiate()
-		towerListSceneInstance.update(key, utils._towerTypesJSON[key])
+		towerListSceneInstance.update(key, utils.towerTypesJSON[key])
 		selectedTowerChanged.connect(towerListSceneInstance.selectedTowerUpdate)
 		_towerDisplayList.add_child(towerListSceneInstance)
 	
@@ -36,7 +36,10 @@ func _process(delta: float) -> void:
 		_toggleMenu()
 	
 func _on_selected_tower_changed(tower: Variant) -> void:
-	$Control/towerTitle.text = utils._towerTypesJSON[tower]['name']
+	print(utils)
+	var towerInfo = utils.towerTypesJSON[tower]
+	$Control/towerTitle.text = towerInfo['name']
+	$Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')
 	_updatePlacingTower(tower)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility

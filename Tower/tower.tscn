@@ -6,6 +6,6 @@
 [node name="Tower" type="CharacterBody2D"]
 script = ExtResource("1_p08au")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="towerIcon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_iockt")

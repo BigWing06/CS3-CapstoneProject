@@ -9,7 +9,7 @@ var _hybrid = false
 var _player
 
 func _ready():
-	_enemyData = utils._enemyJSON
+	_enemyData = utils.enemyJSON
 	_update("beaver") #choose animal from json file
 
 func _physics_process(delta):

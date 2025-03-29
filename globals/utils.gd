@@ -1,16 +1,26 @@
 extends Node
 
-var _towerTypesJSON
-var _resourceJSON
-var _enemyJSON
+var towerImageRootPath = "res://Tower/towerResources/" #Path to folder that contains all of the tower art
+
+var fileNotFound = preload("res://fileNotFound.png")
+
+var towerTypesJSON
+var resourceJSON
+var enemyJSON
 func _ready() -> void:
 	var _towerTypesJSONPath = "res://gameplayReferences/towerTypes.json"
 	var _towerTypesJSONText = FileAccess.get_file_as_string(_towerTypesJSONPath)
-	_towerTypesJSON = JSON.parse_string(_towerTypesJSONText)
+	towerTypesJSON = JSON.parse_string(_towerTypesJSONText)
 	var _resourceJSONPath = "res://gameplayReferences/resources.json"
 	var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
-	_resourceJSON = JSON.parse_string(_resourceJSONText)
+	resourceJSON = JSON.parse_string(_resourceJSONText)
 	var _enemyJSONPath = "res://gameplayReferences/enemyTypes.json"
 	var _enemyJSONText = FileAccess.get_file_as_string(_enemyJSONPath)
-	_enemyJSON = JSON.parse_string(_enemyJSONText)
+	enemyJSON = JSON.parse_string(_enemyJSONText)
 	
+func loadImage(path: String): #This function should be used to load in all images so that they get repalced with the file not found image
+	var image = load(path)
+	if (null == image):
+		image = fileNotFound
+	print(image)
+	return image
