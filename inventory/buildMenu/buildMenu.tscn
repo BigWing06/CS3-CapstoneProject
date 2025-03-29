@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwlgjkxoffi3l"]
+[gd_scene load_steps=3 format=3 uid="uid://cvpbb8pit8q8p"]
 
-[ext_resource type="Script" path="res://inventory/craftingMenu/crafting_menu.gd" id="1_ikopu"]
+[ext_resource type="Script" path="res://inventory/buildMenu/buildMenu.gd" id="1_ikopu"]
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
 
 [node name="CraftingMenu" type="Control"]

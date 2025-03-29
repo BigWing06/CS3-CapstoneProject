@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqircrgqtelkr"]
 
-[ext_resource type="Script" path="res://inventory/craftingMenu/crafting_menu_tower_list_instance.gd" id="1_o6pfn"]
+[ext_resource type="Script" path="res://inventory/buildMenu/buildMenuTowerListInstance.gd" id="1_o6pfn"]
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="2_pj0g1"]
+
 
 [node name="root" type="Control"]
 custom_minimum_size = Vector2(0, 75)

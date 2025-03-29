@@ -2,7 +2,7 @@ extends Control
 
 signal selectedTowerChanged(FOCUS_CLICK)
 
-var _towerListScene = preload("res://inventory/craftingMenu/craftingMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
+var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
 @onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
 @onready var _towerInstanceScene = preload("res://Tower/tower.tscn")
 @onready var _towerTypesList = utils.towerTypesJSON.keys()
