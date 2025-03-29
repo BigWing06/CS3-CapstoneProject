@@ -27,16 +27,16 @@ func _onScrollUp() -> void:
 	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
 	
 func _build() -> void: #Runs when the left mouse button is clicked and checks to see if the player can built the tower and then builds it
-	_towerInstance.build()
-	_towerInstance = null
-	_updatePlacingTower(_towerTypesList[_selectedTowerInt])
+	if _towerInstance.checkPlacementArea(): #Checks to make sure that the position is valid
+		_towerInstance.build()
+		_towerInstance = null
+		_updatePlacingTower(_towerTypesList[_selectedTowerInt])
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):
 		_toggleMenu()
 	
 func _on_selected_tower_changed(tower: Variant) -> void:
-	print(utils)
 	var towerInfo = utils.towerTypesJSON[tower]
 	$Control/towerTitle.text = towerInfo['name']
 	$Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')

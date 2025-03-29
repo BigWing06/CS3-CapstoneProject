@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbcpk0a8t4ern"]
+[gd_scene load_steps=7 format=3 uid="uid://dbcpk0a8t4ern"]
 
 [ext_resource type="PackedScene" uid="uid://b2bh5qelwyye8" path="res://TileMap/tile_maps.tscn" id="1_xcin8"]
 [ext_resource type="PackedScene" uid="uid://chhadtxo8k0ks" path="res://Player/Player.tscn" id="2_wbp8x"]
@@ -6,13 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://dn7u6vy4aavqe" path="res://Enemy/enemy_spawn.tscn" id="4_scxhl"]
 [ext_resource type="PackedScene" uid="uid://da8r8qt5moqv6" path="res://Enemy/Enemy.tscn" id="6_8n07r"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uwai"]
+size = Vector2(151, 94)
+
 [node name="World" type="Node2D"]
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
 
 [node name="Player" parent="." instance=ExtResource("2_wbp8x")]
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(500.5, 399)
+shape = SubResource("RectangleShape2D_1uwai")
+
+[node name="Base" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(500, 400)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_il71a")

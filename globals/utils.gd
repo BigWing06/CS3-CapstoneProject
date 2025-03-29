@@ -22,5 +22,4 @@ func loadImage(path: String): #This function should be used to load in all image
 	var image = load(path)
 	if (null == image):
 		image = fileNotFound
-	print(image)
 	return image

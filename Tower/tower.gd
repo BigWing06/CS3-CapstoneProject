@@ -1,4 +1,7 @@
-extends CharacterBody2D
+extends StaticBody2D
+
+@onready var placementZone = $placementZone
+@onready var towerRange = $towerRange
 
 var _size:float = 50 #Size of the tower image
 var _tower #Stores tower type
@@ -19,7 +22,20 @@ func _ready() -> void:
 		
 func build():
 	_mode = "placed"
+	towerRange.visible = false
 	
 func _process(delta: float) -> void:
 	if _mode == "setup":
 		position = get_global_mouse_position()
+
+func checkPlacementArea() -> bool: #Checks to see if the current placement position of the tower is valid returns true if ok
+	if(len(placementZone.get_overlapping_bodies())<=1): #Area 2d will always collide with self which is why it must be less than or equal to 1
+		return true
+	else:
+		return false
+
+func updatePlacementCircle(body: Node2D) -> void:
+	if checkPlacementArea():
+		towerRange.modulate = Color(0, 255, 0)
+	else:
+		towerRange.modulate = Color(255, 0, 0)
