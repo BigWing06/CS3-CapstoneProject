@@ -19,10 +19,17 @@ func setup(tower):
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
 		position = get_global_mouse_position()
+		$placementZone.body_entered.connect(func(b):updatePlacementCircle())
+		$placementZone.body_exited.connect(func(b):updatePlacementCircle())
+		global.player.inventory.resourcesChanged.connect(updatePlacementCircle)
 		
 func build():
 	_mode = "placed"
 	towerRange.visible = false
+	global.player.inventory.resourcesChanged.disconnect(updatePlacementCircle)
+	$placementZone.body_entered.disconnect(func(b):updatePlacementCircle())
+	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
+	
 	
 func _process(delta: float) -> void:
 	if _mode == "setup":
@@ -34,8 +41,16 @@ func checkPlacementArea() -> bool: #Checks to see if the current placement posit
 	else:
 		return false
 
-func updatePlacementCircle(body: Node2D) -> void:
+func checkPlacementResources() -> bool: #Checks to see if the player has the reousrces to build the tower
+	if global.player.inventory.hasResourceDict(_towerData["recipe"]):
+		return true
+	return false
+
+func updatePlacementCircle():
+	print("test")
 	if checkPlacementArea():
-		towerRange.modulate = Color(0, 255, 0)
-	else:
-		towerRange.modulate = Color(255, 0, 0)
+		if checkPlacementResources():
+			towerRange.modulate = Color(0, 255, 0)
+			return
+	
+	towerRange.modulate = Color(255, 0, 0)

@@ -28,9 +28,11 @@ func _onScrollUp() -> void:
 	
 func _build() -> void: #Runs when the left mouse button is clicked and checks to see if the player can built the tower and then builds it
 	if _towerInstance.checkPlacementArea(): #Checks to make sure that the position is valid
-		_towerInstance.build()
-		_towerInstance = null
-		_updatePlacingTower(_towerTypesList[_selectedTowerInt])
+		if _towerInstance.checkPlacementResources():
+			global.player.inventory.addResourceDict(_towerInstance._towerData["recipe"], -1)
+			_towerInstance.build()
+			_towerInstance = null
+			_updatePlacingTower(_towerTypesList[_selectedTowerInt])
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):

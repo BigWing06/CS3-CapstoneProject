@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
 @export var speed = 400
+@onready var inventory = preload("res://inventory/inventory.gd").new()
+
 var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	inventory.add("wood", 100)
+	inventory.add("snowball", 100)
 
 func _process(delta):
 	var velocity = Vector2.ZERO

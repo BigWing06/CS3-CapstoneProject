@@ -36,6 +36,3 @@ texture = SubResource("GradientTexture2D_4nl6p")
 
 [node name="towerIcon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-
-[connection signal="body_entered" from="placementZone" to="." method="updatePlacementCircle"]
-[connection signal="body_exited" from="placementZone" to="." method="updatePlacementCircle"]
