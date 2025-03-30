@@ -22,6 +22,7 @@ func _ready() -> void:
 		$placementZone.body_entered.connect(func(b):updatePlacementCircle())
 		$placementZone.body_exited.connect(func(b):updatePlacementCircle())
 		global.player.inventory.resourcesChanged.connect(updatePlacementCircle)
+		updatePlacementCircle()
 		
 func build():
 	_mode = "placed"
@@ -47,7 +48,6 @@ func checkPlacementResources() -> bool: #Checks to see if the player has the reo
 	return false
 
 func updatePlacementCircle():
-	print("test")
 	if checkPlacementArea():
 		if checkPlacementResources():
 			towerRange.modulate = Color(0, 255, 0)
