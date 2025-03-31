@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvpbb8pit8q8p"]
+
+[ext_resource type="Script" path="res://inventory/buildMenu/buildMenu.gd" id="1_ikopu"]
+[ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
+
+[node name="CraftingMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+script = ExtResource("1_ikopu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="towerImage" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.7
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+texture = ExtResource("1_inlpd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="towerTitle" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+text = "Example Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="scrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+follow_focus = true
+
+[node name="towerDisplayList" type="VBoxContainer" parent="scrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[connection signal="selectedTowerChanged" from="." to="." method="_on_selected_tower_changed"]

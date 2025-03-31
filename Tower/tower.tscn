@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://br64oftsd16ck"]
+
+[ext_resource type="Script" path="res://Tower/tower.gd" id="1_p08au"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5owoy"]
+radius = 27.8927
+
+[sub_resource type="Gradient" id="Gradient_5t0mp"]
+offsets = PackedFloat32Array(0, 0.592885, 0.596838, 0.662338, 1)
+colors = PackedColorArray(1, 1, 1, 0.184314, 1, 1, 1, 0.85098, 1, 1, 1, 1, 0.4, 0.4, 0.4, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4nl6p"]
+gradient = SubResource("Gradient_5t0mp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Tower" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_p08au")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5owoy")
+
+[node name="placementZone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="placementZone"]
+shape = SubResource("CircleShape2D_5owoy")
+
+[node name="towerRange" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(5, 5)
+texture = SubResource("GradientTexture2D_4nl6p")
+
+[node name="towerIcon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)

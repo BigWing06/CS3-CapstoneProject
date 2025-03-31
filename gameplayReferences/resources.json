@@ -1,0 +1,86 @@
+{
+	"wood": {
+		"name": "Wood",
+		"recipe": {
+			"chipsWood": 12
+		}
+	},
+	"stone": {
+		"name": "Stone"
+	},
+	"gold": {
+		"name": "Golden Ore"
+	},
+	"silver": {
+		"name": "Silver"
+	},
+	"iceGem": {
+		"name": "Ice Gem"
+	},
+	"snowball": {
+		"name": "Snowball"
+	},
+	"woodChip": {
+		"name": "Wood Chips"
+	},
+	"beaverCola": {
+		"name": "Beaver Cola"
+	},
+	"teeth": {
+		"name": "Teeth"
+	},
+	"meat": {
+		"name": "Meat"
+	},
+	"fish": {
+		"name": "Fish"
+	},
+	"chipsWood": {
+		"name": "Wood Chips"
+	},
+	"compactStone": {
+		"name": "Compacted Stone",
+		"recipe": {
+			"stone": 6
+		}
+	},
+	"wallWood": {
+		"name": "Wood Wall",
+		"recipe": {
+			"wood": 8
+		}
+	},
+	"wallStone": {
+		"name": "Stone Wall",
+		"recipe": {
+			"compactStone": 10
+		}
+	},
+	"armour": {
+		"name": "Armour",
+		"recipe": {
+			"compactStone": 15
+		}
+	},
+	"stonePickaxe": {
+		"name": "Pickaxe",
+		"recipe": {
+			"wood": 3,
+			"compactStone": 3
+		}
+	},
+	"stoneAxe": {
+		"name": "Axe",
+		"recipe": {
+			"wood": 3,
+			"compactStone": 3
+		}
+	},
+	"stoneSword": {
+		"name": "Sword",
+		"recipe": {
+			"wood": 3,
+			"compactStone": 2
+		}
+	}
+}
