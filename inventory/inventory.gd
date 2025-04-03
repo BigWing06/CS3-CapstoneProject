@@ -1,6 +1,6 @@
 var _inventory = {}
 
-signal resourcesChanged
+signal resourcesChanged(resource, amount)
 
 func add(resource: String, amount: int) -> void: #Adds an amount of a specific resrouce to inventory
 	if _checkResource(resource):
@@ -10,7 +10,7 @@ func add(resource: String, amount: int) -> void: #Adds an amount of a specific r
 				_inventory.erase(resource)
 		else:
 			_inventory[resource] = amount
-		resourcesChanged.emit()
+		resourcesChanged.emit(resource, amount)
 
 func addResourceDict(resourceDict: Dictionary, multiplier = 1): #Adds or removes (based on multiplier) all of the resources in the provided dictionary and amount
 	for resource in resourceDict:

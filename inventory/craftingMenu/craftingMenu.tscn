@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4an7svyd3c01"]
 
-[ext_resource type="PackedScene" uid="uid://c2kjrlgsa3g3" path="res://inventory/craftingMenu/inventoryItemSlot.tscn" id="1_of746"]
+[ext_resource type="Script" path="res://inventory/craftingMenu/craftingMenu.gd" id="1_qkflq"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qkflq")
 
 [node name="margin" type="Control" parent="."]
 layout_mode = 1
@@ -24,8 +25,8 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="margin"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.9
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -34,12 +35,19 @@ color = Color(0.29219, 0.29219, 0.29219, 1)
 [node name="GridContainer" type="GridContainer" parent="margin"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.7
-offset_right = 18.0
-offset_bottom = -18.0
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 18.0
 theme_override_constants/h_separation = 18
 theme_override_constants/v_separation = 20
-columns = 6
+columns = 8
 
-[node name="InventoryItemSlot" parent="margin/GridContainer" instance=ExtResource("1_of746")]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="margin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 40.0

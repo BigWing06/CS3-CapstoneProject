@@ -7,4 +7,5 @@ func update(resourceDict: Dictionary): #This method updates the UI to show the s
 		container.queue_free()
 	for resource in resourceDict.keys():
 		var container = gridContainer.instantiate()
-		
+		container.update(resource)
+		gridContainer.add_child(container)
