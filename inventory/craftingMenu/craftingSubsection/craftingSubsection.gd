@@ -24,5 +24,5 @@ func _displayForCraft(resource):
 	for requiredResource in resourceInfo["recipe"].keys():
 		var requiredResourceDisplay = itemSlotDisplay.instantiate()
 		requiredResourceDisplay.custom_minimum_size = Vector2(45, 45)
-		requiredResourceDisplay.display(requiredResource)
+		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource])
 		resourceGridContainer.add_child(requiredResourceDisplay)
