@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2kjrlgsa3g3"]
 
-[ext_resource type="Script" path="res://inventory/craftingMenu/inventoryItem_slot.gd" id="1_ahpwb"]
+[ext_resource type="Script" path="res://inventory/craftingMenu/inventorySubsection/inventoryItem_slot.gd" id="1_ahpwb"]
+
 
 [node name="InventoryItemSlot" type="Control"]
 custom_minimum_size = Vector2(100, 100)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4an7svyd3c01"]
+[gd_scene load_steps=3 format=3 uid="uid://4an7svyd3c01"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/craftingMenu.gd" id="1_qkflq"]
+[ext_resource type="PackedScene" uid="uid://uoqkr5i0favc" path="res://inventory/craftingMenu/craftingMenuNavButton.tscn" id="2_ausv4"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -23,31 +24,34 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="margin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="margin"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.9
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.29219, 0.29219, 0.29219, 1)
 
-[node name="GridContainer" type="GridContainer" parent="margin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 18.0
-offset_top = 18.0
-offset_right = -18.0
-offset_bottom = 18.0
-theme_override_constants/h_separation = 18
-theme_override_constants/v_separation = 20
-columns = 8
+[node name="subsectionContainer" type="Control" parent="margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="margin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.9
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="margin/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="closeButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
+layout_mode = 2
+bttnText = "X"
+
+[node name="inventoryButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
+layout_mode = 2
+bttnText = "Inventory"
+
+[node name="craftingButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
+layout_mode = 2
+bttnText = "Crafting"
+
+[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/closeButton" to="." method="_on_close_button_bttn_clicked"]
+[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/inventoryButton" to="." method="_on_inventory_button_bttn_clicked"]
+[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/craftingButton" to="." method="_on_crafting_button_bttn_clicked"]
