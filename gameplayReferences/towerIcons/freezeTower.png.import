@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lfex5d0kaxus"
-path="res://.godot/imported/heavyIcicle.png-6c5155ce53718a422289507139689b6a.ctex"
+uid="uid://bcx7jg3h8ctb0"
+path="res://.godot/imported/freezeTower.png-c691c7d8ed52c628fcc2b59ec65a63bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tower/towerResources/heavyIcicle.png"
-dest_files=["res://.godot/imported/heavyIcicle.png-6c5155ce53718a422289507139689b6a.ctex"]
+source_file="res://gameplayReferences/towerIcons/freezeTower.png"
+dest_files=["res://.godot/imported/freezeTower.png-c691c7d8ed52c628fcc2b59ec65a63bf.ctex"]
 
 [params]
 

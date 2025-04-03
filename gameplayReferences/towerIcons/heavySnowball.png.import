@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyottgjll5yu"
-path="res://.godot/imported/basicIcicle.png-19fe9eddb5fbd028eea8fab210285ffd.ctex"
+uid="uid://clsw8mw6opgxq"
+path="res://.godot/imported/heavySnowball.png-cc34193bd27c4e418c97d58ad449d50a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tower/towerResources/basicIcicle.png"
-dest_files=["res://.godot/imported/basicIcicle.png-19fe9eddb5fbd028eea8fab210285ffd.ctex"]
+source_file="res://gameplayReferences/towerIcons/heavySnowball.png"
+dest_files=["res://.godot/imported/heavySnowball.png-cc34193bd27c4e418c97d58ad449d50a.ctex"]
 
 [params]
 

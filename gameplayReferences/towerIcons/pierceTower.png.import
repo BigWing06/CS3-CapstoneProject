@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcx7jg3h8ctb0"
-path="res://.godot/imported/freezeTower.png-9a7553dfffb034d079a9cc76a9939b02.ctex"
+uid="uid://dm2qmfddh5av2"
+path="res://.godot/imported/pierceTower.png-c0aaa7999a2d00d06bd25fc48e2e7c99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tower/towerResources/freezeTower.png"
-dest_files=["res://.godot/imported/freezeTower.png-9a7553dfffb034d079a9cc76a9939b02.ctex"]
+source_file="res://gameplayReferences/towerIcons/pierceTower.png"
+dest_files=["res://.godot/imported/pierceTower.png-c0aaa7999a2d00d06bd25fc48e2e7c99.ctex"]
 
 [params]
 

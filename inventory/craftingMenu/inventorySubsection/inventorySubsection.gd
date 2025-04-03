@@ -1,5 +1,5 @@
 extends Control
-@onready var inventoryContinaer = preload("res://inventory/craftingMenu/inventorySubsection/inventoryItemSlot.tscn")
+@onready var inventoryContinaer = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn")
 @onready var gridContainer = $GridContainer
 func _ready() -> void:
 	global.player.inventory.resourcesChanged.connect(update)
@@ -12,5 +12,5 @@ func update(changed, amount): #Updates the inventory sceneInstances to match the
 	resources.sort()
 	for resource in resources:
 		var container = inventoryContinaer.instantiate()
-		container.display(resource)
+		container.display(resource, inventoryDict[resource])
 		gridContainer.add_child(container)

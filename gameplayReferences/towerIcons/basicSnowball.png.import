@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5e6no0sy463m"
-path="res://.godot/imported/basicSnowball.png-bdc09870b19494dd9bd7fac04875e908.ctex"
+path="res://.godot/imported/basicSnowball.png-6141e68c4e371e814eef58bce7294cfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tower/towerResources/basicSnowball.png"
-dest_files=["res://.godot/imported/basicSnowball.png-bdc09870b19494dd9bd7fac04875e908.ctex"]
+source_file="res://gameplayReferences/towerIcons/basicSnowball.png"
+dest_files=["res://.godot/imported/basicSnowball.png-6141e68c4e371e814eef58bce7294cfe.ctex"]
 
 [params]
 

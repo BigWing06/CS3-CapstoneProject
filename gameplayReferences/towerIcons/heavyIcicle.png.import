@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm2qmfddh5av2"
-path="res://.godot/imported/pierceTower.png-737c900bff0ffd3215bfe1bdf3749b0c.ctex"
+uid="uid://lfex5d0kaxus"
+path="res://.godot/imported/heavyIcicle.png-8bfcd377ca793fa062e0dad393703ce3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tower/towerResources/pierceTower.png"
-dest_files=["res://.godot/imported/pierceTower.png-737c900bff0ffd3215bfe1bdf3749b0c.ctex"]
+source_file="res://gameplayReferences/towerIcons/heavyIcicle.png"
+dest_files=["res://.godot/imported/heavyIcicle.png-8bfcd377ca793fa062e0dad393703ce3.ctex"]
 
 [params]
 

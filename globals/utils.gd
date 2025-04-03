@@ -1,6 +1,7 @@
 extends Node
 
-var towerImageRootPath = "res://Tower/towerResources/" #Path to folder that contains all of the tower art
+var towerImageRootPath = "res://gameplayReferences/towerIcons/" #Path to folder that contains all of the tower art
+var resourceImageRootPath = "res://gameplayReferences/resourceIcons" #Path to folder that contains all of the tower art
 
 var fileNotFound = preload("res://fileNotFound.png")
 
@@ -23,3 +24,6 @@ func loadImage(path: String): #This function should be used to load in all image
 	if (null == image):
 		image = fileNotFound
 	return image
+	
+func appendToPath(path:String, file: String): 
+	return path + "/" + file
