@@ -17,10 +17,8 @@ func display(resource, amount = -2): #Called by the crafting menu script to show
 	texture_normal = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
 	
 func _on_mouse_entered() -> void:
-	print("entered")
 	_hoverTextInstance = hoverTextScene.instantiate()
 	_hoverTextInstance.text = _resourceData["name"]
 	global.UIParent.add_child(_hoverTextInstance)
 func _on_mouse_exited() -> void:
-	print("exited")
 	_hoverTextInstance.queue_free()

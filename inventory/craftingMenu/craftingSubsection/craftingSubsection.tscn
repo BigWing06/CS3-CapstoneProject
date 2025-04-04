@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.462656, 0.245271, 0.278267, 1)
+color = Color(0.321569, 0.321569, 0.321569, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -67,7 +67,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 columns = 6
 
-[node name="Button" type="Button" parent="HBoxContainer/displaySection/container"]
+[node name="craftButton" type="Button" parent="HBoxContainer/displaySection/container"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Craft"
+
+[connection signal="pressed" from="HBoxContainer/displaySection/container/craftButton" to="." method="_on_craft_button_pressed"]
