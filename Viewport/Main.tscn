@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dohb7sohljxyf"]
 
 [ext_resource type="PackedScene" uid="uid://dbcpk0a8t4ern" path="res://World/world.tscn" id="1_n8kvi"]
-[ext_resource type="PackedScene" path="res://inventory/buildMenu/buildMenu.tscn" id="2_afsl5"]
+[ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_afsl5"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_d41mf"]
 
 [node name="Main" type="Node2D"]

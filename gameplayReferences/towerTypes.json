@@ -10,7 +10,7 @@
 		"name": "Giant Snowball Catapult",
 		"recipe": {
 			"wood": 15,
-			"compactedStone": 8,
+			"compactStone": 8,
 			"snowball": 30
 		}
 	},
@@ -25,7 +25,7 @@
 		"name": "tempHeavyIcicle",
 		"recipe": {
 			"wood": 15,
-			"compactedStone": 8,
+			"compactStone": 8,
 			"iceGem": 10
 		}
 	},
@@ -33,7 +33,7 @@
 		"name": "Icicle Shooter",
 		"recipe": {
 			"wood": 20,
-			"compactedStone": 10,
+			"compactStone": 10,
 			"iceGem": 5
 		}
 	},
@@ -41,7 +41,7 @@
 		"name": "Snow Blower",
 		"recipe": {
 			"wood": 15,
-			"compactedStone": 5,
+			"compactStone": 5,
 			"iceGem": 2
 		}
 	}

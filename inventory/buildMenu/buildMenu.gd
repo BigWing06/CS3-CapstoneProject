@@ -6,6 +6,8 @@ var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInsta
 @onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
 @onready var _towerInstanceScene = preload("res://Tower/tower.tscn")
 @onready var _towerTypesList = utils.towerTypesJSON.keys()
+@onready var _resourceDisplay = $Control/resourceDisplay
+@onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn")
 var _selectedTowerInt = 0
 var _towerInstance = null
 
@@ -43,6 +45,13 @@ func _on_selected_tower_changed(tower: Variant) -> void:
 	$Control/towerTitle.text = towerInfo['name']
 	$Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')
 	_updatePlacingTower(tower)
+	for child in _resourceDisplay.get_children():
+		child.queue_free()
+	for resource in towerInfo["recipe"].keys():
+		var display = _itemSlotDisplay.instantiate()
+		display.display(resource, towerInfo["recipe"][resource])
+		display.custom_minimum_size = Vector2(45, 45)
+		_resourceDisplay.add_child(display)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
 	visible = !visible

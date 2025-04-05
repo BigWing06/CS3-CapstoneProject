@@ -8,6 +8,7 @@ var _resource
 func display(resource, amount = -2): #Called by the crafting menu script to show a specific resource
 	var amountLbl = $amountLbl
 	_resource = resource
+	print(utils.resourceJSON)
 	_resourceData = utils.resourceJSON[resource]
 	if amount != -2:
 		amountLbl.visible = true
