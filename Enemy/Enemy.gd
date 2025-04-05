@@ -9,7 +9,7 @@ var _startingHealth
 var _hybrid = false
 var _player
 
-# Loads in the enemy types #
+# Loads in the enemy types #  ###NOTE FOR LATER: Move this when we implement JSON script
 var _resourceJSONPath = "res://Enemy/enemyTypes.json"
 var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
 var _resouceJSON = JSON.parse_string(_resourceJSONText)
@@ -52,17 +52,21 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		_movementType = "baseFocused"
 
 
-func _attack(_attackData): # The function to attack
+func _attack(_attackData): # The function to attack the player ###Base attacking could be built off of this later
 	$AttackCooldown.wait_time = _attackData["cooldown"] # Sets the cooldown timer
 	$AttackCooldown.start() # Starts the cooldown timer
 	_raycast.target_position = to_local(global.player.position) # Points the raycast towards the player
 	if _attackData["type"] == "ranged": # If a ranged attack set up and adopt a projectile instance
 		var projectile = _rangedObject.instantiate()
-		projectile.setTarget((_raycast.target_position).normalized(),global.player.position)
-		projectile.setSpeed(_attackData["speed"])
-		projectile.setLifetime(_attackData["lifetime"])
-		projectile.setDamage(_attackData["damage"])
-		projectile.setSprite(_attackData["projectileSprite"],Vector2(_attackData["projectileSize"][0],_attackData["projectileSize"][1]))
+		var _direction = (_raycast.target_position).normalized()
+		var _playerPosition = global.player.position
+		var _speed = _attackData["speed"]
+		var _lifetime = _attackData["lifetime"]
+		var _damage = _attackData["damage"]
+		var _texture = _attackData["projectileSprite"]
+		var _size = Vector2(_attackData["projectileSize"][0],_attackData["projectileSize"][1])
+		var _durability = _attackData["durability"]
+		projectile.generateProjectile(_direction,_playerPosition,_speed,_lifetime,_texture,_size,_damage,_durability)
 		add_child(projectile)
 	elif _attackData["type"] == "melee": # If a melee attack, cause the player a set amount of damage
 		global.player.damage(_attackData["damage"])
