@@ -17,20 +17,20 @@ func _ready() -> void:
 			gridContainer.add_child(itemDisplay)
 	_displayForCraft("wood")
 			
-func _displayForCraft(resource):
+func _displayForCraft(resource): #Called to display new item to craft
 	_selectedResource = resource
-	for child in resourceGridContainer.get_children():
+	for child in resourceGridContainer.get_children(): #removes all the items from the old required resrouces display
 		child.queue_free()
 	var resourceInfo = utils.resourceJSON[resource]
 	displaySectionContainer.get_node("resourceName").text = resourceInfo["name"]
 	displaySectionContainer.get_node("TextureRect").texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
-	for requiredResource in resourceInfo["recipe"].keys():
+	for requiredResource in resourceInfo["recipe"].keys(): #Instances the itemSlotDisplay class to show the new required resrouces for crafting
 		var requiredResourceDisplay = itemSlotDisplay.instantiate()
 		requiredResourceDisplay.custom_minimum_size = Vector2(45, 45)
 		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource])
 		resourceGridContainer.add_child(requiredResourceDisplay)
 	_checkResourceCraftability()
-func _checkResourceCraftability():
+func _checkResourceCraftability(): #Checks to see if the selected resoruce is craftible
 	var resourceInfo = utils.resourceJSON[_selectedResource]
 	if global.player.inventory.hasResourceDict(resourceInfo["recipe"]):
 		displaySectionContainer.get_node("craftButton").disabled = false

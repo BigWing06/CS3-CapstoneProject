@@ -4,12 +4,12 @@ signal selectedTowerChanged(FOCUS_CLICK)
 
 var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
 @onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
-@onready var _towerInstanceScene = preload("res://Tower/tower.tscn")
-@onready var _towerTypesList = utils.towerTypesJSON.keys()
-@onready var _resourceDisplay = $Control/resourceDisplay
-@onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn")
-var _selectedTowerInt = 0
-var _towerInstance = null
+@onready var _towerInstanceScene = preload("res://Tower/tower.tscn") #Stores a reference to the tower scene that will be instanced
+@onready var _towerTypesList = utils.towerTypesJSON.keys() #Gets a list of tower names from the tower types JSON file
+@onready var _resourceDisplay = $Control/resourceDisplay #Reference to the resource display node
+@onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn") #Reference to the itemSlotDisplay scene so that it can be instanced later
+var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
+var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
 
 func _ready() -> void:
@@ -40,18 +40,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):
 		_toggleMenu()
 	
-func _on_selected_tower_changed(tower: Variant) -> void:
+func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
 	var towerInfo = utils.towerTypesJSON[tower]
 	$Control/towerTitle.text = towerInfo['name']
 	$Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')
-	_updatePlacingTower(tower)
-	for child in _resourceDisplay.get_children():
+	for child in _resourceDisplay.get_children(): #Deletes all the children in the required reosurce display container
 		child.queue_free()
-	for resource in towerInfo["recipe"].keys():
+	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower
 		var display = _itemSlotDisplay.instantiate()
 		display.display(resource, towerInfo["recipe"][resource])
 		display.custom_minimum_size = Vector2(45, 45)
 		_resourceDisplay.add_child(display)
+	_updatePlacingTower(tower)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
 	visible = !visible
