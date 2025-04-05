@@ -5,7 +5,7 @@ func add(resource: String, amount: int) -> void: #Adds an amount of a specific r
 		if _hasResource(resource):
 			_inventory[resource] += amount
 			if _inventory[resource] == 0: #If there is none of a resource it gets removed from dictionary
-				_inventory.erase(resource)
+				_inventory.erase(resource) 
 		else:
 			_inventory[resource] = amount
 
