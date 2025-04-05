@@ -15,4 +15,5 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="craftingMenu" parent="UIParent" instance=ExtResource("3_d41mf")]
+visible = false
 anchors_preset = -1
