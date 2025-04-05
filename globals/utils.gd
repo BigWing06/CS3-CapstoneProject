@@ -8,6 +8,7 @@ var fileNotFound = preload("res://fileNotFound.png")
 var towerTypesJSON
 var resourceJSON
 var enemyJSON
+
 func _ready() -> void:
 	var _towerTypesJSONPath = "res://gameplayReferences/towerTypes.json"
 	var _towerTypesJSONText = FileAccess.get_file_as_string(_towerTypesJSONPath)
@@ -27,3 +28,11 @@ func loadImage(path: String): #This function should be used to load in all image
 	
 func appendToPath(path:String, file: String): 
 	return path + "/" + file
+
+func randWeightedFromDict(_dict: Dictionary): # Takes in a dictionary (formatted "key": weight) and returns a random key using the weighting provided
+	var _weightedList = []
+	for key in _dict.keys():
+		for i in range(int(_dict[key])):
+			_weightedList.append(key)
+	return _weightedList.pick_random()
+	

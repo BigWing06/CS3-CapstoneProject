@@ -1,0 +1,37 @@
+{
+	"laser_eye":{
+		"type":"ranged",
+		"cooldown":1.5,
+		"speed":300,
+		"damage":1,
+		"lifetime":3,
+		"radius":200,
+		"projectileSprite":"",
+		"projectileSize":[25,15],
+		"durability":3
+	},
+	"claw":{
+		"type":"melee",
+		"cooldown":1,
+		"damage":1,
+		"radius":75
+	},
+	"claw_advanced":{
+		"type":"melee",
+		"cooldown":4,
+		"damage":5,
+		"radius":75
+	},
+	"bite":{
+		"type":"melee",
+		"cooldown":1,
+		"damage":2,
+		"radius":75
+	},
+		"basic_beaver":{
+		"type":"melee",
+		"cooldown":2,
+		"damage":1,
+		"radius":75
+	},
+}
