@@ -6,7 +6,7 @@
 		"damage":1,
 		"lifetime":3,
 		"radius":200,
-		"projectileSprite":"res://Player/FullHeart.png",
+		"projectileSprite":"",
 		"projectileSize":[25,15],
 		"durability":3
 	},
