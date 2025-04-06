@@ -7,6 +7,8 @@ signal death
 @onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
 
 @export var speed = 400
+@onready var inventory = preload("res://inventory/inventory.gd").new()
+
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
@@ -16,6 +18,10 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
+	
+	##### Remove these as they are used for test of the gui
+	inventory.add("wood", 100)
+	inventory.add("snowball", 100)
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 

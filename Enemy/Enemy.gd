@@ -20,7 +20,7 @@ var _queuedAttack # The next attack to be used
 var _nearPlayer = false # If the player is within the attack radius
 
 func _ready():
-	_enemyData = _resouceJSON
+	_enemyData = utils.enemyJSON
 	_update("penguin") #choose animal from json file
 	_loadNextAttack() # Loads in the first attack
 
