@@ -27,7 +27,7 @@ func hasAmount(resource: String, amount: int) -> bool: #Checks to see if a speci
 			return true
 	return false
 
-func hasResourceDict(resourceDict: Dictionary) -> bool: #Checks to see if the inventory has the resources passed in by the diectionar
+func hasResourceDict(resourceDict: Dictionary) -> bool: #Checks to see if the inventory has the resources passed in by the dictionary
 	for resource in resourceDict.keys():
 		if not hasAmount(resource, resourceDict[resource]):
 			return false

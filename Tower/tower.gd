@@ -5,7 +5,7 @@ extends StaticBody2D
 
 var _size:float = 50 #Size of the tower image
 var _tower #Stores tower type
-var _towerData #Stores date about tower type
+var _towerData #Stores data about tower type
 var _mode #Determines if the tower is in placement mode ("setup") or if it is placed ("placed")
 
 func setup(tower):
@@ -19,8 +19,8 @@ func setup(tower):
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
 		position = get_global_mouse_position()
-		$placementZone.body_entered.connect(func(b):updatePlacementCircle())
-		$placementZone.body_exited.connect(func(b):updatePlacementCircle())
+		$placementZone.body_entered.connect(func(b):updatePlacementCircle()) #Connects the updatePlacementCircle() method to the entering of a body in the placementZone area so that the placement is checked when the bodies it is in collision with changes. Note: updatePlacementCircle is visual only and is used to change the color of the placement range so that the use knows if they can place it there
+		$placementZone.body_exited.connect(func(b):updatePlacementCircle()) #Connects the updatePlacementCircle() method to the exiting of a body in the placementZone area so that the placement is checked when the bodies it is in collision with changes. Note: updatePlacementCircle is visual only and is used to change the color of the placement range so that the use knows if they can place it there
 		global.player.inventory.resourcesChanged.connect(updatePlacementCircle)
 		updatePlacementCircle()
 		
@@ -37,20 +37,14 @@ func _process(delta: float) -> void:
 		position = get_global_mouse_position()
 
 func checkPlacementArea() -> bool: #Checks to see if the current placement position of the tower is valid returns true if ok
-	if(len(placementZone.get_overlapping_bodies())<=1): #Area 2d will always collide with self which is why it must be less than or equal to 1
-		return true
-	else:
-		return false
+	return (len(placementZone.get_overlapping_bodies())<=1) #Area 2d will always collide with self which is why it must be less than or equal to 1
 
-func checkPlacementResources() -> bool: #Checks to see if the player has the reousrces to build the tower
-	if global.player.inventory.hasResourceDict(_towerData["recipe"]):
-		return true
-	return false
+func checkPlacementResources() -> bool: #Checks to see if the player has the resources to build the tower
+	return global.player.inventory.hasResourceDict(_towerData["recipe"])
 
-func updatePlacementCircle():
+func updatePlacementCircle(): #Changes the color of the placement circle so that the player can know if the current placement is valid
 	if checkPlacementArea():
 		if checkPlacementResources():
 			towerRange.modulate = Color(0, 255, 0)
 			return
-	
 	towerRange.modulate = Color(255, 0, 0)

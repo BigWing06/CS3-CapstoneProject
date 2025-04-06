@@ -19,7 +19,7 @@ func _ready() -> void:
 			
 func _displayForCraft(resource): #Called to display new item to craft
 	_selectedResource = resource
-	for child in resourceGridContainer.get_children(): #removes all the items from the old required resrouces display
+	for child in resourceGridContainer.get_children(): #removes all the items from the old required resources display
 		child.queue_free()
 	var resourceInfo = utils.resourceJSON[resource]
 	displaySectionContainer.get_node("resourceName").text = resourceInfo["name"]

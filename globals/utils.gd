@@ -10,6 +10,7 @@ var resourceJSON
 var enemyJSON
 
 func _ready() -> void:
+	###Create common JSON reader function so to clean up this section
 	var _towerTypesJSONPath = "res://gameplayReferences/towerTypes.json"
 	var _towerTypesJSONText = FileAccess.get_file_as_string(_towerTypesJSONPath)
 	towerTypesJSON = JSON.parse_string(_towerTypesJSONText)
