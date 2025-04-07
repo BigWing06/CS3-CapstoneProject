@@ -1,22 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://dohb7sohljxyf"]
+[gd_scene load_steps=3 format=3 uid="uid://dohb7sohljxyf"]
 
 [ext_resource type="PackedScene" uid="uid://dbcpk0a8t4ern" path="res://World/world.tscn" id="1_n8kvi"]
-[ext_resource type="PackedScene" uid="uid://jfsf5anyefp" path="res://HealthBar/health_bar.tscn" id="2_kfkl4"]
-[ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="3_c23iy"]
-[ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="4_t8dxd"]
+[ext_resource type="Script" path="res://Viewport/multiplayer_manager.gd" id="5_co8f6"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_n8kvi")]
 
-[node name="HealthBar" parent="." instance=ExtResource("2_kfkl4")]
-
 [node name="UIParent" type="CanvasLayer" parent="."]
 
-[node name="buildMenu" parent="UIParent" instance=ExtResource("3_c23iy")]
-grow_horizontal = 1
-grow_vertical = 1
+[node name="MultiplayerManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_co8f6")
 
-[node name="craftingMenu" parent="UIParent" instance=ExtResource("4_t8dxd")]
-visible = false
-anchors_preset = -1
+[node name="ButtonyButtonForthe HostyThing" type="Button" parent="."]
+offset_left = 86.0
+offset_top = 75.0
+offset_right = 199.0
+offset_bottom = 145.0
+text = "Host
+"
+
+[node name="ButtonyButtonForthe Client" type="Button" parent="."]
+offset_left = 316.0
+offset_top = 89.0
+offset_right = 429.0
+offset_bottom = 159.0
+text = "Client"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player/Player.tscn")
+spawn_path = NodePath("../World")
+
+[connection signal="button_down" from="ButtonyButtonForthe HostyThing" to="MultiplayerManager" method="_on_buttony_button_forthe_hosty_thing_button_down"]
+[connection signal="button_down" from="ButtonyButtonForthe Client" to="MultiplayerManager" method="_on_buttony_button_forthe_client_button_down"]

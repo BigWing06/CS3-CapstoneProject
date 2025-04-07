@@ -2,6 +2,7 @@ extends Control
 @onready var inventoryContinaer = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn")
 @onready var gridContainer = $GridContainer
 func _ready() -> void:
+	print("!!!!!!!!!!"+str(global.player.inventory))
 	global.player.inventory.resourcesChanged.connect(update)
 	update("", 5)
 func update(changed, amount): #Updates the inventory sceneInstances to match the currenty inventory dict passed in

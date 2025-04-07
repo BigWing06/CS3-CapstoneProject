@@ -7,21 +7,40 @@ signal death
 @onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
 
 @export var speed = 400
-@onready var inventory = preload("res://inventory/inventory.gd").new()
-
+@onready var INVENTORY_SCRIPT = preload("res://inventory/inventory.gd")
+@onready var _HEALTH_BAR = preload("res://HealthBar/health_bar.tscn")
+@onready var _BUILD_MENU = preload("res://inventory/buildMenu/buildMenu.tscn")
+@onready var _CRAFTING_MENU = preload("res://inventory/craftingMenu/craftingMenu.tscn")
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
 var _health
+var inventory
 @export var _STARTING_HEALTH = 20
 func _ready():
+	global.player=self ###
+
+	
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
 	
+	
+	
+	inventory = INVENTORY_SCRIPT.new()
+	
+	_buildUI()
+	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
+func _buildUI():
+	var _healthBar = _HEALTH_BAR.instantiate()
+	global.main.add_child(_healthBar)
+	var _buildMenu = _BUILD_MENU.instantiate()
+	global.main.get_node("UIParent").add_child(_buildMenu)
+	var _craftingMenu = _CRAFTING_MENU.instantiate()
+	global.main.get_node("UIParent").add_child(_craftingMenu)
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 

@@ -3,7 +3,7 @@ extends Node
 @onready var main = get_node("/root/Main")
 @onready var UIParent = main.get_node("UIParent")
 @onready var world = main.get_node("World")
-@onready var player = world.get_node("Player")
+var player
 
 var resourceManager = preload("res://inventory/resourceManager.gd").new()
 var worldPath = "/root/Main/World" # the world node path
