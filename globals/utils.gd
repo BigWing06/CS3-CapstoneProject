@@ -37,3 +37,9 @@ func randWeightedFromDict(_dict: Dictionary): # Takes in a dictionary (formatted
 			_weightedList.append(key)
 	return _weightedList.pick_random()
 	
+func getRandomRadiusPosition(position:Vector2, radius:int) -> Vector2: #Returns random position within certain radius of supplied position
+	var _spawnAngle = randf() * TAU
+	return Vector2( 
+			cos(_spawnAngle)*radius,
+			sin(_spawnAngle)*radius
+		) + position

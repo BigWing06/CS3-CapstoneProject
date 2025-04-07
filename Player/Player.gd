@@ -13,11 +13,13 @@ var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
 var _health
+var _enemySpawnDistance = 100 #Sets how far away from the player enemies will spawn
 @export var _STARTING_HEALTH = 20
 func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
+	$enemySpawner.start()
 	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
@@ -73,3 +75,6 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 func _on_death() -> void:
 	#self.queue_free()
 	pass
+	
+func _spawnEnemyPlayer():
+	spawner.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))

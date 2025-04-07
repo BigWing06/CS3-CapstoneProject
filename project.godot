@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 global="*res://globals/globals.gd"
 utils="*res://globals/utils.gd"
 input="*res://globals/input.gd"
+spawner="*res://globals/spawner.gd"
 
 [input]
 
