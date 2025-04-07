@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chhadtxo8k0ks"]
+[gd_scene load_steps=10 format=3 uid="uid://chhadtxo8k0ks"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_yvjui"]
 [ext_resource type="Texture2D" uid="uid://1yx5qdqunywd" path="res://Player/square.png" id="2_mrcb6"]
@@ -63,6 +63,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltrlo"]
 size = Vector2(176.667, 168.333)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sybs3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
@@ -79,6 +84,7 @@ scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_0ro8j")
 
 [node name="playerCamera" type="Camera2D" parent="."]
+enabled = false
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -95,6 +101,9 @@ shape = SubResource("RectangleShape2D_ltrlo")
 
 [node name="HealthChangePoint" type="Marker2D" parent="."]
 position = Vector2(98.3333, -98.3333)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_sybs3")
 
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]

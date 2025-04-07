@@ -11,6 +11,7 @@ var _activeSection
 @onready var _sections = {"inventory":_inventorySubsection, "crafting":_craftingSubsection} #This stores the correct subsection scene to instance when the subsection is changed
 
 func _ready() -> void:
+		visible=false
 		_setSection("inventory")
 
 func _process(delta: float) -> void:

@@ -17,34 +17,25 @@ var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the p
 var _health
 var inventory
 @export var _STARTING_HEALTH = 20
-func _ready():
-	global.player=self ###
 
-	
+func _enter_tree() -> void:
+	set_multiplayer_authority(int(str(self.name)))
+
+func _ready():
+	if not is_multiplayer_authority():
+		return
+	global.player=self ###
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
-	
-	
-	
 	inventory = INVENTORY_SCRIPT.new()
-	
 	_buildUI()
-	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
-func _buildUI():
-	var _healthBar = _HEALTH_BAR.instantiate()
-	global.main.add_child(_healthBar)
-	var _buildMenu = _BUILD_MENU.instantiate()
-	global.main.get_node("UIParent").add_child(_buildMenu)
-	var _craftingMenu = _CRAFTING_MENU.instantiate()
-	global.main.get_node("UIParent").add_child(_craftingMenu)
-func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
-	return global.world.get_node("TileMaps").getChunk(position)
-
 func _physics_process(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
@@ -57,13 +48,25 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	position += velocity*delta
-
 func _process(delta):
+	if not is_multiplayer_authority():
+		return
 	if (getCurrentChunk() != _chunk): #Determined if the player has entered a new chunk
 		_preChunk = _chunk
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
 		
+func _buildUI():
+	var _healthBar = _HEALTH_BAR.instantiate()
+	global.main.add_child(_healthBar)
+	var _buildMenu = _BUILD_MENU.instantiate()
+	global.main.get_node("UIParent").add_child(_buildMenu)
+	var _craftingMenu = _CRAFTING_MENU.instantiate()
+	global.main.get_node("UIParent").add_child(_craftingMenu)
+func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
+	return global.world.get_node("TileMaps").getChunk(position)
+
+
 func damage(_damage:float): # Funciton to cause damage to player
 	_health-=_damage
 	healthChanged.emit()

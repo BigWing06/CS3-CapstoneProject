@@ -16,4 +16,5 @@ func _on_buttony_button_forthe_client_button_down() -> void:
 	multiplayer.multiplayer_peer = peer
 func _add_player(pid):
 	var player = PLAYER.instantiate()
+	player.name = str(pid)
 	global.world.add_child(player)
