@@ -11,6 +11,7 @@ func _on_buttony_button_forthe_hosty_thing_button_down() -> void:
 			_add_player(pid)
 	)
 	_add_player(multiplayer.get_unique_id())
+	global.host = true
 func _on_buttony_button_forthe_client_button_down() -> void:
 	peer.create_client("localhost",2222)
 	multiplayer.multiplayer_peer = peer
