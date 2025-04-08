@@ -16,6 +16,7 @@ func setup(tower):
 	$towerIcon.texture = utils.loadImage(utils.towerImageRootPath + _tower + ".png")
 	$towerIcon.scale = Vector2(_size/$towerIcon.texture.get_width(), _size/$towerIcon.texture.get_height()) #Calculates scale to match size of the image
 	
+	
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
 		position = get_global_mouse_position()
@@ -30,6 +31,7 @@ func build():
 	global.player.inventory.resourcesChanged.disconnect(updatePlacementCircle)
 	$placementZone.body_entered.disconnect(func(b):updatePlacementCircle())
 	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
+	$attackManager._setupAttacks(_towerData["attack"], "enemy")
 	
 	
 func _process(delta: float) -> void:

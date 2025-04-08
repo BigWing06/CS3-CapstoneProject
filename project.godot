@@ -22,6 +22,11 @@ utils="*res://globals/utils.gd"
 input="*res://globals/input.gd"
 spawner="*res://globals/spawner.gd"
 
+[global_group]
+
+player=""
+enemy=""
+
 [input]
 
 move_left={
