@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2kjrlgsa3g3"]
+[gd_scene load_steps=3 format=3 uid="uid://c2kjrlgsa3g3"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/itemSlotDisplay.gd" id="1_ahpwb"]
+[ext_resource type="Texture2D" uid="uid://bsc7wqcd3m1g4" path="res://inventory/InventoryAssets/Small_Item_Container.png" id="2_won60"]
 
 [node name="InventoryItemSlot" type="TextureButton"]
 custom_minimum_size = Vector2(100, 100)
@@ -24,6 +25,12 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "saf"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 55.0
+offset_bottom = 55.0
+texture = ExtResource("2_won60")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
