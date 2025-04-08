@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://4an7svyd3c01"]
+[gd_scene load_steps=6 format=3 uid="uid://4an7svyd3c01"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/craftingMenu.gd" id="1_qkflq"]
 [ext_resource type="PackedScene" uid="uid://uoqkr5i0favc" path="res://inventory/craftingMenu/craftingMenuNavButton.tscn" id="2_ausv4"]
+[ext_resource type="Texture2D" uid="uid://cgc6wuraa74yu" path="res://inventory/craftingMenu/InventoryTextures/CraftingBG.png" id="3_0fqku"]
+[ext_resource type="Texture2D" uid="uid://bn01lk66sxeni" path="res://inventory/craftingMenu/InventoryTextures/CloseButton.png" id="4_qbsfe"]
+[ext_resource type="Texture2D" uid="uid://dxx4dlv8ykmlf" path="res://inventory/craftingMenu/InventoryTextures/Sidebox_Hammer.png" id="5_iv4ru"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -23,34 +26,59 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="margin"]
+[node name="TextureRect" type="TextureRect" parent="margin"]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_0fqku")
 
-[node name="subsectionContainer" type="Control" parent="margin/HBoxContainer"]
-layout_mode = 2
+[node name="subsectionContainer" type="Control" parent="margin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 46.0
+offset_right = -53.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="margin/HBoxContainer"]
+[node name="closeButton" parent="margin" instance=ExtResource("2_ausv4")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 995.0
+offset_top = -49.0
+offset_right = 27.0
+offset_bottom = -512.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("4_qbsfe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="margin"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+offset_left = 981.0
+offset_top = 61.0
+offset_right = 1081.0
+offset_bottom = 561.0
+theme_override_constants/separation = 0
 
-[node name="closeButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
-layout_mode = 2
-bttnText = "X"
-
-[node name="inventoryButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
+[node name="inventoryButton" parent="margin/VBoxContainer" instance=ExtResource("2_ausv4")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 bttnText = "Inventory"
 
-[node name="craftingButton" parent="margin/HBoxContainer/VBoxContainer" instance=ExtResource("2_ausv4")]
+[node name="craftingButton" parent="margin/VBoxContainer" instance=ExtResource("2_ausv4")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+texture_normal = ExtResource("5_iv4ru")
 bttnText = "Crafting"
 
-[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/closeButton" to="." method="_on_close_button_bttn_clicked"]
-[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/inventoryButton" to="." method="_on_inventory_button_bttn_clicked"]
-[connection signal="bttnClicked" from="margin/HBoxContainer/VBoxContainer/craftingButton" to="." method="_on_crafting_button_bttn_clicked"]
+[connection signal="bttnClicked" from="margin/closeButton" to="." method="_on_close_button_bttn_clicked"]
+[connection signal="bttnClicked" from="margin/VBoxContainer/inventoryButton" to="." method="_on_inventory_button_bttn_clicked"]
+[connection signal="bttnClicked" from="margin/VBoxContainer/craftingButton" to="." method="_on_crafting_button_bttn_clicked"]

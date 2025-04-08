@@ -1,23 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2kjrlgsa3g3"]
+[gd_scene load_steps=3 format=3 uid="uid://c2kjrlgsa3g3"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/itemSlotDisplay.gd" id="1_ahpwb"]
+[ext_resource type="Texture2D" uid="uid://2fgqexbf25o4" path="res://inventory/craftingMenu/InventoryTextures/Small_Item_Container.png" id="2_pw2lr"]
 
 [node name="InventoryItemSlot" type="TextureButton"]
+texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_pw2lr")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_ahpwb")
+
+[node name="Frame" type="TextureRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("1_ahpwb")
+expand_mode = 3
 
 [node name="amountLbl" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
