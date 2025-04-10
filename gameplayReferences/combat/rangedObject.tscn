@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fvx6bensmp67"]
 
-[ext_resource type="Script" path="res://Enemy/Attacks/ranged_object.gd" id="1_3dbaj"]
+[ext_resource type="Script" path="res://gameplayReferences/combat/ranged_object.gd" id="1_nlbqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lyeq"]
 size = Vector2(50, 50)
@@ -8,7 +8,7 @@ size = Vector2(50, 50)
 [node name="RangedObject" type="Area2D"]
 collision_layer = 16
 collision_mask = 2
-script = ExtResource("1_3dbaj")
+script = ExtResource("1_nlbqn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6lyeq")
