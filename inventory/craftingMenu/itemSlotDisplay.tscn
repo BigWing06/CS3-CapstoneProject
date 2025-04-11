@@ -6,7 +6,6 @@
 [node name="InventoryItemSlot" type="TextureButton"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
-anchors_preset = -1
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("2_pw2lr")
