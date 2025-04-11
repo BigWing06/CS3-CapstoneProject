@@ -6,7 +6,7 @@ var _activeSection
 @onready var _inventorySubsection = preload("res://inventory/craftingMenu/inventorySubsection/inventorySubsection.tscn")
 @onready var _craftingSubsection = preload("res://inventory/craftingMenu/craftingSubsection/craftingSubsection.tscn")
 
-@onready var _subsectionContainer = $margin/HBoxContainer/subsectionContainer
+@onready var _subsectionContainer = $margin/subsectionContainer
 
 @onready var _sections = {"inventory":_inventorySubsection, "crafting":_craftingSubsection} #This stores the correct subsection scene to instance when the subsection is changed
 
@@ -22,6 +22,9 @@ func _toggleMenu():
 
 func _setSection(section): #Called when a button is clicked to change the subsection 
 	if _activeSection != section:
+		if  _activeSectionScene != null:
+			_activeSectionScene.queue_free()
+		_activeSection = section
 		_activeSectionScene = _sections[section].instantiate() #Instances the correct subsection for the subsection list
 		_subsectionContainer.add_child(_activeSectionScene)
 	

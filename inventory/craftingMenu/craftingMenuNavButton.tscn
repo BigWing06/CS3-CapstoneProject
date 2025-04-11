@@ -1,23 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://uoqkr5i0favc"]
+[gd_scene load_steps=3 format=3 uid="uid://uoqkr5i0favc"]
 
+[ext_resource type="Texture2D" uid="uid://ddpp4i12yl1g4" path="res://inventory/craftingMenu/InventoryTextures/Sidebox_Coin.png" id="1_01pgo"]
 [ext_resource type="Script" path="res://inventory/craftingMenu/craftingMenuNavButton.gd" id="1_q8ekc"]
 
-[node name="ColorRect" type="ColorRect"]
-custom_minimum_size = Vector2(100, 100)
-color = Color(0.32, 0.32, 0.32, 1)
-script = ExtResource("1_q8ekc")
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
+[node name="Button" type="TextureButton"]
+texture_filter = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "X"
+texture_normal = ExtResource("1_01pgo")
+stretch_mode = 4
+script = ExtResource("1_q8ekc")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
