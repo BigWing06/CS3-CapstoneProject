@@ -1,0 +1,20 @@
+{
+	"stonePickaxe": {
+		"name": "Pickaxe",
+		"type": "tool"
+	},
+	"stoneAxe": {
+		"name": "Axe",
+		"type": "tool"
+	},
+	"stoneSword": {
+		"name": "Sword",
+		"type": "weapon", 
+		"attack":"basic_beaver"
+	},
+	"bow":{
+		"name": "Bow",
+		"type": "weapon", 
+		"attack":"laser_eye"
+	}
+}

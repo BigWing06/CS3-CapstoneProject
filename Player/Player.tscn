@@ -28,7 +28,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Square:modulate")
+tracks/0/path = NodePath("Square")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,6 +54,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0tv8"]
+resource_local_to_scene = true
 _data = {
 "Damage": SubResource("Animation_bfpha"),
 "Heal": SubResource("Animation_wda2n"),

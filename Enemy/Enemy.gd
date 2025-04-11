@@ -5,11 +5,15 @@ var _enemyType # The type of enemy
 var _speed # The speed at which the enemy moves
 var _movementType # The type of movment the enemy has
 var _target = Vector2(0, 0)
-var _startingHealth
 var _hybrid = false
 var _player
+var _health
+
+signal healthChanged
+signal death
 
 # Loads in the enemy types #  ###NOTE FOR LATER: Move this when we implement JSON script
+@onready var _healthChangeScene = preload("res://Player/health_change.tscn")
 var _resourceJSONPath = "res://Enemy/enemyTypes.json"
 var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
 var _resouceJSON = JSON.parse_string(_resourceJSONText)
@@ -43,7 +47,7 @@ func _update(x): #updates enemy variables
 	_enemyData = utils.enemyJSON[_enemyType]
 	_speed = _enemyData["speed"]
 	_movementType = _enemyData["movement"]
-	_startingHealth = _enemyData["health"]
+	_health = _enemyData["health"]
 	_attackManager._setupAttacks(_enemyData["attack"], "player")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -52,3 +56,22 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "baseFocused"
+		
+func healthChange(_amount:float): # Funciton to cause damage to player
+	_health+=_amount
+	healthChanged.emit()
+	if _amount < 0:
+		if _health<=0:
+			death.emit()
+		_displayHealthChange(_amount)
+		$DamageAnimation.play("Damage")
+	elif _amount > 0:
+		_health+=_health
+		_displayHealthChange(_health)
+		healthChanged.emit()
+
+func _displayHealthChange(_amount: float): # Creates a scene to display an animation of the health change near the player
+	var _healthChangeScene = _healthChangeScene.instantiate()
+	add_child(_healthChangeScene)
+	_healthChangeScene.display(_amount,$HealthChangePoint.position)
+	$DamageAnimation.play("Heal")

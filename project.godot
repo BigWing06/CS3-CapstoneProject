@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-global="*res://globals/globals.gd"
 utils="*res://globals/utils.gd"
 input="*res://globals/input.gd"
 spawner="*res://globals/spawner.gd"
+global="*res://globals/globals.gd"
 
 [global_group]
 
