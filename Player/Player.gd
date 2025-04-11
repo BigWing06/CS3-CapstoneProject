@@ -5,6 +5,7 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$Square.texture = ResourceLoader.load(global.characterTexture)
 
 
 func _process(delta):
