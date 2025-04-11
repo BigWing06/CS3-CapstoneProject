@@ -35,22 +35,20 @@ func _physics_process(delta):
 		_hybrid = true 
 
 	position += (_target - position)/_speed #sets a target for enemy to follow
+	move_and_slide()
 	
 func _update(x): #updates enemy variables
 	_speed = _enemyData[x]["speed"]
 	_movementType = _enemyData[x]["movement"]
 	_startingHealth = _enemyData[x]["health"]
 	_enemyType = _enemyData[x]
-	
 
-		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "playerFocused"
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if _hybrid:
 		_movementType = "baseFocused"
-
 
 func _attack(_attackData): # The function to attack the player ###Base attacking could be built off of this later
 	$AttackCooldown.wait_time = _attackData["cooldown"] # Sets the cooldown timer
