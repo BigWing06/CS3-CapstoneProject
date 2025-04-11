@@ -11,7 +11,6 @@ var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInsta
 var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
-
 func _ready() -> void:
 	set_focus_mode(FOCUS_NONE)
 	for key in _towerTypesList: #Instances the craftingMenuTowerListInstance to create the list in the crafting menu
@@ -74,5 +73,3 @@ func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type 
 		_towerInstance = _towerInstanceScene.instantiate()
 		_towerInstance.setup(tower)
 		global.world.add_child(_towerInstance)
-	
-		

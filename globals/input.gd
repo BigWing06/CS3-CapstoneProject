@@ -6,6 +6,7 @@ signal scrollUp
 signal scrollDown
 signal leftClick
 signal rightClick
+signal interact
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scrollUp"):
@@ -16,3 +17,5 @@ func _process(delta: float) -> void:
 		leftClick.emit()
 	if Input.is_action_just_pressed("rightClick"):
 		rightClick.emit()
+	if Input.is_action_just_pressed("interact"):
+		interact.emit()

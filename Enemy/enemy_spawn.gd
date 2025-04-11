@@ -12,6 +12,7 @@ extends Node2D
 
 func _ready() -> void:
 	start_spawning()
+	pass
 
 func start_spawning(): #called when ever enemies should start spawning
 	_timer.timeout.connect(_spawn_enemy) #Timer system that calls the spawn_enemy function everytime it runs.
