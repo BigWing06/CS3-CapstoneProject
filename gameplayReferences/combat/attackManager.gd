@@ -73,7 +73,7 @@ func _sendAttack(_attackTarget, _attack):
 	var _instancedAttack = _attackScene.instantiate()
 	var world = get_parent().get_parent()
 	world.add_child(_instancedAttack)
-	_instancedAttack.attack(_attackTarget.position, _attack, get_parent(), _attackTarget)
+	_instancedAttack.attack(to_local(_attackTarget.position), _attack, get_parent(), _attackTarget)
 	_attackCooldown.wait_time = utils.attackJSON[_attack]["cooldown"]
 	_attackCooldown.start()
 	_queueAttacks()

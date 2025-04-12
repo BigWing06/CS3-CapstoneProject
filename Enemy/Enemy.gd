@@ -12,24 +12,14 @@ var _health
 signal healthChanged
 signal death
 
-# Loads in the enemy types #  ###NOTE FOR LATER: Move this when we implement JSON script
 @onready var _healthChangeScene = preload("res://Player/health_change.tscn")
-var _resourceJSONPath = "res://Enemy/enemyTypes.json"
-var _resourceJSONText = FileAccess.get_file_as_string(_resourceJSONPath)
-var _resouceJSON = JSON.parse_string(_resourceJSONText)
 
 @onready var _attackManager = $attackManager
 @onready var _attack = $attack
 
-var _queuedAttack # The next attack to be used
-var _nearPlayer = false # If the player is within the attack radius
-
 func _ready():
 	_update("beaver") #choose animal from json file
-	#_attackManager.call_deferred("_setupAttacks",_enemyData["attack"])
 	
-	
-
 func _physics_process(delta):
 	#changes target and specifies hybrid
 	if _movementType == "baseFocused":

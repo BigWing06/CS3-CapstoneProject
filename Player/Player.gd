@@ -6,18 +6,22 @@ signal death
 
 @onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
-@export var speed = 400
 @onready var inventory = preload("res://inventory/inventory.gd").new()
+
+@onready var toolTimeout = $toolTimeout
+
+@export var speed = 400
+@export var _STARTING_HEALTH = 20
 
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
 var _health
 var _enemySpawnDistance = 100 #Sets how far away from the player enemies will spawn
-var _toolList = []
-var _mode
-var _modeInt = 0
-@export var _STARTING_HEALTH = 20
+var _toolList = [] #Stores the list of tools the player has in inventory
+var _mode #String value of selected tool
+var _modeInt = 0 #Index of selcted tool in toollist
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
@@ -28,9 +32,9 @@ func _ready():
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
-	for tool in inventory.getToolsList():
+	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
-	_mode = _toolList[0]
+	_mode = _toolList[0] #Sets the first tool as the default value for the player
 	input.leftClick.connect(mainInteract)
 	input.scrollUp.connect(func(): cycleMode(1))
 	input.scrollDown.connect(func(): cycleMode(-1))
@@ -89,29 +93,29 @@ func _on_death() -> void:
 func _spawnEnemyPlayer():
 	spawner.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
 	
-func attack(attackName):
+func attack(attackName): #calls and handles player attacks
 	var attackData = utils.attackJSON[attackName]
-	if attackData["type"] == "ranged":
-		var attackRange = attackData["type"]
-		var mouseVector = get_local_mouse_position()
-		if mouseVector.length() > attackData["radius"]:
-			mouseVector = mouseVector.normalized()*attackData["radius"]
-		var attackInstance = _attackScene.instantiate()
-		get_parent().add_child(attackInstance)
+	var attackPoint = get_local_mouse_position()
+	if attackPoint.length() > attackData["radius"]:
+		attackPoint = attackPoint.normalized()*attackData["radius"]
+	var attackInstance = _attackScene.instantiate()
+	get_parent().add_child(attackInstance)
+	attackInstance.attack(attackPoint, attackName, self)
 	
-		#print(attackPoint, "attack")
-		attackInstance.attack(mouseVector, attackName, self)
-	if attackData["type"] == "melee":
-		var attackPoint = get_global_mouse_position()
-		var attackInstance = _attackScene.instantiate()
-		get_parent().add_child(attackInstance)
-		attackInstance.attack(attackPoint, attackName, self)
-		
-func cycleMode(direction):
+func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
 	_modeInt = (_modeInt+1)%len(_toolList)
 	_mode = _toolList[_modeInt]
-	print(_mode)
 		
-func mainInteract():
-	if utils.toolsJSON[_mode]["type"] == "weapon":
-		attack(utils.toolsJSON[_mode]["attack"])
+func mainInteract(): #Bound to the left click button and is connected to main tool interactions
+	if (toolTimeout.is_stopped()):
+		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
+		if not timeout:
+			timeout = 0
+		toolTimeout.wait_time = timeout
+		toolTimeout.start()
+		if utils.toolsJSON[_mode]["type"] == "weapon":
+			attack(utils.toolsJSON[_mode]["attack"])
+
+
+func _on_tool_timeout_timeout() -> void:
+	toolTimeout.stop()

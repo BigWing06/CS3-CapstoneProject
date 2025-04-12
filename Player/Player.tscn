@@ -102,8 +102,11 @@ position = Vector2(98.3333, -98.3333)
 wait_time = 3.0
 one_shot = true
 
+[node name="toolTimeout" type="Timer" parent="."]
+
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="area_entered" from="EnemyCollisionShape" to="." method="_on_enemy_collision_shape_area_entered"]
 [connection signal="body_entered" from="EnemyCollisionShape" to="." method="_on_enemy_collision_shape_body_entered"]
 [connection signal="timeout" from="enemySpawner" to="." method="_spawnEnemyPlayer"]
+[connection signal="timeout" from="toolTimeout" to="." method="_on_tool_timeout_timeout"]
