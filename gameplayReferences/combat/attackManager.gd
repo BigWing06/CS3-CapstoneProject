@@ -8,29 +8,28 @@ var _target = Vector2(0, 0)
 @onready var _queuedRangedAttackRange = $queuedRangedAttackRange
 @onready var _queuedMeleeAttackRange = $queuedMeleeAttackRange
 @onready var _attackCooldown = $attackCooldown
+
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 
-var _queuedMeleeAttack
-var _queuedRangedAttack
-
-@onready var attackNode = get_parent().get_node("attack")
-
-var _queuedAttack = null # The next attack to be used
-var _nearTarget = false # If the player is within the attack radius
-var _attackTarget
-var _randMeleeAttackList
-var _randRangedAttackList
-var _targetMode
-var _attackMode = []
+var _queuedMeleeAttack #Stores the next melee attack that will be used
+var _queuedRangedAttack #Stores the next ranged attack that will be used
+var _attackTarget #Node that is currently set as target 
+var _randMeleeAttackList #list of avaliable melee attacks
+var _randRangedAttackList #Listof avaliable ranged attacks
+var _targetMode #Chagnes how the next target is selcted
+var _attackMode = [] #Stores which type of attacks are currently avaliable (based off of target distance/range)
 
 func _setupAttacks(attackData, targetMode):
 	_targetMode = targetMode
+	
+	#Generates the list of attacks that can be used
 	var _meleeAttackDict = utils.readFromJSON(attackData, "meleeAttacks")
 	if _meleeAttackDict != null:
-		_randMeleeAttackList = utils.randWeightedListSetup(_meleeAttackDict) #Generates the attack list to pull from
+		_randMeleeAttackList = utils.randWeightedListSetup(_meleeAttackDict)
 	var _rangedAttackDict = utils.readFromJSON(attackData, "rangedAttacks")
 	if _rangedAttackDict != null:
 		_randRangedAttackList = utils.randWeightedListSetup(_rangedAttackDict)
+		
 	_queueAttacks()
 	_getNewTarget()
 	
@@ -69,7 +68,7 @@ func _checkForTarget():
 			else:
 				_getNewTarget()
 
-func _sendAttack(_attackTarget, _attack):
+func _sendAttack(_attackTarget, _attack): #Exectues an attack
 	var _instancedAttack = _attackScene.instantiate()
 	var world = get_parent().get_parent()
 	world.add_child(_instancedAttack)
@@ -78,7 +77,7 @@ func _sendAttack(_attackTarget, _attack):
 	_attackCooldown.start()
 	_queueAttacks()
 
-func _queueAttacks(): # Prepared the next attacks values
+func _queueAttacks(): # Prepared the next attack values
 	_queuedMeleeAttack = null
 	_queuedRangedAttack = null
 	if _randMeleeAttackList != null:
