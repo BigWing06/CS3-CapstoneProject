@@ -17,5 +17,3 @@ func _process(delta: float) -> void:
 		leftClick.emit()
 	if Input.is_action_just_pressed("rightClick"):
 		rightClick.emit()
-	if Input.is_action_just_pressed("interact"):
-		interact.emit()
