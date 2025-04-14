@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6yisyqpenl1"
-path="res://.godot/imported/Wood.png-ec92acbe909b650c4376a9bdf69c2a97.ctex"
+uid="uid://me8fpje3pkmp"
+path="res://.godot/imported/InventoryFrameLarge_Active.png-7173bafd50b7610bec3fe4680e105739.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplayReferences/resourceIcons/Wood.png"
-dest_files=["res://.godot/imported/Wood.png-ec92acbe909b650c4376a9bdf69c2a97.ctex"]
+source_file="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Active.png"
+dest_files=["res://.godot/imported/InventoryFrameLarge_Active.png-7173bafd50b7610bec3fe4680e105739.ctex"]
 
 [params]
 

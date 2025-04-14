@@ -12,6 +12,7 @@ var _activeSection
 
 func _ready() -> void:
 		_setSection("inventory")
+		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleInventory"):

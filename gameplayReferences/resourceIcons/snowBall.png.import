@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddpp4i12yl1g4"
-path="res://.godot/imported/Sidebox_Coin.png-376579bfd32eb03c74c935c84403af4c.ctex"
+uid="uid://dh0x1pn8fximv"
+path="res://.godot/imported/snowBall.png-ec8397d6235ab9f4d54e87d384b819e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/craftingMenu/InventoryTextures/Sidebox_Coin.png"
-dest_files=["res://.godot/imported/Sidebox_Coin.png-376579bfd32eb03c74c935c84403af4c.ctex"]
+source_file="res://gameplayReferences/resourceIcons/snowBall.png"
+dest_files=["res://.godot/imported/snowBall.png-ec8397d6235ab9f4d54e87d384b819e1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6yisyqpenl1"
-path="res://.godot/imported/Wood.png-ec92acbe909b650c4376a9bdf69c2a97.ctex"
+uid="uid://bijids8e6pery"
+path="res://.godot/imported/Sidebox_Coin.png-b0c0cd0cd5030a067d54de2d8f128e10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplayReferences/resourceIcons/Wood.png"
-dest_files=["res://.godot/imported/Wood.png-ec92acbe909b650c4376a9bdf69c2a97.ctex"]
+source_file="res://inventory/craftingMenu/InventoryTextures/SideBoxes/Sidebox_Coin.png"
+dest_files=["res://.godot/imported/Sidebox_Coin.png-b0c0cd0cd5030a067d54de2d8f128e10.ctex"]
 
 [params]
 

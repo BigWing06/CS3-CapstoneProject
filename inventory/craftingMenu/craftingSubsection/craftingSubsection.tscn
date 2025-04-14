@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://jihub5mpgfwm"]
+[gd_scene load_steps=4 format=3 uid="uid://jihub5mpgfwm"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/craftingSubsection/craftingSubsection.gd" id="1_xkm27"]
+[ext_resource type="PackedScene" uid="uid://birg5dom2mu1h" path="res://inventory/craftingMenu/craftingSubsection/CraftingDisplayItem.tscn" id="2_di88c"]
+[ext_resource type="PackedScene" uid="uid://cmdvcwhhlbwvv" path="res://inventory/craftingMenu/craftingSubsection/resource_name.tscn" id="3_ct6f8"]
 
 [node name="subsectionContainer" type="Control"]
 layout_mode = 3
@@ -40,18 +42,19 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 49.0
+offset_right = -48.0
+offset_bottom = -91.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/displaySection/container"]
+[node name="TextureRect" parent="HBoxContainer/displaySection/container" instance=ExtResource("2_di88c")]
 layout_mode = 2
-expand_mode = 5
-stretch_mode = 5
 
-[node name="resourceName" type="Label" parent="HBoxContainer/displaySection/container"]
+[node name="resourceName" parent="HBoxContainer/displaySection/container" instance=ExtResource("3_ct6f8")]
 layout_mode = 2
-horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/displaySection/container"]
 layout_mode = 2

@@ -18,7 +18,8 @@ func addResourceDict(resourceDict: Dictionary, multiplier = 1): #Adds or removes
 
 func getAmount(resource: String) -> int: #Gets amount of a specific resource in inventory
 	if _checkResource(resource):
-		return _inventory[resource]
+		if _hasResource(resource):
+			return _inventory[resource]
 	return 0
 		
 func hasAmount(resource: String, amount: int) -> bool: #Checks to see if a specified amount of a resource is in the inventory

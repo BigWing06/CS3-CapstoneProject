@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxx4dlv8ykmlf"
-path="res://.godot/imported/Sidebox_Hammer.png-14bcf5d1dd62e5e33cf9edf7cd5b01f0.ctex"
+uid="uid://bn0bkribada6w"
+path="res://.godot/imported/chipsWood.png-36990306725b0b89140fc071b2671560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/craftingMenu/InventoryTextures/Sidebox_Hammer.png"
-dest_files=["res://.godot/imported/Sidebox_Hammer.png-14bcf5d1dd62e5e33cf9edf7cd5b01f0.ctex"]
+source_file="res://gameplayReferences/resourceIcons/chipsWood.png"
+dest_files=["res://.godot/imported/chipsWood.png-36990306725b0b89140fc071b2671560.ctex"]
 
 [params]
 
