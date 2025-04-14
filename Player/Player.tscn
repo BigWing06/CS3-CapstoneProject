@@ -69,6 +69,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 14
 collision_priority = 5.0
+motion_mode = 1
 script = ExtResource("1_yvjui")
 
 [node name="Square" type="Sprite2D" parent="."]

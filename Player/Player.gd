@@ -29,7 +29,7 @@ func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player i
 	return global.world.get_node("TileMaps").getChunk(position)
 
 func _physics_process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("move_right"):
@@ -40,9 +40,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	position += velocity*delta
-	
-	_collision = move_and_collide(velocity * delta)
+	_collision = move_and_slide()
 
 func _process(delta):
 	if (getCurrentChunk() != _chunk): #Determined if the player has entered a new chunk

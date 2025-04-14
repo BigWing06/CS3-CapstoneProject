@@ -16,6 +16,7 @@ chunkSize = Vector2i(5, 5)
 chunkPlayerBuffer = 20
 
 [node name="Player" parent="." instance=ExtResource("2_wbp8x")]
+motion_mode = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
