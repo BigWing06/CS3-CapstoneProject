@@ -14,19 +14,23 @@ var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
 var _health
 @export var _STARTING_HEALTH = 20
+var _collision
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
-	_health= _STARTING_HEALTH
+	_health = _STARTING_HEALTH
+	input.interact.connect(_onInteract)
 	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
+	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 
 func _physics_process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("move_right"):
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	position += velocity*delta
+	_collision = move_and_slide()
 
 func _process(delta):
 	if (getCurrentChunk() != _chunk): #Determined if the player has entered a new chunk
@@ -52,6 +56,7 @@ func damage(_damage:float): # Funciton to cause damage to player
 		death.emit()
 	_displayHealthChange(_damage*-1)
 	$DamageAnimation.play("Damage")
+	
 func heal(_health:float): # Function to heal player
 	_health-=_health
 	_displayHealthChange(_health)
@@ -69,7 +74,18 @@ func getHealth() -> int:
 func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
-
 func _on_death() -> void:
 	#self.queue_free()
 	pass
+
+func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	global.player_entered.emit(body_rid, body.name)
+
+func _onInteract():
+	var treeMap = global.world.get_node("TileMaps").get_node("Trees")
+	var _localPosition = treeMap.local_to_map(treeMap.to_local(get_global_mouse_position())) #get position from tile rid
+	var _cell = treeMap.get_cell_tile_data(_localPosition)
+	if _cell:
+		var _resource = (_cell.get_custom_data("resource_given")) #recives the type from custom data from tile date
+		treeMap.set_cell(_localPosition, -1) #essentialy makes tile invisible
+		inventory.add(_resource, randf_range(1,5)) #adds to inventory 

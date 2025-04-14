@@ -61,8 +61,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f42df"]
-radius = 288.333
-height = 576.667
+radius = 166.667
+height = 333.333
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
