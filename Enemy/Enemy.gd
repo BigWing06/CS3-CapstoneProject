@@ -30,7 +30,8 @@ func _physics_process(delta):
 		_target = global.basePosition
 		_hybrid = true 
 
-	position += (_target - position)/_speed #sets a target for enemy to follow
+	velocity = (_target - position).normalized()*_speed/2 #sets a target for enemy to follow
+	move_and_slide()
 	
 func _update(x): #updates enemy variables
 	_enemyType = x
