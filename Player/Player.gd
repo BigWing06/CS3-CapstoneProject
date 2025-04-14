@@ -20,6 +20,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health = _STARTING_HEALTH
+	input.interact.connect(_onInteract)
 	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
@@ -79,3 +80,12 @@ func _on_death() -> void:
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)
+
+func _onInteract():
+	var treeMap = global.world.get_node("TileMaps").get_node("Trees")
+	var _localPosition = treeMap.local_to_map(treeMap.to_local(get_global_mouse_position())) #get position from tile rid
+	var _cell = treeMap.get_cell_tile_data(_localPosition)
+	if _cell:
+		var _resource = (_cell.get_custom_data("resource_given")) #recives the type from custom data from tile date
+		treeMap.set_cell(_localPosition, -1) #essentialy makes tile invisible
+		inventory.add(_resource, randf_range(1,5)) #adds to inventory 

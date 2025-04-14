@@ -23,19 +23,6 @@ func _ready() -> void:
 	_flowerRand.seed = global.WORLD_SEED
 	for chunk in _initalChunks:
 		_generate_chunk(chunk)
-		
-	global.player_entered.connect(_on_player_entered)
-	input.interact.connect(_on_interact)
-	
-func _on_player_entered(bRid, bName):
-	if bName == "Trees":
-		_localPosition = $Trees.get_coords_for_body_rid(bRid) #get position from tile rid
-		_resource = ($Trees.get_cell_tile_data(_localPosition).get_custom_data("resource_given")) #recives the type from custom data from tile date 
-
-func _on_interact():
-	if _localPosition != null:
-		$Trees.set_cell(_localPosition, -1) #essentialy makes tile invisible
-		inventory.add(_resource, _resourceRand.randf_range(1,5)) #adds to inventory
 	
 func getMainTilemap() -> TileMapLayer: #This function returns the terrain tilemap node for reference outside of this scene
 	return get_node("Terrain")
@@ -51,10 +38,6 @@ func playerRenderNeighborChunks(playerChunk: Vector2i): #This function should be
 			if chunk not in _renderedChunks:
 				_generate_chunk(chunk)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func _generate_chunk(chunkPosition: Vector2i):
 	_renderedChunks.append(chunkPosition)
 	var position = Vector2i(chunkPosition.x * chunkSize.x, chunkPosition.y * chunkSize.y)
