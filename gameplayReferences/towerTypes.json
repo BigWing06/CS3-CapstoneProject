@@ -4,6 +4,9 @@
 		"recipe": {
 			"wood": 8,
 			"snowball": 25
+		},
+		"attack":{
+			"rangedAttacks":{"laser_eye":1}
 		}
 	},
 	"heavySnowball": {
