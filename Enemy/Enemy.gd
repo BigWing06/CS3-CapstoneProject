@@ -27,7 +27,7 @@ func _physics_process(delta):
 	elif _movementType == "playerFocused":
 		_target = _player.position
 	else:
-		_target = global.basePosition
+		_target = global.world.basePosition
 		_hybrid = true 
 
 	velocity = (_target - position).normalized()*_speed/2 #sets a target for enemy to follow
