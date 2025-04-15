@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var placementZone = $placementZone
 @onready var towerRange = $towerRange
 @onready var _player = get_node("/root/Main/World/Player")
+@onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
+
 var _size:float = 50 #Size of the tower image
 var _tower #Stores tower type
 var _towerData #Stores data about tower type
@@ -15,6 +17,7 @@ func setup(tower):
 	_mode = "setup"
 	$towerIcon.texture = utils.loadImage(utils.towerImageRootPath + _tower + ".png")
 	$towerIcon.scale = Vector2(_size/$towerIcon.texture.get_width(), _size/$towerIcon.texture.get_height()) #Calculates scale to match size of the image
+	
 	
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
@@ -30,6 +33,10 @@ func build():
 	_player.inventory.resourcesChanged.disconnect(updatePlacementCircle)
 	$placementZone.body_entered.disconnect(func(b):updatePlacementCircle())
 	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
+	var attackManager = attackManagerScene.instantiate()
+	add_child(attackManager)
+	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", "enemy"])
+	set_collision_layer_value(4, true)
 	
 	
 func _process(delta: float) -> void:
@@ -37,7 +44,7 @@ func _process(delta: float) -> void:
 		position = get_global_mouse_position()
 
 func checkPlacementArea() -> bool: #Checks to see if the current placement position of the tower is valid returns true if ok
-	return (len(placementZone.get_overlapping_bodies())<=1) #Area 2d will always collide with self which is why it must be less than or equal to 1
+	return (len(placementZone.get_overlapping_bodies())==0) #Area 2d will always collide with self which is why it must be less than or equal to 1
 
 func checkPlacementResources() -> bool: #Checks to see if the player has the resources to build the tower
 	return _player.inventory.hasResourceDict(_towerData["recipe"])
