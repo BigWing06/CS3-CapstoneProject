@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0spbde1f7vdx"]
+
+[ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="1_n3ct6"]
+[ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="2_k22i4"]
+
+[node name="UIParent" type="CanvasLayer"]
+
+[node name="buildMenu" parent="." instance=ExtResource("1_n3ct6")]
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="craftingMenu" parent="." instance=ExtResource("2_k22i4")]
+visible = false
+anchors_preset = -1

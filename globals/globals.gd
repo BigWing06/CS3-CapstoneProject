@@ -1,6 +1,6 @@
 extends Node
 
-#@onready var main = get_node("/root/Main")
+@onready var main = get_node("/root/Main")
 #@onready var UIParent = main.get_node("UIParent")
 @onready var world
 #@onready var player = world.get_node("Player")

@@ -1,7 +1,8 @@
 extends Control
 @onready var inventoryContinaer = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn")
 @onready var gridContainer = $GridContainer
-@onready var _player = get_node("/root/Main/World/Player")
+@onready var _main = get_node("/root/Main")
+@onready var _player = _main.getActivePlayer()
 func _ready() -> void:
 	_player.inventory.resourcesChanged.connect(update)
 	update("", 5)

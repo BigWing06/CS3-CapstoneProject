@@ -5,7 +5,7 @@ extends Control
 @onready var gridContainer = $HBoxContainer/GridContainer
 @onready var displaySectionContainer = $HBoxContainer/displaySection/container
 @onready var resourceGridContainer = displaySectionContainer.get_node("GridContainer")
-@onready var _player = get_node("/root/Main/World/Player")
+@onready var _player = global.main.getActivePlayer()
 var _selectedResource
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

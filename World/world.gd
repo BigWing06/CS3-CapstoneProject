@@ -8,6 +8,4 @@ func _ready() -> void:
 	inventory.add("exampleResource",10)
 	print(inventory.getAmount("exampleResource"))
 	global.world = self
-	var _player = _playerScene.instantiate()
-	self.add_child(_player)
 	$base.spawnBase(basePosition)

@@ -6,7 +6,7 @@ var _speed # The speed at which the enemy moves
 var _movementType # The type of movment the enemy has
 var _target = Vector2(0, 0)
 var _hybrid = false
-@onready var _player = get_node("/root/Main/World/Player")
+@onready var _player = global.main.getActivePlayer()
 var _health
 
 signal healthChanged

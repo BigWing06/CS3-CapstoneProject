@@ -85,8 +85,6 @@ texture = ExtResource("2_mrcb6")
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_0ro8j")
 
-[node name="playerCamera" type="Camera2D" parent="."]
-
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_g0tv8")

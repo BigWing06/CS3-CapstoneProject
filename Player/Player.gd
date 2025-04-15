@@ -7,7 +7,7 @@ signal death
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
-
+@onready var _main = get_node("/root/Main")
 @onready var toolTimeout = $toolTimeout
 
 @export var speed = 400

@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var placementZone = $placementZone
 @onready var towerRange = $towerRange
-@onready var _player = get_node("/root/Main/World/Player")
+@onready var _player = global.main.getActivePlayer()
 @onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
 
 var _size:float = 50 #Size of the tower image

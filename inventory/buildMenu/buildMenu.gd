@@ -8,7 +8,7 @@ var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInsta
 @onready var _towerTypesList = utils.towerTypesJSON.keys() #Gets a list of tower names from the tower types JSON file
 @onready var _resourceDisplay = $Control/resourceDisplay #Reference to the resource display node
 @onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn") #Reference to the itemSlotDisplay scene so that it can be instanced later
-@onready var _player = get_node("/root/Main/World/Player")
+@onready var _player = global.main.getActivePlayer()
 var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
