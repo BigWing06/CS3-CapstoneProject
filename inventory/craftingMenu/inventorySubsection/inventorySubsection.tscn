@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6rb7qcee7fvb"]
+
+[ext_resource type="Script" path="res://inventory/craftingMenu/inventorySubsection/inventorySubsection.gd" id="1_0y8kx"]
+
+[node name="subsectionContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_0y8kx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32, 0.32, 0.32, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 20
+columns = 8

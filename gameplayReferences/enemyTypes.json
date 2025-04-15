@@ -1,0 +1,37 @@
+{
+	"beaver":{
+		"name":"Beaver",
+		"movement":"hybrid",
+		"health":90,
+		"speed":500,
+		"drops":"wood chips",
+		"attacks":{"basic_beaver":1}
+	},
+	
+	"polar_bear":{
+		"name":"Polar Bear",
+		"movement":"baseFocused",
+		"health":220,
+		"speed":60,
+		"drops":"beaver cola",
+		"attacks":{"claw":3,"claw_advanced":1}
+	},
+	
+	"wolf": {
+		"name":"Wolf",
+		"movement":"playerFocused",
+		"health":4,
+		"speed":70,
+		"drops":"meat",
+		"attacks":{"bite":2, "claw":1}
+	},
+	
+	"penguin": {
+		"name":"Bionic Eye Penguin",
+		"movement":"playerFocused",
+		"health":2,
+		"speed":150,
+		"drops":"fish",
+		"attacks":{"laser_eye":1}
+	}
+}
