@@ -36,6 +36,7 @@ func build():
 	var attackManager = attackManagerScene.instantiate()
 	add_child(attackManager)
 	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", "enemy"])
+	set_collision_layer_value(4, true)
 	
 	
 func _process(delta: float) -> void:
@@ -43,7 +44,7 @@ func _process(delta: float) -> void:
 		position = get_global_mouse_position()
 
 func checkPlacementArea() -> bool: #Checks to see if the current placement position of the tower is valid returns true if ok
-	return (len(placementZone.get_overlapping_bodies())<=1) #Area 2d will always collide with self which is why it must be less than or equal to 1
+	return (len(placementZone.get_overlapping_bodies())==0) #Area 2d will always collide with self which is why it must be less than or equal to 1
 
 func checkPlacementResources() -> bool: #Checks to see if the player has the resources to build the tower
 	return global.player.inventory.hasResourceDict(_towerData["recipe"])
