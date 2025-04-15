@@ -18,6 +18,7 @@ var _localPosition #used for collision
 var _resource #variable passed through inventory method
 
 func _ready() -> void:
+	global.WORLD_SEED = 3894
 	_terrainNoise.seed = global.WORLD_SEED
 	_treeRand.seed = global.WORLD_SEED 
 	_flowerRand.seed = global.WORLD_SEED

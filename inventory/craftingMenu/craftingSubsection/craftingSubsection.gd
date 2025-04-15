@@ -5,7 +5,7 @@ extends Control
 @onready var gridContainer = $HBoxContainer/GridContainer
 @onready var displaySectionContainer = $HBoxContainer/displaySection/container
 @onready var resourceGridContainer = displaySectionContainer.get_node("GridContainer")
-
+@onready var _player = get_node("/root/Main/World/Player")
 var _selectedResource
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,13 +32,13 @@ func _displayForCraft(resource): #Called to display new item to craft
 	_checkResourceCraftability()
 func _checkResourceCraftability(): #Checks to see if the selected resoruce is craftible
 	var resourceInfo = utils.resourceJSON[_selectedResource]
-	if global.player.inventory.hasResourceDict(resourceInfo["recipe"]):
+	if _player.inventory.hasResourceDict(resourceInfo["recipe"]):
 		displaySectionContainer.get_node("craftButton").disabled = false
 	else:
 		displaySectionContainer.get_node("craftButton").disabled = true
 
 func _on_craft_button_pressed() -> void:
-	var inventory = global.player.inventory
+	var inventory = _player.inventory
 	inventory.add(_selectedResource, 1)
 	inventory.addResourceDict(utils.resourceJSON[_selectedResource]["recipe"], -1)
 	_checkResourceCraftability()

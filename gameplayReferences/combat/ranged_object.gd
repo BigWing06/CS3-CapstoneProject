@@ -7,6 +7,7 @@ var _timeOut # Duration on screen before queue_free()
 var _damage
 var _target # position of target headed towards
 var _durability
+@onready var _player  = get_node("/root/Main/World/Player")
 var _attacker
 func _ready():
 	$TimeOut.wait_time=_timeOut # Sets and starts timeout timer

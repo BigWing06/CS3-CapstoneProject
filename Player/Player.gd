@@ -26,6 +26,7 @@ var _collision
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$Square.texture = ResourceLoader.load(global.characterTexture)
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
 	$enemySpawner.start()

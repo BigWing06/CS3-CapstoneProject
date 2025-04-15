@@ -8,6 +8,7 @@ var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInsta
 @onready var _towerTypesList = utils.towerTypesJSON.keys() #Gets a list of tower names from the tower types JSON file
 @onready var _resourceDisplay = $Control/resourceDisplay #Reference to the resource display node
 @onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn") #Reference to the itemSlotDisplay scene so that it can be instanced later
+@onready var _player = get_node("/root/Main/World/Player")
 var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
@@ -30,7 +31,7 @@ func _onScrollUp() -> void:
 func _build() -> void: #Runs when the left mouse button is clicked and checks to see if the player can built the tower and then builds it
 	if _towerInstance.checkPlacementArea(): #Checks to make sure that the position is valid
 		if _towerInstance.checkPlacementResources():
-			global.player.inventory.addResourceDict(_towerInstance._towerData["recipe"], -1)
+			_player.inventory.addResourceDict(_towerInstance._towerData["recipe"], -1)
 			_towerInstance.build()
 			_towerInstance = null
 			_updatePlacingTower(_towerTypesList[_selectedTowerInt])
