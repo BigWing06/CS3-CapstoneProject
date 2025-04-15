@@ -12,7 +12,7 @@
 		}
 	},
 	
-	"polar_bear":{
+	"polarbear":{
 		"name":"Polar Bear",
 		"movement":"baseFocused",
 		"health":220,

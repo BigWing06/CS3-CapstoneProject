@@ -16,9 +16,10 @@ signal death
 
 @onready var _attackManager = $attackManager
 @onready var _attack = $attack
+@onready var _sprite = $enemySpr
 
 func _ready():
-	_update("beaver") #choose animal from json file
+	_update(["penguin", "polarbear", "wolf"].pick_random()) #choose animal from json file
 	
 func _physics_process(delta):
 	#changes target and specifies hybrid
@@ -29,13 +30,20 @@ func _physics_process(delta):
 	else:
 		_target = global.basePosition
 		_hybrid = true 
-
+	_sprite.look_at(_target)
 	velocity = (_target - position).normalized()*_speed/2 #sets a target for enemy to follow
+	if velocity.x > 0:
+		_sprite.flip_v = false
+	elif velocity.x < 0:
+		_sprite.flip_v = true
 	move_and_slide()
+	if velocity.length() > 0:
+		_sprite.play("walk")
 	
 func _update(x): #updates enemy variables
 	_enemyType = x
 	_enemyData = utils.enemyJSON[_enemyType]
+	_sprite.sprite_frames = load(utils.appendToPath(utils.enemyAnimationRootPath, _enemyType+"animations.tres"))
 	_speed = _enemyData["speed"]
 	_movementType = _enemyData["movement"]
 	_health = _enemyData["health"]
