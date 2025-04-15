@@ -1,7 +1,7 @@
 extends TextureButton
 
 @onready var hoverTextScene = preload("res://inventory/hoverText.tscn")
-
+@onready var _UIParent = get_node("/root/Main/UIParent")
 var _hoverTextInstance
 var _resourceData
 var _resource
@@ -19,6 +19,6 @@ func display(resource, amount = -2): #Called by the crafting menu script to show
 func _on_mouse_entered() -> void:
 	_hoverTextInstance = hoverTextScene.instantiate()
 	_hoverTextInstance.text = _resourceData["name"]
-	global.UIParent.add_child(_hoverTextInstance)
+	_UIParent.add_child(_hoverTextInstance)
 func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()

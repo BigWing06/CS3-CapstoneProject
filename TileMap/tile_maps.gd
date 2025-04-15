@@ -12,6 +12,7 @@ var _renderedChunks = [] #list that keeps track of the chunks that are rendered
 var _initalChunks = [Vector2i(-1, -1), Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(0, -1), Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, -1), Vector2i(1, 0), Vector2i(1, 1)]
 
 func _ready() -> void:
+	global.WORLD_SEED = 3894
 	_terrainNoise.seed = global.WORLD_SEED
 	_treeRand.seed = global.WORLD_SEED 
 	_flowerRand.seed = global.WORLD_SEED

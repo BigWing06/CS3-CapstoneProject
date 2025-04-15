@@ -12,7 +12,7 @@ func _on_start_button_pressed() -> void:
 		$HBoxContainer/Character2.icon.resource_path = global.characterTexture
 	elif b3:
 		$HBoxContainer/Character3.icon.resource_path = global.characterTexture
-	get_tree().change_scene_to_file("res://Player/player.tscn")
+	get_tree().change_scene_to_file("res://Viewport/Main.tscn")
 
 
 func _on_end_button_pressed() -> void:

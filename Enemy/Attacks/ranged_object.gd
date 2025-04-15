@@ -7,6 +7,7 @@ var _timeOut # Duration on screen before queue_free()
 var _damage
 var _target # position of target headed towards
 var _durability
+@onready var _player  = get_node("/root/Main/World/Player")
 func _ready():
 	$TimeOut.wait_time=_timeOut # Sets and starts timeout timer
 	$TimeOut.start()
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void: # Moves towards target
 	position+=_direction*_speed*delta
 
 func _on_body_entered(body: Node2D) -> void: # If it hits the player cause damage and then disappear
-	global.player.damage(_damage)
+	_player.damage(_damage)
 	_durability-=1
 	if _durability <=0:
 		queue_free()

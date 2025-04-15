@@ -7,7 +7,7 @@ var _movementType # The type of movment the enemy has
 var _target = Vector2(0, 0)
 var _startingHealth
 var _hybrid = false
-var _player
+@onready var _player = get_node("/root/Main/World/Player")
 
 # Loads in the enemy types #  ###NOTE FOR LATER: Move this when we implement JSON script
 var _resourceJSONPath = "res://Enemy/enemyTypes.json"
@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if _movementType == "baseFocused":
 		_target = global.basePosition
 	elif _movementType == "playerFocused":
-		_target = global.player.position
+		_target = _player.position
 	else:
 		_target = global.basePosition
 		_hybrid = true 
@@ -55,11 +55,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _attack(_attackData): # The function to attack the player ###Base attacking could be built off of this later
 	$AttackCooldown.wait_time = _attackData["cooldown"] # Sets the cooldown timer
 	$AttackCooldown.start() # Starts the cooldown timer
-	_raycast.target_position = to_local(global.player.position) # Points the raycast towards the player
+	_raycast.target_position = to_local(_player.position) # Points the raycast towards the player
 	if _attackData["type"] == "ranged": # If a ranged attack set up and adopt a projectile instance
 		var projectile = _rangedObject.instantiate()
 		var _direction = (_raycast.target_position).normalized()
-		var _playerPosition = global.player.position
+		var _playerPosition = _player.position
 		var _speed = _attackData["speed"]
 		var _lifetime = _attackData["lifetime"]
 		var _damage = _attackData["damage"]
@@ -69,7 +69,7 @@ func _attack(_attackData): # The function to attack the player ###Base attacking
 		projectile.generateProjectile(_direction,_playerPosition,_speed,_lifetime,_texture,_size,_damage,_durability)
 		add_child(projectile)
 	elif _attackData["type"] == "melee": # If a melee attack, cause the player a set amount of damage
-		global.player.damage(_attackData["damage"])
+		_player.damage(_attackData["damage"])
 	_loadNextAttack() # Preloads in the next attack
 
 func _loadNextAttack(): # Prepared the next attacks values
