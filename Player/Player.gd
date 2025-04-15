@@ -4,7 +4,7 @@ signal chunkChanged
 signal healthChanged
 signal death
 
-@onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
+@onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
 
@@ -110,7 +110,7 @@ func attack(attackName): #calls and handles player attacks
 	attackInstance.attack(attackPoint, attackName, self)
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
-	_modeInt = (_modeInt+1)%len(_toolList)
+	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
 	print(_mode)
 		

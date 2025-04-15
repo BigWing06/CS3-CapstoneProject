@@ -12,8 +12,6 @@ func _ready():
 	$TimeOut.wait_time=_timeOut # Sets and starts timeout timer
 	$TimeOut.start()
 	
-	#look_at(_target) # Rotates towards target
-	
 func _physics_process(delta: float) -> void: # Moves towards target
 	position+=_direction*_speed*delta
 
@@ -34,5 +32,6 @@ func generateProjectile(attacker, targetPos:  Vector2, pos: Vector2, speed: floa
 	$CollisionShape2D.shape.size = collisionSize
 	_damage = damage
 	_durability = durability
+	look_at(to_global(targetPos)) # Rotates towards target
 func _on_time_out_timeout() -> void:
 	queue_free()

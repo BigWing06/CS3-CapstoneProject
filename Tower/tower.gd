@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var placementZone = $placementZone
 @onready var towerRange = $towerRange
 
+@onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
+
 var _size:float = 50 #Size of the tower image
 var _tower #Stores tower type
 var _towerData #Stores data about tower type
@@ -31,7 +33,9 @@ func build():
 	global.player.inventory.resourcesChanged.disconnect(updatePlacementCircle)
 	$placementZone.body_entered.disconnect(func(b):updatePlacementCircle())
 	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
-	$attackManager._setupAttacks(_towerData["attack"], "enemy")
+	var attackManager = attackManagerScene.instantiate()
+	add_child(attackManager)
+	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", "enemy"])
 	
 	
 func _process(delta: float) -> void:

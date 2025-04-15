@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://br64oftsd16ck"]
+[gd_scene load_steps=5 format=3 uid="uid://br64oftsd16ck"]
 
 [ext_resource type="Script" path="res://Tower/tower.gd" id="1_p08au"]
-[ext_resource type="PackedScene" uid="uid://ba1gt0ug2w16j" path="res://gameplayReferences/combat/attackManager.tscn" id="2_aiomo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owoy"]
 radius = 27.8927
@@ -37,5 +36,3 @@ texture = SubResource("GradientTexture2D_4nl6p")
 
 [node name="towerIcon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-
-[node name="attackManager" parent="." instance=ExtResource("2_aiomo")]

@@ -34,24 +34,16 @@ func _setupAttacks(attackData, targetMode):
 	_getNewTarget()
 	
 func _getNewTarget():
-	if _targetMode == "player":
-		var players = get_tree().get_nodes_in_group("player")
-		var closestPlayer = players[0]
-		var closestPosition = global_position.distance_to(players[0].position)
-		for player in players:
-			if global_position.distance_to(player.position) < closestPosition:
-				closestPlayer = player
-				global_position.distance_to(player.position)
-		_attackTarget = closestPlayer
-	elif _targetMode == "enemy":
-		var enemies = get_tree().get_nodes_in_group("enemy")
-		var closestEnemy = enemies[0]
-		var closestPosition = global_position.distance_to(enemies[0].position)
-		for enemy in enemies:
-			if global_position.distance_to(enemy.position) < closestPosition:
-				closestEnemy = enemy
-				global_position.distance_to(enemy.position)
-		_attackTarget = closestEnemy
+	if _targetMode[0] == "targetGroup":
+		var nodes = get_tree().get_nodes_in_group(_targetMode[1])
+		if len(nodes) != 0:
+			var closestNode = nodes[0]
+			var closestPosition = global_position.distance_to(nodes[0].position)
+			for node in nodes:
+				if global_position.distance_to(node.position) < closestPosition:
+					closestNode = node
+					global_position.distance_to(node.position)
+			_attackTarget = closestNode
 
 func _checkForTarget():
 	if _attackCooldown.is_stopped():

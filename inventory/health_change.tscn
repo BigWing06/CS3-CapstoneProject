@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2vgir25tslta"]
 
-[ext_resource type="Script" path="res://Player/health_change.gd" id="1_o587o"]
+[ext_resource type="Script" path="res://inventory/health_change.gd" id="1_o587o"]
 
 [sub_resource type="Animation" id="Animation_wjw0n"]
 resource_name = "Display"

@@ -12,7 +12,7 @@ var _health
 signal healthChanged
 signal death
 
-@onready var _healthChangeScene = preload("res://Player/health_change.tscn")
+@onready var _healthChangeScene = preload("res://inventory/health_change.tscn")
 
 @onready var _attackManager = $attackManager
 @onready var _attack = $attack
@@ -39,7 +39,7 @@ func _update(x): #updates enemy variables
 	_speed = _enemyData["speed"]
 	_movementType = _enemyData["movement"]
 	_health = _enemyData["health"]
-	_attackManager._setupAttacks(_enemyData["attack"], "player")
+	_attackManager._setupAttacks(_enemyData["attack"], ["targetGroup", "player"])
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if _hybrid:
