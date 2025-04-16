@@ -63,7 +63,7 @@ func _generate_terrain_chunk(position: Vector2i, chunkSize: Vector2i): # generat
 
 func _generate_tree_chunk(position: Vector2i, chunkSize: Vector2i):
 	var _tile_pos = $Trees.local_to_map(position)
-	var _treeOptions = [Vector2i(0,1),Vector2i(1,2),Vector2i(0,3),Vector2i(1,3),Vector2i(2,4),Vector2i(3,4),Vector2i(2,2)] # options for types of trees
+	var _treeOptions = [Vector2i(0,0),Vector2i(0,2),Vector2i(1,0),Vector2i(1,1),Vector2i(1,2),Vector2i(2,0),Vector2i(2,1),Vector2i(2,2)] # options for types of trees
 	for x in range(chunkSize.x):
 		for y in range(chunkSize.y):
 			var _randNum = _treeRand.randf_range(0,1)
