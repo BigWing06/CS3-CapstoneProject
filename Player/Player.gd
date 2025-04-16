@@ -107,15 +107,13 @@ func attack(attackName): #calls and handles player attacks
 		attackPoint = attackPoint.normalized()*attackData["radius"]
 	var attackInstance = _attackScene.instantiate()
 	get_parent().add_child(attackInstance)
-	attackInstance.attack(attackPoint, attackName, self)
+	attackInstance.attack(attackPoint, attackName, self, null, ["enemy"])
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
-	print(_mode)
 		
 func mainInteract(): #Bound to the left click button and is connected to main tool interactions
-	print(toolTimeout.is_stopped())
 	if (toolTimeout.is_stopped()):
 		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
 		if not timeout:
