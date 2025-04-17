@@ -18,8 +18,15 @@ var _localPosition #used for collision
 var _resource #variable passed through inventory method
 
 func _ready() -> void:
-	global.WORLD_SEED = 3894
+	global.WORLD_SEED = 788687
 	_terrainNoise.seed = global.WORLD_SEED
+	_terrainNoise.frequency = 0.02
+	_terrainNoise.fractal_octaves = 3
+	_terrainNoise.fractal_lacunarity = 2.0
+	_terrainNoise.fractal_gain = .25
+	_terrainNoise.noise_type = FastNoiseLite.TYPE_CELLULAR
+	_terrainNoise.cellular_distance_function = FastNoiseLite.DISTANCE_EUCLIDEAN
+	_terrainNoise.cellular_return_type = FastNoiseLite.RETURN_DISTANCE
 	_treeRand.seed = global.WORLD_SEED 
 	_flowerRand.seed = global.WORLD_SEED
 	for chunk in _initalChunks:
@@ -52,10 +59,11 @@ func _generate_terrain_chunk(position: Vector2i, chunkSize: Vector2i): # generat
 	var _waterToSet = [] # tiles to set to water
 	for x in range(chunkSize.x):
 		for y in range(chunkSize.y):
-			var _randNum = _terrainNoise.get_noise_2dv(Vector2(position)+Vector2(_tile_pos.x-chunkSize.x/2+x,_tile_pos.y-chunkSize.y/2+y))*10 # gets random number from noise
-			if _randNum >1:
+			var _randNum = _terrainNoise.get_noise_2dv(Vector2(position)+Vector2(_tile_pos.x-chunkSize.x/2+x,_tile_pos.y-chunkSize.y/2+y)) # gets random number from noise
+			if _randNum > .4 or _randNum < -.4:
 				_snowToSet.append(position+Vector2i(x,y)) # if the random number is greater than 1 add the tile position to the list of snow tiles
 			else:
+				print()
 				_waterToSet.append(position+Vector2i(x,y)) # otherwise add it to the list of water tiles
 	$Terrain.set_cells_terrain_connect(_snowToSet,0,0) # sets all of the snow array tiles to actually be snow
 	for pos in _waterToSet:

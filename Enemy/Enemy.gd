@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	#changes target and specifies hybrid
 	if _movementType == "baseFocused":
-		_target = global.basePosition
+		_target = global.world.get_node("base").position
 	elif _movementType == "playerFocused":
 		_target = _player.position
 	else:
