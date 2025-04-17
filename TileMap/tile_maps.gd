@@ -17,6 +17,8 @@ var _initalChunks = [Vector2i(-1, -1), Vector2i(-1, 0), Vector2i(-1, 1), Vector2
 var _localPosition #used for collision
 var _resource #variable passed through inventory method
 
+var _spawnSafeDistance = 10 #Controls how far away from spawn that lakes and trees start generating
+
 func _ready() -> void:
 	global.WORLD_SEED = 788687
 	_terrainNoise.seed = global.WORLD_SEED
@@ -60,11 +62,13 @@ func _generate_terrain_chunk(position: Vector2i, chunkSize: Vector2i): # generat
 	for x in range(chunkSize.x):
 		for y in range(chunkSize.y):
 			var _randNum = _terrainNoise.get_noise_2dv(Vector2(position)+Vector2(_tile_pos.x-chunkSize.x/2+x,_tile_pos.y-chunkSize.y/2+y)) # gets random number from noise
-			if _randNum > .4 or _randNum < -.4:
+			if (_randNum > .4 or _randNum < -.4):
 				_snowToSet.append(position+Vector2i(x,y)) # if the random number is greater than 1 add the tile position to the list of snow tiles
 			else:
-				print()
-				_waterToSet.append(position+Vector2i(x,y)) # otherwise add it to the list of water tiles
+				if Vector2(position.x+x, position.y+y).length() > _spawnSafeDistance:
+					_waterToSet.append(position+Vector2i(x,y)) # otherwise add it to the list of water tiles
+				else:
+					_snowToSet.append(position+Vector2i(x,y))
 	$Terrain.set_cells_terrain_connect(_snowToSet,0,0) # sets all of the snow array tiles to actually be snow
 	for pos in _waterToSet:
 		$Terrain.set_cell(pos,0,Vector2i(0,4)) # set all of the water array tiles to water
@@ -76,7 +80,7 @@ func _generate_tree_chunk(position: Vector2i, chunkSize: Vector2i):
 		for y in range(chunkSize.y):
 			var _randNum = _treeRand.randf_range(0,1)
 			var _cellData = $Terrain.get_cell_tile_data(position+Vector2i(x,y)) # the terrain type at this position
-			if _randNum > .95 and _cellData.terrain_set == 0: # if the terrain type is snow, and the random number is greater than 0.8
+			if _randNum > .95 and _cellData.terrain_set == 0 and Vector2(position.x+x, position.y+y).length() > _spawnSafeDistance: # if the terrain type is snow, and the random number is greater than 0.8
 				$Trees.set_cell(position+Vector2i(x,y),1,_treeOptions[_treeRand.randi_range(0,len(_treeOptions)-1)]) # set the tile to a random type of tree
 				
 func _generate_decorations_chunk(position: Vector2i, chunkSize: Vector2i):
@@ -86,5 +90,5 @@ func _generate_decorations_chunk(position: Vector2i, chunkSize: Vector2i):
 		for y in range(chunkSize.y):
 			var _randNum = _flowerRand.randf_range(0,1)
 			var _cellData = $Terrain.get_cell_tile_data(position+Vector2i(x,y)) # the terrain type at this position
-			if _randNum >.8 and _cellData.terrain_set == 0: # if the terrain type is snow, and the random number is greater than 0.8
+			if _randNum >.8 and _cellData.terrain_set == 0 and Vector2(position.x+x, position.y+y).length() > _spawnSafeDistance: # if the terrain type is snow, and the random number is greater than 0.8
 				$Decorations.set_cell(position+Vector2i(x,y),1,_flowerOptions[_flowerRand.randi_range(0,len(_flowerOptions)-1)]) # set the tile to a random type of tree
