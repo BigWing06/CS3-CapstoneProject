@@ -9,6 +9,7 @@ signal death
 @onready var inventory = preload("res://inventory/inventory.gd").new()
 
 @onready var toolTimeout = $toolTimeout
+@onready var _playerSprite = $playerSprite
 
 @export var speed = 400
 @export var _STARTING_HEALTH = 20
@@ -57,6 +58,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		_playerSprite.play("walk")
+	else:
+		_playerSprite.stop()
+	if velocity.x > 0:
+		_playerSprite.flip_h = false
+	elif velocity.x < 0:
+		_playerSprite.flip_h = true
 	_collision = move_and_slide()
 
 func _process(delta):
