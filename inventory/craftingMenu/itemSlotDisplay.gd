@@ -5,15 +5,14 @@ var FRAME_RED = "res://inventory/craftingMenu/InventoryTextures/InventoryFrameLa
 var _hoverTextInstance
 var _resourceData
 var _resource
-func display(resource, amount = -2,actualAmount = "N/A"): #Called by the crafting menu script to show a specific resource
+func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu script to show a specific resource
 	var amountLbl = $amountLbl
 	_resource = resource
 	_resourceData = utils.resourceJSON[resource]
 	if amount != -2:
 		amountLbl.visible = true
 		amountLbl.text = str(amount)
-		if str(actualAmount) != "N/A":
-			if actualAmount <= amount:
+		if hasAmount:
 				amountLbl.set("theme_override_colors/font_color",Color8(255,255,255))
 				amountLbl.set("theme_override_colors/font_outline_color",Color8(186,24,28,255))
 				self.texture_normal = load(FRAME_RED)

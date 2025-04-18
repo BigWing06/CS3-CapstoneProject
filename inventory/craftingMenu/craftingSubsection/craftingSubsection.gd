@@ -27,7 +27,7 @@ func _displayForCraft(resource): #Called to display new item to craft
 	for requiredResource in resourceInfo["recipe"].keys(): #Instances the itemSlotDisplay class to show the new required resrouces for crafting
 		var requiredResourceDisplay = itemSlotDisplay.instantiate()
 		requiredResourceDisplay.custom_minimum_size = Vector2(45, 45)
-		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource],global.player.inventory.getAmount(requiredResource))
+		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource],global.player.inventory.hasAmount(requiredResource, resourceInfo["recipe"][requiredResource]))
 		resourceGridContainer.add_child(requiredResourceDisplay)
 	_checkResourceCraftability()
 func _checkResourceCraftability(): #Checks to see if the selected resoruce is craftible
