@@ -42,7 +42,6 @@ func _physics_process(delta):
 		_sprite.play("walk")
 	
 func _process(delta: float) -> void:
-	print(position.distance_to(Vector2.ZERO))
 	if position.distance_to(Vector2.ZERO) > baseDespawnRadius and position.distance_to(_player.position):
 		if _despawnCooldown.is_stopped():
 			_despawnCooldown.start()
@@ -116,5 +115,4 @@ func _on_target_exited() -> void:
 	_getNewTarget()
 
 func _on_despawn_cooldown_timeout() -> void:
-	print("despanw", self)
 	queue_free()

@@ -17,7 +17,7 @@ signal death
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
-var _health
+var _health = 0
 var _enemySpawnDistance = 100 #Sets how far away from the player enemies will spawn
 var _toolList = [] #Stores the list of tools the player has in inventory
 var _mode #String value of selected tool
@@ -30,7 +30,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	#$playerSprite.texture = ResourceLoader.load(global.characterTexture)
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
-	_health= _STARTING_HEALTH
+	healthChange(_STARTING_HEALTH, false)
 	$enemySpawner.start()
 	inventory.add("stoneSword", 1)
 	inventory.add("bow", 1)
@@ -70,23 +70,24 @@ func _physics_process(delta: float) -> void:
 	_collision = move_and_slide()
 
 func _process(delta):
+	print(_health)
 	if (getCurrentChunk() != _chunk): #Determined if the player has entered a new chunk
 		_preChunk = _chunk
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
 		
-func healthChange(_amount:float): # Funciton to cause damage to player
+func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
 		if _health<=0:
 			death.emit()
-		_displayHealthChange(_amount)
-		$DamageAnimation.play("Damage")
+		if displayChange:
+			_displayHealthChange(_amount)
+			$DamageAnimation.play("Damage")
 	elif _amount > 0:
-		_health+=_health
-		_displayHealthChange(_health)
-		healthChanged.emit()
+		if displayChange:
+			_displayHealthChange(_amount)
 
 func _displayHealthChange(_amount: float): # Creates a scene to display an animation of the health change near the player
 	var _healthChange = _healthChangeScene.instantiate()
@@ -103,7 +104,7 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 func _on_death() -> void:
 	position = Vector2.ZERO
 	inventory.clear()
-	healthChange(_STARTING_HEALTH)
+	healthChange(_STARTING_HEALTH, false)
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)

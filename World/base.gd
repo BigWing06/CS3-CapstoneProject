@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var _baseSpawnDistance = 500
-var _health = 25
+var _health = 500
 
 signal healthChanged
 signal death
@@ -18,7 +18,6 @@ func _spawnEnemyBase(): #Using _baseSpawnDistance, spawns an enemy in a random a
 	spawner.spawnEnemy(utils.getRandomRadiusPosition(global.world.basePosition, _baseSpawnDistance)) #Spawns the enemy at a random location around the base
 
 func healthChange(_amount:float): # Funciton to cause damage to player
-	print(_health, "base")
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
