@@ -6,10 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uwai"]
 size = Vector2(151, 94)
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" groups=["base"]]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_v6am7")
+
+[node name="enemySpawner" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1uwai")
@@ -18,8 +22,13 @@ shape = SubResource("RectangleShape2D_1uwai")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_srp48")
 
-[node name="enemySpawner" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="healthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+offset_top = -89.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
 
+[connection signal="healthChanged" from="." to="." method="updateHealthbar"]
 [connection signal="timeout" from="enemySpawner" to="." method="_spawnEnemyBase"]

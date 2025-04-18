@@ -64,7 +64,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltrlo"]
 size = Vector2(176.667, 168.333)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 14

@@ -9,7 +9,7 @@ radius = 32.0
 height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is5s4"]
-radius = 297.901
+radius = 469.107
 
 [sub_resource type="Animation" id="Animation_bfpha"]
 resource_name = "Damage"
@@ -101,11 +101,11 @@ debug_color = Color(0.988235, 0.996078, 1, 0)
 
 [node name="sightRadius" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 34
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sightRadius"]
 shape = SubResource("CircleShape2D_is5s4")
-debug_color = Color(0, 0.65098, 0.00784314, 1)
+debug_color = Color(0.627451, 0.494118, 0.537255, 1)
 
 [node name="attackManager" parent="." instance=ExtResource("4_o2lrc")]
 position = Vector2(7, -1)
@@ -132,5 +132,4 @@ grow_vertical = 2
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="targetExited" from="." to="." method="_on_target_exited"]
-[connection signal="body_entered" from="sightRadius" to="." method="_getNewTarget" unbinds=1]
 [connection signal="body_exited" from="sightRadius" to="." method="_on_sight_radius_body_exited"]

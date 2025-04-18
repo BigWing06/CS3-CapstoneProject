@@ -1,7 +1,7 @@
 {
 	"beaver":{
 		"name":"Beaver",
-		"movement":"hybrid",
+		"targetMode":"hybrid",
 		"health":90,
 		"speed":500,
 		"drops":"wood chips",
@@ -14,7 +14,7 @@
 	
 	"polarbear":{
 		"name":"Polar Bear",
-		"movement":"baseFocused",
+		"targetMode":"baseFocused",
 		"health":220,
 		"speed":60,
 		"drops":"beaver cola",
@@ -25,7 +25,7 @@
 	
 	"wolf": {
 		"name":"Wolf",
-		"movement":"playerFocused",
+		"targetMode":"hybrid",
 		"health":4,
 		"speed":70,
 		"drops":"meat",
@@ -36,7 +36,7 @@
 	
 	"penguin": {
 		"name":"Bionic Eye Penguin",
-		"movement":"playerFocused",
+		"targetMode":"playerFocused",
 		"health":2,
 		"speed":150,
 		"drops":"fish",

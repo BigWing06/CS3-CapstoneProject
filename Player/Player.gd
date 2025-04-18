@@ -26,8 +26,9 @@ var _modeInt = 0 #Index of selcted tool in toollist
 var _collision
 
 func _ready():
+	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
-	$Square.texture = ResourceLoader.load(global.characterTexture)
+	#$playerSprite.texture = ResourceLoader.load(global.characterTexture)
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
 	$enemySpawner.start()

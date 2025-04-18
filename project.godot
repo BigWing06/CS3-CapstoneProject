@@ -26,6 +26,7 @@ spawner="*res://globals/spawner.gd"
 
 player=""
 enemy=""
+base=""
 
 [input]
 
@@ -87,7 +88,8 @@ toggleInventory={
 
 [layer_names]
 
-2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemy"
-2d_physics/layer_4="World"
-2d_physics/layer_5="PlayerDamage"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="world"
+2d_physics/layer_5="playerDamage"
+2d_physics/layer_6="base"
