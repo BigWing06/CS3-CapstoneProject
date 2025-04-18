@@ -6,16 +6,15 @@ extends CharacterBody2D
 var _resource
 var _amount
 
-func _ready() -> void:
-	setup("chipsWood", 1)
-
-func setup(resource, amount=1):
+func setup(dropPosition, resource, amount=1):
+	print(dropPosition)
+	position = dropPosition
 	_resource = resource
 	_amount = amount
 	if _amount == 1:
 		_amountLbl.visible = false
 	else:
-		_amountLbl.text = _amount
+		_amountLbl.text = str(_amount)
 	_itemTexture.texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, _resource + ".png"))
 
 func _physics_process(delta: float) -> void:

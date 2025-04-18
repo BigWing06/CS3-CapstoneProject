@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbcpk0a8t4ern"]
+[gd_scene load_steps=4 format=3 uid="uid://dbcpk0a8t4ern"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_ouaoe"]
 [ext_resource type="PackedScene" uid="uid://b0o0be4hbyhe5" path="res://TileMap/tile_maps.tscn" id="1_xcin8"]
 [ext_resource type="PackedScene" uid="uid://67gqnq2brj81" path="res://World/base.tscn" id="3_qygt3"]
-[ext_resource type="PackedScene" uid="uid://bw8mjq18nfi2m" path="res://inventory/droppedItem.tscn" id="4_p4mwv"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ouaoe")
@@ -14,6 +13,3 @@ chunkSize = Vector2i(5, 5)
 chunkPlayerBuffer = 20
 
 [node name="base" parent="." instance=ExtResource("3_qygt3")]
-
-[node name="DroppedItem" parent="." instance=ExtResource("4_p4mwv")]
-position = Vector2(182, -149)
