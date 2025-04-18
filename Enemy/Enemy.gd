@@ -16,9 +16,11 @@ signal death
 
 @onready var _attackManager = $attackManager
 @onready var _attack = $attack
+@onready var _sprite = $enemySpr
+@onready var _healthbar = $healthBar
 
 func _ready():
-	_update("beaver") #choose animal from json file
+	_update(["penguin", "polarbear", "wolf"].pick_random()) #choose animal from json file
 	
 func _physics_process(delta):
 	#changes target and specifies hybrid
@@ -29,16 +31,25 @@ func _physics_process(delta):
 	else:
 		_target = global.world.basePosition
 		_hybrid = true 
-
+	_sprite.look_at(_target)
 	velocity = (_target - position).normalized()*_speed/2 #sets a target for enemy to follow
+	if velocity.x > 0:
+		_sprite.flip_v = false
+	elif velocity.x < 0:
+		_sprite.flip_v = true
 	move_and_slide()
+	if velocity.length() > 0:
+		_sprite.play("walk")
 	
 func _update(x): #updates enemy variables
 	_enemyType = x
 	_enemyData = utils.enemyJSON[_enemyType]
+	_sprite.sprite_frames = load(utils.appendToPath(utils.enemyAnimationRootPath, _enemyType+"Animations.tres"))
 	_speed = _enemyData["speed"]
 	_movementType = _enemyData["movement"]
 	_health = _enemyData["health"]
+	_healthbar.max_value = _health
+	_healthbar.value = _health
 	_attackManager._setupAttacks(_enemyData["attack"], ["targetGroup", "player"])
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -50,6 +61,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		
 func healthChange(_amount:float): # Funciton to cause damage to player
 	_health+=_amount
+	_healthbar.value = _health
 	healthChanged.emit()
 	if _amount < 0:
 		if _health<=0:
@@ -66,3 +78,7 @@ func _displayHealthChange(_amount: float): # Creates a scene to display an anima
 	add_child(_healthChangeScene)
 	_healthChangeScene.display(_amount,$HealthChangePoint.position)
 	$DamageAnimation.play("Heal")
+
+
+func _on_death() -> void:
+	queue_free()

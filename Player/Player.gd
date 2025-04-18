@@ -9,6 +9,7 @@ signal death
 @onready var inventory = preload("res://inventory/inventory.gd").new()
 
 @onready var toolTimeout = $toolTimeout
+@onready var _playerSprite = $playerSprite
 
 @export var speed = 400
 @export var _STARTING_HEALTH = 20
@@ -58,6 +59,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		_playerSprite.play("walk")
+	else:
+		_playerSprite.stop()
+	if velocity.x > 0:
+		_playerSprite.flip_h = false
+	elif velocity.x < 0:
+		_playerSprite.flip_h = true
 	_collision = move_and_slide()
 
 func _process(delta):
@@ -108,15 +116,13 @@ func attack(attackName): #calls and handles player attacks
 		attackPoint = attackPoint.normalized()*attackData["radius"]
 	var attackInstance = _attackScene.instantiate()
 	get_parent().add_child(attackInstance)
-	attackInstance.attack(attackPoint, attackName, self)
+	attackInstance.attack(attackPoint, attackName, self, null, ["enemy"])
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
-	print(_mode)
 		
 func mainInteract(): #Bound to the left click button and is connected to main tool interactions
-	print(toolTimeout.is_stopped())
 	if (toolTimeout.is_stopped()):
 		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
 		if not timeout:

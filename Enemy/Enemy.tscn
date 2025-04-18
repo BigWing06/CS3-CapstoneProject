@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://da8r8qt5moqv6"]
+[gd_scene load_steps=14 format=3 uid="uid://da8r8qt5moqv6"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_o0oyn"]
-[ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="3_xwvj0"]
+[ext_resource type="Texture2D" uid="uid://c5fv8p2q2btyj" path="res://Enemy/Animations/wolfSpritesheet.png" id="3_qp4h8"]
 [ext_resource type="PackedScene" uid="uid://ba1gt0ug2w16j" path="res://gameplayReferences/combat/attackManager.tscn" id="4_o2lrc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
@@ -68,18 +68,37 @@ _data = {
 "RESET": SubResource("Animation_xyjpc")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3kdf"]
+atlas = ExtResource("3_qp4h8")
+region = Rect2(0, 0, 46, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgw0b"]
+atlas = ExtResource("3_qp4h8")
+region = Rect2(46, 0, 46, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ujv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3kdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgw0b")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
 [node name="enemyBody" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_o0oyn")
 
-[node name="enemySpr" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_xwvj0")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q8gpv")
+debug_color = Color(0.988235, 0.996078, 1, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -87,6 +106,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_2iqhj")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
@@ -96,8 +116,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 shape = SubResource("CircleShape2D_is5s4")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="attackManager" parent="." instance=ExtResource("4_o2lrc")]
+position = Vector2(7, -1)
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -107,8 +129,18 @@ libraries = {
 [node name="HealthChangePoint" type="Marker2D" parent="."]
 position = Vector2(98.3333, -98.3333)
 
+[node name="enemySpr" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4ujv2")
+animation = &"walk"
+
+[node name="healthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="death" from="." to="." method="_on_death"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
-[connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]

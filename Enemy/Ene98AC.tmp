@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://da8r8qt5moqv6"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_o0oyn"]
+[ext_resource type="PackedScene" uid="uid://bde72483yp21x" path="res://gameplayReferences/attack.tscn" id="3_5wl82"]
+[ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="3_xwvj0"]
+[ext_resource type="PackedScene" uid="uid://ba1gt0ug2w16j" path="res://gameplayReferences/attackManager.tscn" id="4_hps4f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2iqhj"]
+radius = 1024.0
+
+[node name="enemyBody" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_o0oyn")
+
+[node name="enemySpr" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_xwvj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q8gpv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2iqhj")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="attack" parent="." instance=ExtResource("3_5wl82")]
+
+[node name="attackManager" parent="." instance=ExtResource("4_hps4f")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
