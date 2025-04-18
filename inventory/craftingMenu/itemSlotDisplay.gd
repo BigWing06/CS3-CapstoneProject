@@ -12,7 +12,7 @@ func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu
 	if amount != -2:
 		amountLbl.visible = true
 		amountLbl.text = str(amount)
-		if hasAmount:
+		if !hasAmount:
 				amountLbl.set("theme_override_colors/font_color",Color8(255,255,255))
 				amountLbl.set("theme_override_colors/font_outline_color",Color8(186,24,28,255))
 				self.texture_normal = load(FRAME_RED)
