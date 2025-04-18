@@ -2,6 +2,7 @@ extends Node
 
 var towerImageRootPath = "res://gameplayReferences/towerIcons/" #Path to folder that contains all of the tower art
 var resourceImageRootPath = "res://gameplayReferences/resourceIcons" #Path to folder that contains all of the tower art
+var enemyAnimationRootPath = "res://Enemy/Animations"
 
 var fileNotFound = preload("res://fileNotFound.png")
 

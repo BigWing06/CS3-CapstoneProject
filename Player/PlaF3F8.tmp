@@ -75,6 +75,8 @@ collision_mask = 10
 collision_priority = 5.0
 motion_mode = 1
 script = ExtResource("1_yvjui")
+speed = null
+_STARTING_HEALTH = null
 
 [node name="Square Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.75, 0.75)

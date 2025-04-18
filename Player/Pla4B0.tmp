@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://chhadtxo8k0ks"]
+[gd_scene load_steps=9 format=3 uid="uid://chhadtxo8k0ks"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_yvjui"]
-[ext_resource type="SpriteFrames" uid="uid://dwxmpml0liyqs" path="res://Player/playerAnimation.tres" id="2_w5pk3"]
+[ext_resource type="Texture2D" uid="uid://1yx5qdqunywd" path="res://Player/square.png" id="2_mrcb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ro8j"]
 size = Vector2(224, 225.5)
@@ -12,7 +12,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("playerSprite:modulate")
+tracks/0/path = NodePath("Square:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +28,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("playerSprite")
+tracks/0/path = NodePath("Square:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +43,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("playerSprite:modulate")
+tracks/0/path = NodePath("Square:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +54,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0tv8"]
-resource_local_to_scene = true
 _data = {
 "Damage": SubResource("Animation_bfpha"),
 "Heal": SubResource("Animation_wda2n"),
@@ -62,19 +61,21 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f42df"]
-radius = 288.333
-height = 576.667
+radius = 166.667
+height = 333.333
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kh3a"]
-size = Vector2(176.667, 168.333)
-
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
-collision_mask = 10
+collision_mask = 14
 collision_priority = 5.0
 motion_mode = 1
 script = ExtResource("1_yvjui")
+
+[node name="Square" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_mrcb6")
 
 [node name="Square Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.75, 0.75)
@@ -97,32 +98,6 @@ collision_mask = 14
 [node name="Circle Collision" type="CollisionShape2D" parent="reach"]
 shape = SubResource("CapsuleShape2D_f42df")
 
-[node name="EnemyCollisionShape" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionShape"]
-position = Vector2(1.66667, -2.5)
-shape = SubResource("RectangleShape2D_6kh3a")
-
-[node name="enemySpawner" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
-[node name="toolTimeout" type="Timer" parent="."]
-one_shot = true
-
-[node name="playerSprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 3
-position = Vector2(0, -4)
-scale = Vector2(4, 4)
-sprite_frames = ExtResource("2_w5pk3")
-animation = &"walk"
-frame = 1
-frame_progress = 0.027524
-
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="body_shape_entered" from="reach" to="." method="_on_reach_body_shape_entered"]
-[connection signal="timeout" from="enemySpawner" to="." method="_spawnEnemyPlayer"]
-[connection signal="timeout" from="toolTimeout" to="." method="_on_tool_timeout_timeout"]
