@@ -3,19 +3,19 @@ extends CharacterBody2D
 var _enemyData = {} # All JSON data on the enemy types
 var _enemyType # The type of enemy
 var _speed # The speed at which the enemy moves
-var _targetType # The type of movment the enemy has
+var _targetType # How the enemy choose its target
 var _target = Vector2(0, 0)
 var _hybrid = false
 @onready var _player = get_node("/root/Main/World/Player")
 var _health
-var _genericAttackGroups = ["base", "player"]
+var _genericAttackGroups = ["base", "player"] #The groups enemies should default to look for if they can't find a target
 
 signal healthChanged
 signal targetExited
 signal death
 
-@export var baseDespawnRadius: int
-@export var playerDespawnRadius: int
+@export var baseDespawnRadius: int #Distance from base before enemies will despawn 
+@export var playerDespawnRadius: int #Distance from player before enemies will despawn
 
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn")
 
@@ -83,7 +83,7 @@ func _getNewTarget(): #Used for getting the target of the enemy
 	if _targetType == "hybrid":
 		if _sightRadius.get_overlapping_bodies() != []:
 			var closetBaseNode = utils.getClosestNode(self, get_tree().get_nodes_in_group("player"))
-			if closetBaseNode != null:
+			if closetBaseNode != null: #If there is a player in sight range set it as target otherwise looks in the other gorups
 				_target = closetBaseNode
 			else:
 				var nodes = []
@@ -92,7 +92,7 @@ func _getNewTarget(): #Used for getting the target of the enemy
 				var closestNode = utils.getClosestNode(self, nodes)
 				if closestNode != null:
 					_target = closestNode
-				else:
+				else: #If no node is close enought to target sets target to base
 					_target = global.world.get_node("base")
 		else:
 			_target = global.world.get_node("base")

@@ -28,7 +28,6 @@ var _collision
 func _ready():
 	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
-	#$playerSprite.texture = ResourceLoader.load(global.characterTexture)
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	healthChange(_STARTING_HEALTH, false)
 	$enemySpawner.start()
@@ -70,7 +69,6 @@ func _physics_process(delta: float) -> void:
 	_collision = move_and_slide()
 
 func _process(delta):
-	print(_health)
 	if (getCurrentChunk() != _chunk): #Determined if the player has entered a new chunk
 		_preChunk = _chunk
 		_chunk = getCurrentChunk()

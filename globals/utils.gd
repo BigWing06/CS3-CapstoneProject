@@ -52,7 +52,7 @@ func getRandomRadiusPosition(position:Vector2, radius:int) -> Vector2: #Returns 
 			sin(_spawnAngle)*radius
 		) + position
 
-func getClosestNode(callerNode, nodeList):
+func getClosestNode(callerNode, nodeList): #Find the closetes node in NodeList to caller node
 	if len(nodeList) != 0:
 		var closestNode = nodeList[0]
 		var closestPosition = callerNode.global_position.distance_to(nodeList[0].global_position)
