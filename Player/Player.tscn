@@ -13,7 +13,6 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("playerSprite:modulate")
-tracks/0/path = NodePath("playerSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +29,6 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("playerSprite")
-tracks/0/path = NodePath("playerSprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +43,6 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("playerSprite:modulate")
 tracks/0/path = NodePath("playerSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -114,15 +111,6 @@ autostart = true
 
 [node name="toolTimeout" type="Timer" parent="."]
 one_shot = true
-
-[node name="playerSprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 3
-position = Vector2(0, -4)
-scale = Vector2(4, 4)
-sprite_frames = ExtResource("2_w5pk3")
-animation = &"walk"
-frame = 1
-frame_progress = 0.027524
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
