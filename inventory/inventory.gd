@@ -78,3 +78,7 @@ func _isTool(item):
 	
 func _isResource(item):
 	return item in utils.resourceJSON.keys()
+
+func clear():
+	for resource in getResourceDict().keys():
+		add(resource, getAmount(resource)*-1)

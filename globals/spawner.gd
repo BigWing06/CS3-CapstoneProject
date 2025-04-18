@@ -5,4 +5,5 @@ extends Node2D
 func spawnEnemy(position): #Spawns an enemy at a certain position
 	var _enemy = _enemyScene.instantiate()
 	_enemy.position = position #Sets enemy position to the random position.
-	get_parent().add_child(_enemy)
+	global.world.gameover.connect(_enemy.queue_free)
+	global.world.add_child(_enemy)

@@ -35,7 +35,7 @@ func build():
 	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
 	var attackManager = attackManagerScene.instantiate()
 	add_child(attackManager)
-	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", "enemy"])
+	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", ["enemy"]])
 	set_collision_layer_value(4, true)
 	
 	
@@ -55,3 +55,9 @@ func updatePlacementCircle(): #Changes the color of the placement circle so that
 			towerRange.modulate = Color(0, 255, 0)
 			return
 	towerRange.modulate = Color(255, 0, 0)
+	
+func _getNewTarget(): #Used for getting the target of the enemy
+	return utils.getClosestNode(self, get_tree().get_nodes_in_group("enemy"))
+
+func getTarget():
+	return _getNewTarget()
