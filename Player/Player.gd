@@ -101,8 +101,9 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
 func _on_death() -> void:
-	#self.queue_free()
-	pass
+	position = Vector2.ZERO
+	inventory.clear()
+	healthChange(_STARTING_HEALTH)
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)

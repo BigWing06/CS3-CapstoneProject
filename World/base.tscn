@@ -24,7 +24,6 @@ texture = ExtResource("1_srp48")
 
 [node name="healthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
-anchors_preset = -1
 offset_top = -89.0
 offset_bottom = -62.0
 grow_horizontal = 2
