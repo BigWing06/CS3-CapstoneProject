@@ -92,12 +92,17 @@ collision_layer = 4
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_o0oyn")
+baseDespawnRadius = 750
+playerDespawnRadius = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q8gpv")
 debug_color = Color(0.988235, 0.996078, 1, 0)
 
 [node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="despawnCooldown" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="sightRadius" type="Area2D" parent="."]
 collision_layer = 0
@@ -132,5 +137,6 @@ grow_vertical = 2
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="targetExited" from="." to="." method="_on_target_exited"]
+[connection signal="timeout" from="despawnCooldown" to="." method="_on_despawn_cooldown_timeout"]
 [connection signal="body_entered" from="sightRadius" to="." method="_getNewTarget" unbinds=1]
 [connection signal="body_exited" from="sightRadius" to="." method="_on_sight_radius_body_exited"]

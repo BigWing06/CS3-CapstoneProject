@@ -14,6 +14,9 @@ signal healthChanged
 signal targetExited
 signal death
 
+@export var baseDespawnRadius: int
+@export var playerDespawnRadius: int
+
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn")
 
 @onready var _attackManager = $attackManager
@@ -21,6 +24,7 @@ signal death
 @onready var _sprite = $enemySpr
 @onready var _healthbar = $healthBar
 @onready var _sightRadius = $sightRadius
+@onready var _despawnCooldown = $despawnCooldown
 
 func _ready():
 	_update(["wolf", "polarbear", "penguin"].pick_random()) #choose animal from json file
@@ -36,6 +40,14 @@ func _physics_process(delta):
 	move_and_slide()
 	if velocity.length() > 0:
 		_sprite.play("walk")
+	
+func _process(delta: float) -> void:
+	print(position.distance_to(Vector2.ZERO))
+	if position.distance_to(Vector2.ZERO) > baseDespawnRadius and position.distance_to(_player.position):
+		if _despawnCooldown.is_stopped():
+			_despawnCooldown.start()
+	elif not _despawnCooldown.is_stopped():
+		_despawnCooldown.stop()
 	
 func _update(x): #updates enemy variables
 	_enemyType = x
@@ -102,3 +114,7 @@ func _on_sight_radius_body_exited(body: Node2D) -> void:
 
 func _on_target_exited() -> void:
 	_getNewTarget()
+
+func _on_despawn_cooldown_timeout() -> void:
+	print("despanw", self)
+	queue_free()
