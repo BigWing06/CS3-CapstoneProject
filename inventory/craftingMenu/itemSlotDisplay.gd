@@ -40,11 +40,14 @@ func set_clickable(_clickMode:bool = true) -> void:  # Removes the ability to se
 		self.focus_mode=Control.FOCUS_ALL
 	else:
 		self.focus_mode=Control.FOCUS_NONE
+		
 func _on_pressed() -> void:
 	set_active()
+	
 func set_active() -> void: # Sets this button as the selected item slot
 	self.texture_normal = self.texture_focused
 	_UIParent.clickItemSlot(self)
-func _removeActive(_sender):
+	
+func _removeActive(_sender): # Removes the active texture
 	if _sender != self:
 		self.texture_normal = _normalTexture

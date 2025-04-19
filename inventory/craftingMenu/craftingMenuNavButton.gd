@@ -11,13 +11,14 @@ func _ready() -> void:
 	_UIParent.sideBtnClicked.connect(_removeActive)
 	if ICON_PATH != null:
 		$Icon.texture = load(ICON_PATH)
+		
 func _on_pressed() -> void:
 	bttnClicked.emit()
-func set_active():
+	
+func set_active(): # Makes this the active side button
 	self.texture_normal = self.texture_focused
 	_UIParent.sideBoxClicked(self)
-func _removeActive(_sender):
-	print("Sender "+str(_sender)+" Self "+str(self))
+	
+func _removeActive(_sender): # Removes the active texture
 	if _sender != self:
-		print("!!!!!!!!!!!!")
 		self.texture_normal = _normalTexture
