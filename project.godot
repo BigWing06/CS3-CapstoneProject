@@ -21,6 +21,7 @@ global="*res://globals/globals.gd"
 utils="*res://globals/utils.gd"
 input="*res://globals/input.gd"
 spawner="*res://globals/spawner.gd"
+BgMusic="*res://Audio/bgMusic.tscn"
 
 [global_group]
 
