@@ -29,21 +29,8 @@ func _setupAttacks(attackData, targetMode):
 	var _rangedAttackDict = utils.readFromJSON(attackData, "rangedAttacks")
 	if _rangedAttackDict != null:
 		_randRangedAttackList = utils.randWeightedListSetup(_rangedAttackDict)
-		
 	_queueAttacks()
-	_getNewTarget()
-	
-func _getNewTarget():
-	if _targetMode[0] == "targetGroup":
-		var nodes = get_tree().get_nodes_in_group(_targetMode[1])
-		if len(nodes) != 0:
-			var closestNode = nodes[0]
-			var closestPosition = global_position.distance_to(nodes[0].position)
-			for node in nodes:
-				if global_position.distance_to(node.position) < closestPosition:
-					closestNode = node
-					global_position.distance_to(node.position)
-			_attackTarget = closestNode
+	_attackTarget = get_parent().getTarget()
 
 func _checkForTarget():
 	if _attackCooldown.is_stopped():
@@ -53,18 +40,18 @@ func _checkForTarget():
 			elif _attackTarget in _queuedRangedAttackRange.get_overlapping_bodies() and _queuedRangedAttack:
 				_sendAttack(_attackTarget, _queuedRangedAttack)
 			else:
-				_getNewTarget()
+				_attackTarget = get_parent().getTarget()
 		else:
 			if _attackTarget in _queuedRangedAttackRange.get_overlapping_bodies() and _queuedRangedAttack:
 				_sendAttack(_attackTarget, _queuedRangedAttack)
 			else:
-				_getNewTarget()
+				_attackTarget = get_parent().getTarget()
 
 func _sendAttack(_attackTarget, _attack): #Exectues an attack
 	var _instancedAttack = _attackScene.instantiate()
 	var world = get_parent().get_parent()
 	world.add_child(_instancedAttack)
-	_instancedAttack.attack(to_local(_attackTarget.position), _attack, get_parent(), _attackTarget, ["player", "tower"])
+	_instancedAttack.attack(to_local(_attackTarget.position), _attack, get_parent(), _attackTarget, _targetMode[1])
 	_attackCooldown.wait_time = utils.attackJSON[_attack]["cooldown"]
 	_attackCooldown.start()
 	_queueAttacks()
