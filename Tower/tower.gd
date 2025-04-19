@@ -2,6 +2,8 @@ extends StaticBody2D
 
 @onready var placementZone = $placementZone
 @onready var towerRange = $towerRange
+@onready var healthBar = $healthBar
+
 @onready var _player = get_node("/root/Main/World/Player")
 @onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
 
@@ -9,6 +11,12 @@ var _size:float = 32 #Size of the tower image
 var _tower #Stores tower type
 var _towerData #Stores data about tower type
 var _mode #Determines if the tower is in placement mode ("setup") or if it is placed ("placed")
+var _STARTINGHEALTH = 100
+var _health = _STARTINGHEALTH
+
+signal healthChanged
+signal death
+signal targetChanged
 
 func setup(tower):
 	visible = true #Starts as false and switched to true so that it isn't rendered in incorrect location on creation
@@ -36,7 +44,7 @@ func build():
 	if utils.readFromJSON(_towerData, "attack"):
 		var attackManager = attackManagerScene.instantiate()
 		add_child(attackManager)
-		attackManager._setupAttacks(_towerData["attack"], ["targetGroup", ["enemy"]])
+		attackManager._setupAttacks(_towerData["attack"], ["enemy"])
 	set_collision_layer_value(4, true)
 	
 	
@@ -67,3 +75,18 @@ func _getNewTarget(): #Used for getting the target of the enemy
 
 func getTarget():
 	return _getNewTarget()
+
+func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
+	_health+=_amount
+	healthChanged.emit()
+	if _amount < 0:
+		if _health<=0:
+			death.emit()
+
+func _on_health_changed() -> void:
+	if _health != _STARTINGHEALTH:
+		healthBar.visible = true
+	healthBar.value = _health
+
+func _on_death() -> void:
+	queue_free()

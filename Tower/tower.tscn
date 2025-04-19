@@ -14,8 +14,8 @@ gradient = SubResource("Gradient_5t0mp")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Tower" type="StaticBody2D"]
-collision_layer = 0
+[node name="Tower" type="StaticBody2D" groups=["base"]]
+collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_p08au")
 
@@ -35,3 +35,16 @@ scale = Vector2(5, 5)
 texture = SubResource("GradientTexture2D_4nl6p")
 
 [node name="towerIcon" type="Sprite2D" parent="."]
+
+[node name="healthBar" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+offset_top = -89.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+
+[connection signal="death" from="." to="." method="_on_death"]
+[connection signal="healthChanged" from="." to="." method="_on_health_changed"]

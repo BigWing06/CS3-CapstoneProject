@@ -12,6 +12,7 @@ var _genericAttackGroups = ["base", "player"] #The groups enemies should default
 
 signal healthChanged
 signal targetExited
+signal targetChanged
 signal death
 
 @export var baseDespawnRadius: int #Distance from base before enemies will despawn 
@@ -27,8 +28,7 @@ signal death
 @onready var _despawnCooldown = $despawnCooldown
 
 func _ready():
-	_update(["wolf", "polarbear", "penguin"].pick_random()) #choose animal from json file
-	_getNewTarget()
+	_update(["wolf"].pick_random()) #choose animal from json file
 	
 func _physics_process(delta):
 	_sprite.look_at(_target.position)
@@ -54,10 +54,11 @@ func _update(x): #updates enemy variables
 	_sprite.sprite_frames = load(utils.appendToPath(utils.enemyAnimationRootPath, _enemyType+"Animations.tres"))
 	_speed = _enemyData["speed"]
 	_targetType = _enemyData["targetMode"]
+	_getNewTarget()
 	_health = _enemyData["health"]
 	_healthbar.max_value = _health
 	_healthbar.value = _health
-	_attackManager._setupAttacks(_enemyData["attack"], ["targetGroup", ["player", "base"]])
+	_attackManager._setupAttacks(_enemyData["attack"], ["player", "base"])
 	
 func healthChange(_amount:float): # Funciton to cause damage to player
 	_health+=_amount
@@ -81,25 +82,16 @@ func _displayHealthChange(_amount: float): # Creates a scene to display an anima
 
 func _getNewTarget(): #Used for getting the target of the enemy
 	if _targetType == "hybrid":
-		if _sightRadius.get_overlapping_bodies() != []:
-			var closetBaseNode = utils.getClosestNode(self, get_tree().get_nodes_in_group("player"))
-			if closetBaseNode != null: #If there is a player in sight range set it as target otherwise looks in the other gorups
-				_target = closetBaseNode
-			else:
-				var nodes = []
-				for group in _genericAttackGroups:
-					nodes += get_tree().get_nodes_in_group(group)
-				var closestNode = utils.getClosestNode(self, nodes)
-				if closestNode != null:
-					_target = closestNode
-				else: #If no node is close enought to target sets target to base
-					_target = global.world.get_node("base")
+		var closetBaseNode = utils.getClosestNode(self, get_tree().get_nodes_in_group("player"))
+		if closetBaseNode in _sightRadius.get_overlapping_bodies():
+			_target = closetBaseNode
 		else:
 			_target = global.world.get_node("base")
 	elif _targetType == "baseFocused":
 		_target = global.world.get_node("base")
 	elif _targetType == "playerFocused":
 		_target = global.world.get_node("Player")
+	targetChanged.emit()
 
 func getTarget():
 	return _target
