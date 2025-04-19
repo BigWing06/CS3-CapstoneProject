@@ -33,10 +33,16 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()
 
-
+func set_clickable(_clickMode:bool = true) -> void:  # Removes the ability to select the item
+	self.texture_disabled=texture_normal
+	self.disabled = !_clickMode
+	if _clickMode:
+		self.focus_mode=Control.FOCUS_ALL
+	else:
+		self.focus_mode=Control.FOCUS_NONE
 func _on_pressed() -> void:
 	set_active()
-func set_active() -> void:
+func set_active() -> void: # Sets this button as the selected item slot
 	self.texture_normal = self.texture_focused
 	_UIParent.clickItemSlot(self)
 func _removeActive(_sender):
