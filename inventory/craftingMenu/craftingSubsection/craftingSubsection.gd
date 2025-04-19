@@ -5,7 +5,7 @@ extends Control
 @onready var gridContainer = $HBoxContainer/GridContainer
 @onready var displaySectionContainer = $HBoxContainer/displaySection/container
 @onready var resourceGridContainer = displaySectionContainer.get_node("GridContainer")
-
+@export var DEFAULT_ITEM = "wood" # The item to show for crafting by default
 var _selectedResource
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,9 @@ func _ready() -> void:
 			itemDisplay.display(item)
 			itemDisplay.pressed.connect(func(): _displayForCraft(item))
 			gridContainer.add_child(itemDisplay)
-	_displayForCraft("wood")
+			if item == DEFAULT_ITEM:
+				itemDisplay.set_active()
+	_displayForCraft(DEFAULT_ITEM)
 			
 func _displayForCraft(resource): #Called to display new item to craft
 	_selectedResource = resource

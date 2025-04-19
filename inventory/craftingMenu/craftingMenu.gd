@@ -6,10 +6,13 @@ var _activeSection
 @onready var _inventorySubsection = preload("res://inventory/craftingMenu/inventorySubsection/inventorySubsection.tscn")
 @onready var _craftingSubsection = preload("res://inventory/craftingMenu/craftingSubsection/craftingSubsection.tscn")
 
+@onready var _inventoryBtn = $margin/VBoxContainer/inventoryButton
+@onready var _craftingBtn = $margin/VBoxContainer/craftingButton
+
 @onready var _subsectionContainer = $margin/subsectionContainer
 
 @onready var _sections = {"inventory":_inventorySubsection, "crafting":_craftingSubsection} #This stores the correct subsection scene to instance when the subsection is changed
-
+@onready var _sectionBtns = {"inventory":_inventoryBtn,"crafting":_craftingBtn}
 func _ready() -> void:
 		_setSection("inventory")
 		
@@ -28,6 +31,7 @@ func _setSection(section): #Called when a button is clicked to change the subsec
 		_activeSection = section
 		_activeSectionScene = _sections[section].instantiate() #Instances the correct subsection for the subsection list
 		_subsectionContainer.add_child(_activeSectionScene)
+		_sectionBtns[section].set_active() # Sets the clicked section to have an active texture
 	
 func _on_close_button_bttn_clicked() -> void:
 	_toggleMenu()

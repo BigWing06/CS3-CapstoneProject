@@ -12,8 +12,9 @@ func _ready() -> void:
 	if ICON_PATH != null:
 		$Icon.texture = load(ICON_PATH)
 func _on_pressed() -> void:
-	self.texture_normal = self.texture_focused
 	bttnClicked.emit()
+func set_active():
+	self.texture_normal = self.texture_focused
 	_UIParent.sideBoxClicked(self)
 func _removeActive(_sender):
 	print("Sender "+str(_sender)+" Self "+str(self))

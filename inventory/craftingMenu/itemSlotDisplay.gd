@@ -35,10 +35,10 @@ func _on_mouse_exited() -> void:
 
 
 func _on_pressed() -> void:
+	set_active()
+func set_active() -> void:
 	self.texture_normal = self.texture_focused
 	_UIParent.clickItemSlot(self)
 func _removeActive(_sender):
-	print("Sender "+str(_sender)+" Self "+str(self))
 	if _sender != self:
-		print("!!!!!!!!!!!!")
 		self.texture_normal = _normalTexture
