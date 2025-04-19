@@ -18,7 +18,7 @@ var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
 var _health = 0
-var _enemySpawnDistance = 100 #Sets how far away from the player enemies will spawn
+var _enemySpawnDistance = 500 #Sets how far away from the player enemies will spawn
 var _toolList = [] #Stores the list of tools the player has in inventory
 var _mode #String value of selected tool
 var _modeInt = 0 #Index of selcted tool in toollist
@@ -100,6 +100,7 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
 func _on_death() -> void:
+	return #***REMOVE THIS WHEN DONE TESTING
 	position = Vector2.ZERO
 	inventory.clear()
 	healthChange(_STARTING_HEALTH, false)

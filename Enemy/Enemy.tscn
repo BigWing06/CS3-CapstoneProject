@@ -89,7 +89,7 @@ animations = [{
 
 [node name="enemyBody" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 10
+collision_mask = 42
 motion_mode = 1
 script = ExtResource("1_o0oyn")
 baseDespawnRadius = 750

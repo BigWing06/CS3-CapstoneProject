@@ -5,7 +5,7 @@ extends StaticBody2D
 @onready var _player = get_node("/root/Main/World/Player")
 @onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
 
-var _size:float = 50 #Size of the tower image
+var _size:float = 32 #Size of the tower image
 var _tower #Stores tower type
 var _towerData #Stores data about tower type
 var _mode #Determines if the tower is in placement mode ("setup") or if it is placed ("placed")
@@ -17,7 +17,7 @@ func setup(tower):
 	_mode = "setup"
 	$towerIcon.texture = utils.loadImage(utils.towerImageRootPath + _tower + ".png")
 	$towerIcon.scale = Vector2(_size/$towerIcon.texture.get_width(), _size/$towerIcon.texture.get_height()) #Calculates scale to match size of the image
-	
+	$placementZone/CollisionShape2D.shape.radius = (_size-5)/2
 	
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
@@ -33,15 +33,21 @@ func build():
 	_player.inventory.resourcesChanged.disconnect(updatePlacementCircle)
 	$placementZone.body_entered.disconnect(func(b):updatePlacementCircle())
 	$placementZone.body_exited.disconnect(func(b):updatePlacementCircle())
-	var attackManager = attackManagerScene.instantiate()
-	add_child(attackManager)
-	attackManager._setupAttacks(_towerData["attack"], ["targetGroup", ["enemy"]])
+	if utils.readFromJSON(_towerData, "attack"):
+		var attackManager = attackManagerScene.instantiate()
+		add_child(attackManager)
+		attackManager._setupAttacks(_towerData["attack"], ["targetGroup", ["enemy"]])
 	set_collision_layer_value(4, true)
 	
 	
 func _process(delta: float) -> void:
 	if _mode == "setup":
-		position = get_global_mouse_position()
+		if utils.readFromJSON(_towerData, "placementMode") == "grid": #Checks to see if the tower needs to be locked to the tilemap
+			var tileMap = global.world.get_node("TileMaps").getMainTilemap()
+			var tileMapCellSize = tileMap.tile_set.tile_size.x
+			position = tileMap.local_to_map(get_global_mouse_position())*tileMapCellSize+Vector2i(tileMapCellSize/2, tileMapCellSize/2)
+		else:
+			position = get_global_mouse_position()
 
 func checkPlacementArea() -> bool: #Checks to see if the current placement position of the tower is valid returns true if ok
 	return (len(placementZone.get_overlapping_bodies())==0) #Area 2d will always collide with self which is why it must be less than or equal to 1
