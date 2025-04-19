@@ -51,6 +51,7 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 		display.display(resource, towerInfo["recipe"][resource],global.player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
 		display.custom_minimum_size = Vector2(45, 45)
 		_resourceDisplay.add_child(display)
+		display.set_clickable(false) # Removes the ability to select the item slot display
 	_updatePlacingTower(tower)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
