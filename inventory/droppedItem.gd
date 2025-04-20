@@ -7,7 +7,6 @@ var _resource
 var _amount
 
 func setup(dropPosition, resource, amount=1):
-	print(dropPosition)
 	position = dropPosition
 	_resource = resource
 	_amount = amount

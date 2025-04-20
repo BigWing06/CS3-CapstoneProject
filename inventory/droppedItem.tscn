@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw8mjq18nfi2m"]
 
-[ext_resource type="Texture2D" uid="uid://blxtpsb2751ht" path="res://gameplayReferences/resourceIcons/chipsWood.png" id="1_2b16v"]
+[ext_resource type="Texture2D" uid="uid://bn0bkribada6w" path="res://gameplayReferences/resourceIcons/chipsWood.png" id="1_2b16v"]
 [ext_resource type="Script" path="res://inventory/droppedItem.gd" id="1_7d8x2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6olk1"]
@@ -30,7 +30,6 @@ texture_filter = 3
 texture = ExtResource("1_2b16v")
 
 [node name="amountLbl" type="Label" parent="."]
-anchors_preset = -1
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 13
