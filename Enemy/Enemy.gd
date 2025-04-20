@@ -114,6 +114,11 @@ func getDropList():
 	return drops
 
 func _on_death() -> void:
+	var drops = getDropList()
+	for drop in drops.keys():
+		var dropInstance = _itemDropScene.instantiate()
+		global.world.add_child(dropInstance)
+		dropInstance.setup(position, drop, drops[drop])
 	queue_free()
 
 func _on_sight_radius_body_exited(body: Node2D) -> void:

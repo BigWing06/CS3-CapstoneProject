@@ -27,7 +27,6 @@ spawner="*res://globals/spawner.gd"
 player=""
 enemy=""
 base=""
-base=""
 
 [input]
 
