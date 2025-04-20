@@ -32,6 +32,10 @@ func _build() -> void: #Runs when the left mouse button is clicked and checks to
 	if _towerInstance.checkPlacementArea(): #Checks to make sure that the position is valid
 		if _towerInstance.checkPlacementResources():
 			global.player.inventory.addResourceDict(_towerInstance._towerData["recipe"], -1)
+			for child in _resourceDisplay.get_children(): # Loops through needed resources and updates frames with inventory values
+				var resource = child.get_resource()
+				child.display(resource, _towerInstance._towerData["recipe"][resource],global.player.inventory.hasAmount(resource,  _towerInstance._towerData["recipe"][resource]))
+				child.set_clickable(false) # Sets the frame outline to the correct texture
 			_towerInstance.build()
 			_towerInstance = null
 			_updatePlacingTower(_towerTypesList[_selectedTowerInt])
@@ -48,6 +52,7 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 		child.queue_free()
 	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower
 		var display = _itemSlotDisplay.instantiate()
+		print(global.player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
 		display.display(resource, towerInfo["recipe"][resource],global.player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
 		display.custom_minimum_size = Vector2(40, 40)
 		_resourceDisplay.add_child(display)

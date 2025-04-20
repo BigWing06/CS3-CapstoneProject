@@ -23,6 +23,7 @@ func _ready():
 	inventory.add("chipsWood", 100)
 	inventory.add("snowball", 1000)
 	inventory.add("stone", 1000)
+	inventory.add("wood",16)
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 

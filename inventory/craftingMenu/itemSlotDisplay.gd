@@ -51,3 +51,5 @@ func set_active() -> void: # Sets this button as the selected item slot
 func _removeActive(_sender): # Removes the active texture
 	if _sender != self:
 		self.texture_normal = _normalTexture
+func get_resource(): # Returns the item slot's resource
+	return _resource
