@@ -3,10 +3,10 @@ extends Control
 signal selectedTowerChanged(FOCUS_CLICK)
 
 var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
-@onready var _towerDisplayList = $scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
+@onready var _towerDisplayList = $MenuContainer/scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
 @onready var _towerInstanceScene = preload("res://Tower/tower.tscn") #Stores a reference to the tower scene that will be instanced
 @onready var _towerTypesList = utils.towerTypesJSON.keys() #Gets a list of tower names from the tower types JSON file
-@onready var _resourceDisplay = $Control/resourceDisplay #Reference to the resource display node
+@onready var _resourceDisplay = $MenuContainer/Control/resourceDisplay #Reference to the resource display node
 @onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn") #Reference to the itemSlotDisplay scene so that it can be instanced later
 var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
@@ -42,8 +42,8 @@ func _process(delta: float) -> void:
 	
 func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
 	var towerInfo = utils.towerTypesJSON[tower]
-	$Control/towerTitle.text = towerInfo['name']
-	$Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')
+	$MenuContainer/Control/towerTitle.text = towerInfo['name']
+	$MenuContainer/Control/towerImage.texture = utils.loadImage(utils.towerImageRootPath + tower + '.png')
 	for child in _resourceDisplay.get_children(): #Deletes all the children in the required reosurce display container
 		child.queue_free()
 	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower

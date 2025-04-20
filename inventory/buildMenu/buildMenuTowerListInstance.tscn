@@ -16,6 +16,7 @@ script = ExtResource("1_o6pfn")
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 0.5
 anchor_bottom = 1.0
 offset_top = 3.0
 offset_right = 189.13
