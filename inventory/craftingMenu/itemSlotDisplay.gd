@@ -29,7 +29,7 @@ func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu
 func _on_mouse_entered() -> void:
 	_hoverTextInstance = hoverTextScene.instantiate()
 	_hoverTextInstance.text = _resourceData["name"] + " ("+str(global.player.inventory.getAmount(_resource))+")"
-	global.UIParent.add_child(_hoverTextInstance)
+	_UIParent.add_child(_hoverTextInstance)
 func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()
 

@@ -6,6 +6,7 @@ extends Control
 @onready var displaySectionContainer = $HBoxContainer/displaySection/container
 @onready var resourceGridContainer = displaySectionContainer.get_node("GridContainer")
 @export var DEFAULT_ITEM = "wood" # The item to show for crafting by default
+@onready var _player = get_node("/root/Main/World/Player")
 var _selectedResource
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +30,7 @@ func _displayForCraft(resource): #Called to display new item to craft
 	for requiredResource in resourceInfo["recipe"].keys(): #Instances the itemSlotDisplay class to show the new required resrouces for crafting
 		var requiredResourceDisplay = itemSlotDisplay.instantiate()
 		requiredResourceDisplay.custom_minimum_size = Vector2(45, 45)
-		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource],global.player.inventory.hasAmount(requiredResource, resourceInfo["recipe"][requiredResource]))
+		requiredResourceDisplay.display(requiredResource, resourceInfo["recipe"][requiredResource],_player.inventory.hasAmount(requiredResource, resourceInfo["recipe"][requiredResource]))
 		requiredResourceDisplay.set_clickable(false) # Removes the ability to make the button active
 		resourceGridContainer.add_child(requiredResourceDisplay)
 	_checkResourceCraftability()
