@@ -6,6 +6,7 @@ signal death
 
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
+@onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
 
 @onready var toolTimeout = $toolTimeout
@@ -46,9 +47,20 @@ func _ready():
 	input.leftClick.connect(mainInteract)
 	input.scrollUp.connect(func(): cycleMode(1))
 	input.scrollDown.connect(func(): cycleMode(-1))
+	_createHotbar()
+	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
-
+	
+func _createHotbar():
+	var _hotbar = _hotbarScene.instantiate()
+	global.world.get_parent().get_node("UIParent").add_child(_hotbar)
+	
+	var _hotbarList = []
+	for tool in inventory.getToolsList():
+		_hotbarList.append({"name":tool,"amount":inventory.getAmount(tool)})
+	_hotbar.update(_hotbarList)
+	
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
