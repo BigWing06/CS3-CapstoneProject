@@ -107,7 +107,6 @@ shape = SubResource("RectangleShape2D_6kh3a")
 
 [node name="enemySpawner" type="Timer" parent="."]
 wait_time = 3.0
-one_shot = true
 autostart = true
 
 [node name="toolTimeout" type="Timer" parent="."]
