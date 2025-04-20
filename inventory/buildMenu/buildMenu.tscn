@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfrt33c1gjcjo"]
+[gd_scene load_steps=6 format=3 uid="uid://dfrt33c1gjcjo"]
 
 [ext_resource type="Script" path="res://inventory/buildMenu/buildMenu.gd" id="1_ikopu"]
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
 [ext_resource type="Texture2D" uid="uid://cifx46gb1gqsd" path="res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBG.png" id="2_68yc5"]
 [ext_resource type="Texture2D" uid="uid://s203ktmx5p04" path="res://fileNotFound.png" id="3_t3p12"]
+[ext_resource type="PackedScene" uid="uid://dqircrgqtelkr" path="res://inventory/buildMenu/buildMenuTowerListInstance.tscn" id="5_u7grb"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -79,11 +80,10 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.91
+anchor_top = 0.85
 anchor_right = 0.5
-anchor_bottom = 0.95
+anchor_bottom = 0.91
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="scrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -117,5 +117,29 @@ layout_mode = 2
 texture = ExtResource("3_t3p12")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="TEST" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST2" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST3" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST4" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST5" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST6" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST7" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
+
+[node name="TEST8" parent="scrollContainer/towerDisplayList" instance=ExtResource("5_u7grb")]
+layout_mode = 2
 
 [connection signal="selectedTowerChanged" from="." to="." method="_on_selected_tower_changed"]
