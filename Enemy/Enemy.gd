@@ -18,6 +18,9 @@ signal death
 @export var baseDespawnRadius: int #Distance from base before enemies will despawn 
 @export var playerDespawnRadius: int #Distance from player before enemies will despawn
 
+@export var baseDespawnRadius: int #Distance from base before enemies will despawn 
+@export var playerDespawnRadius: int #Distance from player before enemies will despawn
+
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn")
 
 @onready var _attackManager = $attackManager
@@ -28,7 +31,8 @@ signal death
 @onready var _despawnCooldown = $despawnCooldown
 
 func _ready():
-	_update(["wolf"].pick_random()) #choose animal from json file
+	_update(["wolf", "polarbear", "penguin"].pick_random()) #choose animal from json file
+	_getNewTarget()
 	
 func _physics_process(delta):
 	_sprite.look_at(_target.position)
@@ -97,6 +101,16 @@ func getTarget():
 	return _target
 
 func _on_death() -> void:
+	queue_free()
+
+func _on_sight_radius_body_exited(body: Node2D) -> void:
+	if body == _target and _targetType == "hybrid":
+		targetExited.emit()
+
+func _on_target_exited() -> void:
+	_getNewTarget()
+
+func _on_despawn_cooldown_timeout() -> void:
 	queue_free()
 
 func _on_sight_radius_body_exited(body: Node2D) -> void:

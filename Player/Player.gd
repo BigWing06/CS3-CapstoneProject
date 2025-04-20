@@ -30,12 +30,14 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	healthChange(_STARTING_HEALTH, false)
+	healthChange(_STARTING_HEALTH, false)
 	$enemySpawner.start()
 	inventory.add("stoneSword", 1)
 	inventory.add("bow", 1)
 	inventory.add("stoneAxe", 1)
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
+	inventory.add("chipsWood", 100)
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
@@ -75,6 +77,7 @@ func _process(delta):
 		chunkChanged.emit()
 		
 func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
+func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
@@ -83,7 +86,12 @@ func healthChange(_amount:float, displayChange = true): # Funciton to cause dama
 		if displayChange:
 			_displayHealthChange(_amount)
 			$DamageAnimation.play("Damage")
+		if displayChange:
+			_displayHealthChange(_amount)
+			$DamageAnimation.play("Damage")
 	elif _amount > 0:
+		if displayChange:
+			_displayHealthChange(_amount)
 		if displayChange:
 			_displayHealthChange(_amount)
 
@@ -100,7 +108,6 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
 func _on_death() -> void:
-	return #***REMOVE THIS WHEN DONE TESTING
 	position = Vector2.ZERO
 	inventory.clear()
 	healthChange(_STARTING_HEALTH, false)
