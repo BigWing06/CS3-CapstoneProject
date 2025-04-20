@@ -1,27 +1,32 @@
 [gd_scene load_steps=3 format=3 uid="uid://fvx6bensmp67"]
 
-[ext_resource type="Script" path="res://Enemy/Attacks/ranged_object.gd" id="1_3dbaj"]
+[ext_resource type="Script" path="res://gameplayReferences/combat/ranged_object.gd" id="1_nlbqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lyeq"]
-size = Vector2(50, 50)
+size = Vector2(10, 5)
 
 [node name="RangedObject" type="Area2D"]
 collision_layer = 16
-collision_mask = 2
-script = ExtResource("1_3dbaj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6lyeq")
+collision_mask = 6
+script = ExtResource("1_nlbqn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 22.0
-offset_bottom = 7.0
+custom_minimum_size = Vector2(10, 5)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 3.45
 
 [node name="TimeOut" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6lyeq")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimeOut" to="." method="_on_time_out_timeout"]

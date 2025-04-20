@@ -1,35 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbcpk0a8t4ern"]
+[gd_scene load_steps=4 format=3 uid="uid://dbcpk0a8t4ern"]
 
+[ext_resource type="Script" path="res://World/world.gd" id="1_ouaoe"]
 [ext_resource type="PackedScene" uid="uid://b0o0be4hbyhe5" path="res://TileMap/tile_maps.tscn" id="1_xcin8"]
-[ext_resource type="PackedScene" uid="uid://chhadtxo8k0ks" path="res://Player/Player.tscn" id="2_wbp8x"]
-[ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://World/istockphoto-175389602-612x612.jpg" id="4_il71a"]
-[ext_resource type="PackedScene" uid="uid://dn7u6vy4aavqe" path="res://Enemy/enemy_spawn.tscn" id="4_scxhl"]
-[ext_resource type="PackedScene" uid="uid://da8r8qt5moqv6" path="res://Enemy/Enemy.tscn" id="6_8n07r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uwai"]
-size = Vector2(151, 94)
+[ext_resource type="PackedScene" uid="uid://67gqnq2brj81" path="res://World/base.tscn" id="3_qygt3"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_ouaoe")
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
 chunkSize = Vector2i(5, 5)
 chunkPlayerBuffer = 20
 
-[node name="Player" parent="." instance=ExtResource("2_wbp8x")]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(500.5, 399)
-shape = SubResource("RectangleShape2D_1uwai")
-
-[node name="Base" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(500, 400)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_il71a")
-
-[node name="EnemySpawn" parent="." instance=ExtResource("4_scxhl")]
-position = Vector2(-192, 136)
-_enemy_scene = ExtResource("6_8n07r")
+[node name="base" parent="." instance=ExtResource("3_qygt3")]

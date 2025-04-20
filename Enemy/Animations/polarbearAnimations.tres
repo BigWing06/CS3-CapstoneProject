@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://2j0qaxdpyiug"]
+
+[ext_resource type="Texture2D" uid="uid://c0ovkjw227lib" path="res://Enemy/Animations/polarSpritesheet.png" id="1_13ndd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnso4"]
+atlas = ExtResource("1_13ndd")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v7n6"]
+atlas = ExtResource("1_13ndd")
+region = Rect2(48, 0, 48, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnso4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v7n6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]

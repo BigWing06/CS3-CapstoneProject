@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bde72483yp21x"]
+
+[ext_resource type="Script" path="res://gameplayReferences/combat/attack.gd" id="1_nbdow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ur1s1"]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_nbdow")
+
+[node name="attackTimeout" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="AttackRaycast" type="RayCast2D" parent="."]
+
+[node name="effectRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="effectRange"]
+shape = SubResource("CircleShape2D_ur1s1")
+
+[connection signal="timeout" from="attackTimeout" to="." method="_on_attack_timeout_timeout"]

@@ -15,7 +15,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Tower" type="StaticBody2D"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_p08au")
 
@@ -23,8 +23,8 @@ script = ExtResource("1_p08au")
 shape = SubResource("CircleShape2D_5owoy")
 
 [node name="placementZone" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 0
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="placementZone"]
 shape = SubResource("CircleShape2D_5owoy")
