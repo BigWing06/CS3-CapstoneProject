@@ -8,6 +8,7 @@
 script = ExtResource("1_ouaoe")
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
+scale = Vector2(2, 2)
 chunkSize = Vector2i(5, 5)
 chunkPlayerBuffer = 20
 
