@@ -42,7 +42,6 @@ func _checkValidTarget(target): #Checks to see if the given target is able to be
 	return false
 	
 func _checkForTarget(area:Area2D, queuedAttack, body=_attackTarget):
-	
 	if _attackCooldown.is_stopped():
 		if _attackTarget in area.get_overlapping_bodies():
 			_sendAttack(_attackTarget, queuedAttack)

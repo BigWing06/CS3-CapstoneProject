@@ -77,7 +77,6 @@ func _process(delta):
 		chunkChanged.emit()
 		
 func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
-func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:

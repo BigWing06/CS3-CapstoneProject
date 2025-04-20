@@ -39,7 +39,6 @@ texture = SubResource("GradientTexture2D_4nl6p")
 [node name="healthBar" type="ProgressBar" parent="."]
 visible = false
 custom_minimum_size = Vector2(100, 0)
-anchors_preset = -1
 offset_top = -89.0
 offset_bottom = -62.0
 grow_horizontal = 2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyjc4xo83fqtc"]
+
+[ext_resource type="Texture2D" uid="uid://bn0bkribada6w" path="res://gameplayReferences/resourceIcons/chipsWood.png" id="1_2b16v"]
+[ext_resource type="Script" path="res://inventory/droppedItem.gd" id="1_7d8x2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6olk1"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rtky"]
+radius = 34.0588
+
+[node name="DroppedItem" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_7d8x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6olk1")
+
+[node name="pickupRegion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickupRegion"]
+shape = SubResource("CircleShape2D_0rtky")
+
+[node name="itemTexture" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_2b16v")
+
+[node name="amountLbl" type="Label" parent="."]
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 13
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="pickupRegion" to="." method="_on_pickup_region_body_entered"]
