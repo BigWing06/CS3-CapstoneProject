@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6yisyqpenl1"
-path="res://.godot/imported/wood.png-706fe87146ea1700c34cc2084b2a638c.ctex"
+uid="uid://b0vvd3itcwj28"
+path="res://.godot/imported/CloseButton_Hover.png-1a560d18c144c2cf4b7cfb1565585913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplayReferences/resourceIcons/wood.png"
-dest_files=["res://.godot/imported/wood.png-706fe87146ea1700c34cc2084b2a638c.ctex"]
+source_file="res://inventory/craftingMenu/InventoryTextures/CloseButton_Hover.png"
+dest_files=["res://.godot/imported/CloseButton_Hover.png-1a560d18c144c2cf4b7cfb1565585913.ctex"]
 
 [params]
 
