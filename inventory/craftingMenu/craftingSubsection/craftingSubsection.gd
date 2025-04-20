@@ -14,6 +14,7 @@ func _ready() -> void:
 			var itemDisplay = itemSlotDisplay.instantiate()
 			itemDisplay.display(item)
 			itemDisplay.pressed.connect(func(): _displayForCraft(item))
+			itemDisplay.custom_minimum_size = Vector2(100,100)
 			gridContainer.add_child(itemDisplay)
 			if item == DEFAULT_ITEM:
 				itemDisplay.set_active()

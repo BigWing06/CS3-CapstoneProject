@@ -13,4 +13,5 @@ func update(changed, amount): #Updates the inventory sceneInstances to match the
 	for resource in resources:
 		var container = inventoryContinaer.instantiate()
 		container.display(resource, inventoryDict[resource])
+		container.custom_minimum_size = Vector2(100,100)
 		gridContainer.add_child(container)
