@@ -38,6 +38,7 @@ func _checkResourceCraftability(): #Checks to see if the selected resoruce is cr
 		displaySectionContainer.get_node("craftButton").disabled = true
 
 func _on_craft_button_pressed() -> void:
+	AudioController.play_menu()
 	var inventory = _player.inventory
 	inventory.add(_selectedResource, 1)
 	inventory.addResourceDict(utils.resourceJSON[_selectedResource]["recipe"], -1)

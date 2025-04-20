@@ -16,6 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleInventory"):
 		_toggleMenu()
+		AudioController.play_menu()
 		
 func _toggleMenu():
 	visible = !visible
@@ -27,9 +28,12 @@ func _setSection(section): #Called when a button is clicked to change the subsec
 	
 func _on_close_button_bttn_clicked() -> void:
 	_toggleMenu()
+	AudioController.play_menu()
 
 func _on_inventory_button_bttn_clicked() -> void:
 	_setSection("inventory")
+	AudioController.play_menu()
 
 func _on_crafting_button_bttn_clicked() -> void:
 	_setSection("crafting")
+	AudioController.play_menu()

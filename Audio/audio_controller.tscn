@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl7sodr4debo"]
+
+[ext_resource type="Script" path="res://Audio/audio_controller.gd" id="1_w7h51"]
+[ext_resource type="AudioStream" uid="uid://bpqwcoxehyv0j" path="res://Audio/song1.ogg" id="1_wibs7"]
+[ext_resource type="AudioStream" uid="uid://bullgrqgldvuv" path="res://Audio/song2.ogg" id="2_832q7"]
+[ext_resource type="AudioStream" uid="uid://u48wpq4nt04c" path="res://Audio/song3.ogg" id="3_3qt1u"]
+[ext_resource type="AudioStream" uid="uid://ooodglfulnov" path="res://Audio/menu.mp3" id="5_iaije"]
+[ext_resource type="AudioStream" uid="uid://c7s3nrhsgqat5" path="res://Audio/hit.mp3" id="6_yv6ov"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_32enx"]
+fade_time = 0.0
+stream_count = 3
+stream_0 = ExtResource("1_wibs7")
+stream_1 = ExtResource("2_832q7")
+stream_2 = ExtResource("3_3qt1u")
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_w7h51")
+
+[node name="bgMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_32enx")
+volume_db = -25.0
+
+[node name="menuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_iaije")
+volume_db = -23.0
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yv6ov")
+volume_db = -50.0
+bus = &"hit"

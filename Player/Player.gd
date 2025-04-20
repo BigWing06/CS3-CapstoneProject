@@ -27,7 +27,7 @@ var _collision
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	$Square.texture = ResourceLoader.load(global.characterTexture)
+	$playerSprite.sprite_frames = ResourceLoader.load("res://Player/playerAnimation.tres")
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
 	$enemySpawner.start()
@@ -82,6 +82,7 @@ func healthChange(_amount:float): # Funciton to cause damage to player
 			death.emit()
 		_displayHealthChange(_amount)
 		$DamageAnimation.play("Damage")
+		AudioController.play_hit()
 	elif _amount > 0:
 		_health+=_health
 		_displayHealthChange(_health)
@@ -101,6 +102,7 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 
 func _on_death() -> void:
 	#self.queue_free()
+	AudioController.deathToggle = false
 	pass
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

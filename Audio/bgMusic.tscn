@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvqasos5noj1a"]
-
-[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rfpex"]
-fade_time = 0.0
-
-[node name="MusicPlayer" type="AudioStreamPlayer"]
-stream = SubResource("AudioStreamPlaylist_rfpex")
-volume_db = -20.0
-autoplay = true
