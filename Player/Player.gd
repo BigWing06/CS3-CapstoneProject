@@ -26,6 +26,7 @@ var _modeInt = 0 #Index of selcted tool in toollist
 var _collision
 
 func _ready():
+	global.player = self
 	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
@@ -36,6 +37,7 @@ func _ready():
 	inventory.add("stoneAxe", 1)
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
+	inventory.add("chipsWood", 100)
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
