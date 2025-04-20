@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cifx46gb1gqsd" path="res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBG.png" id="2_68yc5"]
 
 [node name="CraftingMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
