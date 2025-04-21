@@ -26,10 +26,10 @@ var _modeInt = 0 #Index of selcted tool in toollist
 var _collision
 
 func _ready():
+	global.player = self
 	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
-	healthChange(_STARTING_HEALTH, false)
 	healthChange(_STARTING_HEALTH, false)
 	$enemySpawner.start()
 	inventory.add("stoneSword", 1)

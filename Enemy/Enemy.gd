@@ -84,9 +84,9 @@ func _displayHealthChange(_amount: float): # Creates a scene to display an anima
 
 func _getNewTarget(): #Used for getting the target of the enemy
 	if _targetType == "hybrid":
-		var closetBaseNode = utils.getClosestNode(self, get_tree().get_nodes_in_group("player"))
-		if closetBaseNode in _sightRadius.get_overlapping_bodies():
-			_target = closetBaseNode
+		var closestPlayer = utils.getClosestNode(self, get_tree().get_nodes_in_group("player"))
+		if closestPlayer in _sightRadius.get_overlapping_bodies():
+			_target = closestPlayer
 		else:
 			_target = global.world.get_node("base")
 	elif _targetType == "baseFocused":

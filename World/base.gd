@@ -23,7 +23,6 @@ func healthChange(_amount:float): # Funciton to cause damage to player
 	healthChanged.emit()
 	if _amount < 0:
 		if _health<=0:
-			return #REMOVE THIS WHEN DONE TESTING
 			death.emit()
 	elif _amount > 0:
 		_health+=_health
