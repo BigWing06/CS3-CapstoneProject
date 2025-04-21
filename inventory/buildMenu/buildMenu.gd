@@ -49,6 +49,7 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower
 		var display = _itemSlotDisplay.instantiate()
 		display.display(resource, towerInfo["recipe"][resource],_player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
+		display.set_clickable(false)
 		display.custom_minimum_size = Vector2(45, 45)
 		_resourceDisplay.add_child(display)
 	_updatePlacingTower(tower)
