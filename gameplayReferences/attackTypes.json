@@ -6,7 +6,7 @@
 		"damage":1,
 		"lifetime":3,
 		"radius":200,
-		"projectileSprite":"",
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/SnowballProjectile.png",
 		"projectileSize":[25,15],
 		"durability":3
 	},

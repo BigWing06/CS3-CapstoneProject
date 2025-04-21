@@ -10,20 +10,10 @@ collision_layer = 16
 collision_mask = 6
 script = ExtResource("1_nlbqn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(10, 5)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_stretch_ratio = 3.45
-
 [node name="TimeOut" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6lyeq")
