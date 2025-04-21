@@ -27,6 +27,10 @@ input="*res://globals/input.gd"
 spawner="*res://globals/spawner.gd"
 AudioController="*res://Audio/audio_controller.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""

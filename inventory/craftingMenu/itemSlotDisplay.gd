@@ -15,7 +15,6 @@ func display(resource, amount = -2): #Called by the crafting menu script to show
 	else:
 		amountLbl.visible = false
 	texture_normal = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
-	AudioController.play_menu()
 	
 func _on_mouse_entered() -> void:
 	_hoverTextInstance = hoverTextScene.instantiate()
@@ -23,3 +22,6 @@ func _on_mouse_entered() -> void:
 	_UIParent.add_child(_hoverTextInstance)
 func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()
+
+func _on_pressed() -> void:
+	AudioController.play_menu()
