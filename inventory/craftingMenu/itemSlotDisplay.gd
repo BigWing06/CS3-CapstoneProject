@@ -72,3 +72,6 @@ func _removeActive(_sender,_groups): # Removes the active texture
 			_inGroups=true
 	if _sender != self and _inGroups:
 		_changeTexture(state.NORMAL)
+
+func get_resource(): # Returns the item slot's resource
+	return _resource

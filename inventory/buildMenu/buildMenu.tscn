@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://inventory/buildMenu/buildMenu.gd" id="1_ikopu"]
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
-[ext_resource type="Texture2D" uid="uid://s203ktmx5p04" path="res://fileNotFound.png" id="3_t3p12"]
+[ext_resource type="Texture2D" uid="uid://cifx46gb1gqsd" path="res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBG.png" id="2_68yc5"]
 
 [node name="CraftingMenu" type="Control"]
 visible = false
 layout_mode = 3
-anchor_left = 0.75
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -16,23 +16,37 @@ size_flags_horizontal = 3
 size_flags_vertical = 10
 script = ExtResource("1_ikopu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MenuContainer" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchor_left = 0.64
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14, 0.14, 0.14, 1)
+texture = ExtResource("2_68yc5")
+expand_mode = 3
+stretch_mode = 4
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="MenuContainer"]
 layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 0.4
+anchor_left = 0.115
+anchor_top = 0.07
+anchor_right = 0.835
+anchor_bottom = 0.425
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="towerImage" type="TextureRect" parent="Control"]
+[node name="towerImage" type="TextureRect" parent="MenuContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -45,55 +59,48 @@ texture = ExtResource("1_inlpd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="towerTitle" type="Label" parent="Control"]
+[node name="towerTitle" type="Label" parent="MenuContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 0.7
 offset_left = 10.0
+offset_top = -8.0
 offset_right = -10.0
+offset_bottom = 15.0
 text = "Example Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="resourceDisplay" type="HBoxContainer" parent="Control"]
+[node name="resourceDisplay" type="HBoxContainer" parent="MenuContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.85
+anchor_top = 0.82
 anchor_right = 0.5
-anchor_bottom = 0.95
+anchor_bottom = 0.985
+offset_right = 0.401581
+offset_bottom = 0.397598
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="scrollContainer" type="ScrollContainer" parent="."]
+[node name="scrollContainer" type="ScrollContainer" parent="MenuContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.4
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.113
+anchor_top = 0.465
+anchor_right = 0.836
+anchor_bottom = 0.94
 grow_horizontal = 2
+grow_vertical = 2
 follow_focus = true
+vertical_scroll_mode = 3
 
-[node name="towerDisplayList" type="VBoxContainer" parent="scrollContainer"]
+[node name="towerDisplayList" type="VBoxContainer" parent="MenuContainer/scrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-
-[node name="ColorRect" type="ColorRect" parent="scrollContainer/towerDisplayList"]
-layout_mode = 2
-color = Color(0.377919, 0.377919, 0.377919, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="scrollContainer/towerDisplayList"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="scrollContainer/towerDisplayList/HBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-texture = ExtResource("3_t3p12")
-expand_mode = 3
-stretch_mode = 5
 
 [connection signal="selectedTowerChanged" from="." to="." method="_on_selected_tower_changed"]
