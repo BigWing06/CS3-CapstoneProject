@@ -88,8 +88,8 @@ animations = [{
 }]
 
 [node name="enemyBody" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 4
-collision_mask = 10
+collision_layer = 36
+collision_mask = 42
 motion_mode = 1
 script = ExtResource("1_o0oyn")
 baseDespawnRadius = 750
@@ -138,5 +138,4 @@ grow_vertical = 2
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="targetExited" from="." to="." method="_on_target_exited"]
 [connection signal="timeout" from="despawnCooldown" to="." method="_on_despawn_cooldown_timeout"]
-[connection signal="body_entered" from="sightRadius" to="." method="_getNewTarget" unbinds=1]
 [connection signal="body_exited" from="sightRadius" to="." method="_on_sight_radius_body_exited"]

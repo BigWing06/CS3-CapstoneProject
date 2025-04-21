@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://67gqnq2brj81"]
+[gd_scene load_steps=4 format=3 uid="uid://c861p5obeeolj"]
 
 [ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://World/istockphoto-175389602-612x612.jpg" id="1_srp48"]
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
@@ -7,13 +7,12 @@
 size = Vector2(151, 94)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["base"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 32
+collision_mask = 40
 script = ExtResource("1_v6am7")
 
 [node name="enemySpawner" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1uwai")

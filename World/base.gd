@@ -11,6 +11,7 @@ signal death
 func _ready() -> void:
 	healthBar.max_value = _health
 	healthBar.value = _health
+
 func spawnBase(pos:Vector2):
 	position = pos
 	$enemySpawner.start()
