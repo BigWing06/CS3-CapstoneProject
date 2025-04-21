@@ -23,7 +23,7 @@ var _enemySpawnDistance = 100 #Sets how far away from the player enemies will sp
 var _toolList = [] #Stores the list of tools the player has in inventory
 var _mode #String value of selected tool
 var _modeInt = 0 #Index of selcted tool in toollist
-
+var _hotbar
 var _collision
 
 func _ready():
@@ -53,7 +53,7 @@ func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player i
 	return global.world.get_node("TileMaps").getChunk(position)
 	
 func _createHotbar():
-	var _hotbar = _hotbarScene.instantiate()
+	_hotbar = _hotbarScene.instantiate()
 	global.world.get_parent().get_node("UIParent").add_child(_hotbar)
 	
 	var _hotbarList = []
@@ -136,7 +136,8 @@ func attack(attackName): #calls and handles player attacks
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
-		
+	_hotbar.set_active_tool(_toolList[_modeInt])
+	print("Mode: "+str( _mode))
 func mainInteract(): #Bound to the left click button and is connected to main tool interactions
 	if (toolTimeout.is_stopped()):
 		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
