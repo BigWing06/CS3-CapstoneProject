@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://inventory/buildMenu/buildMenu.gd" id="1_ikopu"]
 [ext_resource type="Texture2D" uid="uid://d20g35wds82cd" path="res://Enemy/download.jpg" id="1_inlpd"]
-[ext_resource type="Texture2D" uid="uid://cwr7wlnmx01ci" path="res://fileNotFound.png" id="3_t3p12"]
+[ext_resource type="Texture2D" uid="uid://s203ktmx5p04" path="res://fileNotFound.png" id="3_t3p12"]
 
 [node name="CraftingMenu" type="Control"]
 visible = false

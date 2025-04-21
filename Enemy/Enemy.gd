@@ -18,6 +18,7 @@ signal death
 @export var playerDespawnRadius: int #Distance from player before enemies will despawn
 
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn")
+@onready var _itemDropScene = preload("res://inventory/droppedItem.tscn")
 
 @onready var _attackManager = $attackManager
 @onready var _attack = $attack
@@ -103,8 +104,21 @@ func _getNewTarget(): #Used for getting the target of the enemy
 
 func getTarget():
 	return _target
+	
+func getDropList():
+	var drops = {}
+	for drop in _enemyData["drops"]:
+		if randf() <= drop["chance"]:
+			var amount = randi_range(drop["minAmount"], drop["maxAmount"])
+			drops[drop["resource"]] = amount
+	return drops
 
 func _on_death() -> void:
+	var drops = getDropList()
+	for drop in drops.keys():
+		var dropInstance = _itemDropScene.instantiate()
+		global.world.add_child(dropInstance)
+		dropInstance.setup(position, drop, drops[drop])
 	queue_free()
 
 func _on_sight_radius_body_exited(body: Node2D) -> void:
