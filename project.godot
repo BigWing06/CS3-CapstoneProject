@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Beaver Battles"
-run/main_scene="res://startscreen/start_screen.tscn"
+run/main_scene="res://Viewport/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -35,6 +35,7 @@ window/stretch/mode="canvas_items"
 
 player=""
 enemy=""
+base=""
 
 [input]
 
@@ -106,7 +107,9 @@ muteBgmusic={
 
 [layer_names]
 
-2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemy"
-2d_physics/layer_4="World"
-2d_physics/layer_5="PlayerDamage"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="world"
+2d_physics/layer_5="playerDamage"
+2d_physics/layer_6="base"
+2d_physics/layer_7="droppedItems"

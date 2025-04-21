@@ -46,11 +46,15 @@ func _applyDamage(input): #Used for melee attacks and applies the damage of the 
 				body.healthChange(-_damage)
 				queue_free()
 			else:
-				for group in _groups:
-					if body.is_in_group(group):
-						if body in _effectRange.get_overlapping_bodies():
-							body.healthChange(-_damage)
-							queue_free()
+				if _checkValidTarget(body, _groups):
+					body.healthChange(-_damage)
+					queue_free()
+
+func _checkValidTarget(target, attackableGroups): #Checks to see if the given target is able to be attacked	
+	for group in target.get_groups():
+		if group in attackableGroups:
+			return true
+	return false
 
 func _on_attack_timeout_timeout() -> void:
 	queue_free()
