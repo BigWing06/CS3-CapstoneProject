@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2kjrlgsa3g3"]
+[gd_scene load_steps=7 format=3 uid="uid://c2kjrlgsa3g3"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/itemSlotDisplay.gd" id="1_ahpwb"]
 [ext_resource type="Texture2D" uid="uid://bbt2qfbmiex1c" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge.png" id="1_l55rq"]
 [ext_resource type="Texture2D" uid="uid://bbawyrdfhf8yu" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Hover.png" id="2_xyyrf"]
 [ext_resource type="Texture2D" uid="uid://bgsutlxivxola" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Disabled.png" id="3_h4qby"]
 [ext_resource type="Texture2D" uid="uid://me8fpje3pkmp" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Active.png" id="4_w21hr"]
+[ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="6_ohba4"]
 
 [node name="InventoryItemSlot" type="TextureButton"]
 texture_filter = 1
@@ -42,6 +43,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.0392157, 0.0980392, 0.137255, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_ohba4")
 text = "saf"
 horizontal_alignment = 1
 vertical_alignment = 1
