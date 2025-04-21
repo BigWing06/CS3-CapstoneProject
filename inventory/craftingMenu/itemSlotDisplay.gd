@@ -62,7 +62,8 @@ func _on_pressed() -> void:
 	
 func set_active() -> void: # Sets this button as the selected item slot
 	_changeTexture(state.ACTIVE)
-	_UIParent.clickItemSlot(self,self.get_groups())
+	print("UIPARENT: "+str(_UIParent))
+	get_node("/root/Main/UIParent").clickItemSlot(self,self.get_groups())
 	
 func _removeActive(_sender,_groups): # Removes the active texture
 	var _inGroups = false
