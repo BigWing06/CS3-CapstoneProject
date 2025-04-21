@@ -29,7 +29,7 @@ signal death
 @onready var _despawnCooldown = $despawnCooldown
 
 func _ready():
-	_update(["wolf", "polarbear", "penguin"].pick_random()) #choose animal from json file
+	_update(["wolf", "polarbear", "penguin", "beaver"].pick_random()) #choose animal from json file
 	_getNewTarget()
 	
 func _physics_process(delta):
