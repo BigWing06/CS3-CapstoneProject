@@ -17,10 +17,16 @@ func _ready():
 func _physics_process(delta: float) -> void: # Moves towards target
 	position+=_direction*_speed*delta
 
+func _checkValidTarget(target, attackableGroups): #Checks to see if the given target is able to be attacked
+	for group in target.get_groups():
+		if group in attackableGroups:
+			return true
+	return false
+
 func _on_body_entered(body: Node2D) -> void: # If it hits the player cause damage and then disappear
 	if(not body == _attacker):
 		for group in _affectedGroups:
-			if body.is_in_group(group):
+			if _checkValidTarget(body, group):
 				body.healthChange(_damage*-1)
 				_durability-=1
 				if _durability <=0:

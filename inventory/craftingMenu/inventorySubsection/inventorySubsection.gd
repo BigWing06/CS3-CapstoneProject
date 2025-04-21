@@ -14,4 +14,5 @@ func update(changed, amount): #Updates the inventory sceneInstances to match the
 	for resource in resources:
 		var container = inventoryContinaer.instantiate()
 		container.display(resource, inventoryDict[resource])
+		container.add_to_group("inventoryMenu")
 		gridContainer.add_child(container)

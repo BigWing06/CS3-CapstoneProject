@@ -1,26 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2kjrlgsa3g3"]
+[gd_scene load_steps=6 format=3 uid="uid://c2kjrlgsa3g3"]
 
 [ext_resource type="Script" path="res://inventory/craftingMenu/itemSlotDisplay.gd" id="1_ahpwb"]
+[ext_resource type="Texture2D" uid="uid://bbt2qfbmiex1c" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge.png" id="1_l55rq"]
+[ext_resource type="Texture2D" uid="uid://bbawyrdfhf8yu" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Hover.png" id="2_xyyrf"]
+[ext_resource type="Texture2D" uid="uid://bgsutlxivxola" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Disabled.png" id="3_h4qby"]
+[ext_resource type="Texture2D" uid="uid://me8fpje3pkmp" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge_Active.png" id="4_w21hr"]
 
 [node name="InventoryItemSlot" type="TextureButton"]
+texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("1_ahpwb")
+NORMAL_TEXTURE = ExtResource("1_l55rq")
+HOVER_TEXTURE = ExtResource("2_xyyrf")
+DISABLED_TEXTURE = ExtResource("3_h4qby")
+ACTIVE_TEXTURE = ExtResource("4_w21hr")
 
-[node name="amountLbl" type="Label" parent="."]
+[node name="Frame" type="TextureRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+expand_mode = 3
+
+[node name="amountLbl" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0392157, 0.0980392, 0.137255, 1)
+theme_override_constants/outline_size = 10
 text = "saf"
 horizontal_alignment = 1
 vertical_alignment = 1

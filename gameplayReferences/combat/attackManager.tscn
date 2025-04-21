@@ -16,7 +16,7 @@ one_shot = true
 
 [node name="queuedRangedAttackRange" type="Area2D" parent="."]
 collision_layer = 6
-collision_mask = 6
+collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="queuedRangedAttackRange"]
 shape = SubResource("CircleShape2D_r1w6b")
@@ -24,13 +24,9 @@ debug_color = Color(0.743882, 0.426331, 0.495349, 0.42)
 
 [node name="queuedMeleeAttackRange" type="Area2D" parent="."]
 collision_layer = 6
-collision_mask = 6
+collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="queuedMeleeAttackRange"]
 shape = SubResource("CircleShape2D_n80rn")
 
-[connection signal="timeout" from="attackCooldown" to="." method="_checkForTarget"]
-[connection signal="body_entered" from="queuedRangedAttackRange" to="." method="_checkForTarget" unbinds=1]
-[connection signal="body_exited" from="queuedRangedAttackRange" to="." method="_checkForTarget" unbinds=1]
-[connection signal="body_entered" from="queuedMeleeAttackRange" to="." method="_checkForTarget" unbinds=1]
-[connection signal="body_exited" from="queuedMeleeAttackRange" to="." method="_checkForTarget" unbinds=1]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
