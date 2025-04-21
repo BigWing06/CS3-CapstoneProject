@@ -25,12 +25,17 @@ func _checkValidTarget(target, attackableGroups): #Checks to see if the given ta
 
 func _on_body_entered(body: Node2D) -> void: # If it hits the player cause damage and then disappear
 	if(not body == _attacker):
-		for group in _affectedGroups:
-			if _checkValidTarget(body, group):
+		if body.is_in_group("base"):
+			if not _attacker.is_in_group("player"):
 				body.healthChange(_damage*-1)
-				_durability-=1
-				if _durability <=0:
-					queue_free()
+			queue_free()
+		else:
+			for group in _affectedGroups:
+				if _checkValidTarget(body, group):
+					body.healthChange(_damage*-1)
+					_durability-=1
+					if _durability <=0:
+						queue_free()
 
 func generateProjectile(attacker, targetPos:  Vector2, pos: Vector2, speed: float, lifetime: float, texture: String, collisionSize: Vector2,damage: float, durability: float, affectedGroups: Array):
 	_affectedGroups = affectedGroups
