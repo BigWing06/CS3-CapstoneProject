@@ -39,7 +39,7 @@ func generateProjectile(attacker, targetPos:  Vector2, pos: Vector2, speed: floa
 	_direction = targetPos
 	_speed = speed
 	_timeOut = lifetime
-	$Sprite2D.texture=load(texture)
+	$Sprite2D.texture=utils.loadImage(texture)
 	$CollisionShape2D.shape.size = collisionSize
 	_damage = damage
 	_durability = durability

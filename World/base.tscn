@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c861p5obeeolj"]
+[gd_scene load_steps=5 format=3 uid="uid://c861p5obeeolj"]
 
-[ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://Enemy/istockphoto-175389602-612x612.jpg" id="1_srp48"]
+[ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://World/istockphoto-175389602-612x612.jpg" id="1_srp48"]
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
+[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://HealthStatus/HealthStatus.tscn" id="3_h12s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uwai"]
 size = Vector2(151, 94)
@@ -18,11 +19,6 @@ shape = SubResource("RectangleShape2D_1uwai")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_srp48")
 
-[node name="healthBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(100, 0)
-offset_top = -89.0
-offset_bottom = -62.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="healthBar" parent="." instance=ExtResource("3_h12s3")]
 
 [connection signal="healthChanged" from="." to="." method="updateHealthbar"]
