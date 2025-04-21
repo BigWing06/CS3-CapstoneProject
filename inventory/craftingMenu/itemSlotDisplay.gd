@@ -34,8 +34,6 @@ func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu
 	$Frame.texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
 	
 func _changeTexture(_newState:state,_updateState:bool=true):
-	print("STST: "+str(_newState))
-	print("TXZT: "+str(_texturesDict[_newState]))
 	self.texture_normal = _texturesDict[_newState]
 	self.texture_disabled = _texturesDict[_newState]
 	if _updateState:
