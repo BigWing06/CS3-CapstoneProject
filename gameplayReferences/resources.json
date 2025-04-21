@@ -82,5 +82,8 @@
 			"wood": 3,
 			"compactStone": 2
 		}
+	},
+	"bow":{
+		"name": "Bow"
 	}
 }

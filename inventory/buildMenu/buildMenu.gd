@@ -35,10 +35,12 @@ func _build() -> void: #Runs when the left mouse button is clicked and checks to
 			_towerInstance.build()
 			_towerInstance = null
 			_updatePlacingTower(_towerTypesList[_selectedTowerInt])
+			AudioController.play_menu()
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):
 		_toggleMenu()
+		AudioController.play_menu()
 	
 func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
 	var towerInfo = utils.towerTypesJSON[tower]
@@ -48,7 +50,8 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 		child.queue_free()
 	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower
 		var display = _itemSlotDisplay.instantiate()
-		display.display(resource, towerInfo["recipe"][resource])
+		display.display(resource, towerInfo["recipe"][resource],_player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
+		display.set_clickable(false)
 		display.custom_minimum_size = Vector2(45, 45)
 		_resourceDisplay.add_child(display)
 	_updatePlacingTower(tower)
