@@ -6,3 +6,4 @@ res://TileMap/tile_maps.tscn
 res://deathScreen/death.tscn
 res://World/base.tscn
 res://Viewport/Main.tscn
+res://inventory/buildMenu/buildMenu.gd

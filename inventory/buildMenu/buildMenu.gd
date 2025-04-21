@@ -52,7 +52,6 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 		child.queue_free()
 	for resource in towerInfo["recipe"].keys(): #Anstances the itemSlotDisplay scene to show the required resrouces for the new tower
 		var display = _itemSlotDisplay.instantiate()
-		print(global.player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
 		display.display(resource, towerInfo["recipe"][resource],global.player.inventory.hasAmount(resource, towerInfo["recipe"][resource]))
 		display.custom_minimum_size = Vector2(40, 40)
 		_resourceDisplay.add_child(display)
