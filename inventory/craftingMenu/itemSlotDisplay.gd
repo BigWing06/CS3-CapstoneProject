@@ -59,6 +59,7 @@ func set_clickable(_clickMode:bool = true) -> void:  # Removes the ability to se
 		
 func _on_pressed() -> void:
 	set_active()
+	AudioController.play_menu()
 	
 func set_active() -> void: # Sets this button as the selected item slot
 	_changeTexture(state.ACTIVE)
@@ -71,3 +72,4 @@ func _removeActive(_sender,_groups): # Removes the active texture
 			_inGroups=true
 	if _sender != self and _inGroups:
 		_changeTexture(state.NORMAL)
+

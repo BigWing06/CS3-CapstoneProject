@@ -30,6 +30,7 @@ func _ready():
 	global.player = self
 	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
+	$playerSprite.sprite_frames = ResourceLoader.load("res://Player/playerAnimation.tres")
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	healthChange(_STARTING_HEALTH, false)
 	$enemySpawner.start()
@@ -96,13 +97,9 @@ func healthChange(_amount:float, displayChange = true): # Funciton to cause dama
 			death.emit()
 		if displayChange:
 			_displayHealthChange(_amount)
-			$DamageAnimation.play("Damage")
-		if displayChange:
-			_displayHealthChange(_amount)
+			AudioController.play_hit()
 			$DamageAnimation.play("Damage")
 	elif _amount > 0:
-		if displayChange:
-			_displayHealthChange(_amount)
 		if displayChange:
 			_displayHealthChange(_amount)
 
@@ -122,6 +119,7 @@ func _on_death() -> void:
 	position = Vector2.ZERO
 	inventory.clear()
 	healthChange(_STARTING_HEALTH, false)
+	AudioController.deathToggle = false
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)
