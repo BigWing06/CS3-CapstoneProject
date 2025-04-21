@@ -7,26 +7,11 @@ signal itemSlotClicked(_sender,_groups)
 @export var ACTIVE_TEXTURE: Texture
 enum state {NORMAL, HOVER, DISABLED, ACTIVE}
 var _texturesDict
-signal itemSlotClicked(_sender,_groups)
-
-@export var NORMAL_TEXTURE: Texture
-@export var HOVER_TEXTURE: Texture
-@export var DISABLED_TEXTURE: Texture
-@export var ACTIVE_TEXTURE: Texture
-enum state {NORMAL, HOVER, DISABLED, ACTIVE}
-var _texturesDict
 @onready var hoverTextScene = preload("res://inventory/hoverText.tscn")
-@onready var _UIParent = get_node("/root/Main/UIParent")
 @onready var _UIParent = get_node("/root/Main/UIParent")
 var _hoverTextInstance
 var _resourceData
 var _resource
-var _currentState = state.NORMAL
-func _ready() -> void:
-	_UIParent.itemSlotClicked.connect(_removeActive)
-func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu script to show a specific resource
-	_texturesDict = {state.NORMAL:NORMAL_TEXTURE,state.HOVER:HOVER_TEXTURE,state.DISABLED:DISABLED_TEXTURE,state.ACTIVE:ACTIVE_TEXTURE}
-	_changeTexture(state.NORMAL)
 var _currentState = state.NORMAL
 func _ready() -> void:
 	_UIParent.itemSlotClicked.connect(_removeActive)
@@ -51,16 +36,6 @@ func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu
 				
 	else:
 		amountLbl.visible = false
-	$Frame.texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
-	
-func _changeTexture(_newState:state,_updateState:bool=true):
-	self.texture_normal = _texturesDict[_newState]
-	self.texture_disabled = _texturesDict[_newState]
-	if _updateState:
-		_currentState = _newState
-func _revertState():
-	_changeTexture(_currentState)
-
 	$Frame.texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
 	
 func _changeTexture(_newState:state,_updateState:bool=true):
