@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpbcorfmdqes"]
+
+[ext_resource type="Texture2D" uid="uid://bhohbkt3wyc5j" path="res://startscreen/LabelButtonNormal.png" id="1_gp6lf"]
+[ext_resource type="Script" path="res://startscreen/label_button.gd" id="2_4kyul"]
+[ext_resource type="Texture2D" uid="uid://n1iyk7ahcqs4" path="res://startscreen/LabelButtonPressed.png" id="2_60mf5"]
+[ext_resource type="Texture2D" uid="uid://c3pq6rfxnndmj" path="res://startscreen/LabelButtonHover.png" id="3_n43cx"]
+[ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="5_13ihm"]
+
+[node name="LabelButton" type="TextureButton"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -435.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_gp6lf")
+texture_pressed = ExtResource("2_60mf5")
+texture_hover = ExtResource("3_n43cx")
+stretch_mode = 4
+script = ExtResource("2_4kyul")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_13ihm")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1

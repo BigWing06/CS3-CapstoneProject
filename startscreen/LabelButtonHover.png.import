@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc7u4q4s7x5fj"
-path="res://.godot/imported/beaver2.jpg-25c1ee974559cca002ba2d01989d612d.ctex"
+uid="uid://c3pq6rfxnndmj"
+path="res://.godot/imported/LabelButtonHover.png-b5264cc4b6373c8951f4564210e0f8a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://startscreen/beaver2.jpg"
-dest_files=["res://.godot/imported/beaver2.jpg-25c1ee974559cca002ba2d01989d612d.ctex"]
+source_file="res://startscreen/LabelButtonHover.png"
+dest_files=["res://.godot/imported/LabelButtonHover.png-b5264cc4b6373c8951f4564210e0f8a1.ctex"]
 
 [params]
 
