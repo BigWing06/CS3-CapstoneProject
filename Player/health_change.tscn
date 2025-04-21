@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2vgir25tslta"]
+[gd_scene load_steps=5 format=3 uid="uid://dy8tbtiagp32b"]
 
 [ext_resource type="Script" path="res://Player/health_change.gd" id="1_o587o"]
 
@@ -74,8 +74,8 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
+offset_top = -40.0
 offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Amount" type="Label" parent="Control"]
 layout_mode = 0

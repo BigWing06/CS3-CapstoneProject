@@ -4,6 +4,9 @@
 		"recipe": {
 			"wood": 8,
 			"snowball": 25
+		},
+		"attack":{
+			"rangedAttacks":{"laser_eye":1}
 		}
 	},
 	"heavySnowball": {
@@ -44,5 +47,19 @@
 			"compactStone": 5,
 			"iceGem": 2
 		}
+	},
+	"woodWall": {
+		"name": "Wood Wall",
+		"recipe": {
+			"wood": 8
+		},
+		"placementMode":"grid"
+	},
+	"stoneWall": {
+		"name": "Stone Wall",
+		"recipe": {
+			"stone": 10
+		},
+		"placementMode":"grid"
 	}
 }

@@ -2,13 +2,13 @@ extends HBoxContainer
 
 var _FULL_HEART_TEXTURE = load("res://HealthBar/FullHeart.png")
 var _HALF_HEART_TEXTURE = load("res://HealthBar/HalfHeart.png")
-
+@onready var _player = get_node("/root/Main/World/Player")
 func _ready() -> void:
-	global.player.connect("healthChanged",_createHearts) #Whent the player's health is changed recreate the health bar
+	_player.connect("healthChanged",_createHearts) #Whent the player's health is changed recreate the health bar
 	_createHearts() # Creates the inital player hearts
 
 func _createHearts():
-	var _inputHealth = global.player.getHealth() # The current player health
+	var _inputHealth = _player.getHealth() # The current player health
 	
 	for child in get_children(): # Remove all current children
 		child.queue_free()
