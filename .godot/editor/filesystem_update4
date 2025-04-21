@@ -1,8 +1,0 @@
-res://inventory/craftingMenu/itemSlotDisplay.tscn
-res://Player/playerAnimation.tres
-res://World/world.tscn
-res://TileMap/tile_maps.tscn
-res://deathScreen/death.tscn
-res://World/base.tscn
-res://Viewport/Main.tscn
-res://inventory/craftingMenu/itemSlotDisplay.gd
