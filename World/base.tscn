@@ -20,5 +20,3 @@ texture = ExtResource("1_srp48")
 
 [node name="enemySpawner" type="Timer" parent="."]
 wait_time = 2.0
-
-[connection signal="timeout" from="enemySpawner" to="." method="_spawnEnemyBase"]

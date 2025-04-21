@@ -5,6 +5,7 @@ signal healthChanged
 signal death
 
 @onready var _healthChangeScene = preload("res://Player/health_change.tscn") # The health change animation scene
+@onready var wave = get_parent().get_node("WaveSystem")
 
 @export var speed = 400
 @onready var inventory = preload("res://inventory/inventory.gd").new()
@@ -19,7 +20,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	_health= _STARTING_HEALTH
-	$enemySpawner.start()
+	#$enemySpawner.start()
 	
 	##### Remove these as they are used for test of the gui
 	inventory.add("wood", 100)
@@ -78,3 +79,4 @@ func _on_death() -> void:
 	
 func _spawnEnemyPlayer():
 	spawner.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
+	wave.enemies_spawned_this_wave +=1
