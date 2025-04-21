@@ -14,6 +14,7 @@ func _ready() -> void:
 		if "recipe" in utils.resourceJSON[item].keys():
 			var itemDisplay = itemSlotDisplay.instantiate()
 			itemDisplay.display(item)
+			itemDisplay.add_to_group("craftingMenu")
 			itemDisplay.pressed.connect(func(): _displayForCraft(item))
 			gridContainer.add_child(itemDisplay)
 			if item == DEFAULT_ITEM:

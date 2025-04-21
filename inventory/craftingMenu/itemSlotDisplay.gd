@@ -1,5 +1,5 @@
 extends TextureButton
-signal itemSlotClicked(_sender)
+signal itemSlotClicked(_sender,_groups)
 @onready var hoverTextScene = preload("res://inventory/hoverText.tscn")
 @onready var _UIParent = get_node("/root/Main/UIParent")
 var _normalTexture
@@ -46,8 +46,12 @@ func _on_pressed() -> void:
 	
 func set_active() -> void: # Sets this button as the selected item slot
 	self.texture_normal = self.texture_focused
-	_UIParent.clickItemSlot(self)
+	_UIParent.clickItemSlot(self,self.get_groups())
 	
-func _removeActive(_sender): # Removes the active texture
-	if _sender != self:
+func _removeActive(_sender,_groups): # Removes the active texture
+	var _inGroups = false
+	for group in _groups:
+		if group in  self.get_groups():
+			_inGroups=true
+	if _sender != self and _inGroups:
 		self.texture_normal = _normalTexture
