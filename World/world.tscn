@@ -8,10 +8,10 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_ouaoe")
 
-[node name="base" parent="." instance=ExtResource("3_qygt3")]
-
 [node name="WaveSystem" parent="." instance=ExtResource("2_cc83v")]
 
 [node name="TileMaps" parent="." instance=ExtResource("1_xcin8")]
 chunkSize = Vector2i(5, 5)
 chunkPlayerBuffer = 20
+
+[node name="base" parent="." instance=ExtResource("3_qygt3")]

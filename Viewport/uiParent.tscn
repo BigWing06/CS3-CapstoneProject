@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://djwwygdbkecpf"]
+
+[ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
+[ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
+[ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
+
+[node name="UIParent" type="CanvasLayer"]
+script = ExtResource("1_vomrg")
+
+[node name="buildMenu" parent="." instance=ExtResource("2_nsqpp")]
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="craftingMenu" parent="." instance=ExtResource("3_3xali")]
+visible = false
+anchors_preset = -1
