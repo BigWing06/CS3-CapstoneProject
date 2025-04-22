@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfraycvwm7j7u"
-path="res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"
+uid="uid://xev5pq1ahh7"
+path="res://.godot/imported/ProgressBarLargeGoldTop.png-233e9e15e703b56defe05894ee14675e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/PlayerHealthBarRedTop.png"
-dest_files=["res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"]
+source_file="res://ProgressBars/ProgressBarLargeGoldTop.png"
+dest_files=["res://.godot/imported/ProgressBarLargeGoldTop.png-233e9e15e703b56defe05894ee14675e.ctex"]
 
 [params]
 
