@@ -30,6 +30,7 @@ AudioController="*res://Audio/audio_controller.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://Cursor.png"
 
 [global_group]
 

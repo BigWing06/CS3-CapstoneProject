@@ -1,11 +1,13 @@
 {
 	"stonePickaxe": {
 		"name": "Pickaxe",
-		"type": "tool"
+		"type": "tool",
+		"mouse":"tileMap"
 	},
 	"stoneAxe": {
 		"name": "Axe",
 		"type": "tool",
+		"mouse":"tileMap",
 		"timeout":0.25
 	},
 	"stoneSword": {

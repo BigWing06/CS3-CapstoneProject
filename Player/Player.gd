@@ -43,7 +43,6 @@ func _ready():
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
 	_createHotbar()
-	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged) # Connects the items changed signal to the items changed vbox
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player

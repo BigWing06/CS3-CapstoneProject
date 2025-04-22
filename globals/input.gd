@@ -1,12 +1,14 @@
 extends Node
 
 #This script is to be used to handle keyboard and mouse events by emiting signals
-
 signal scrollUp
 signal scrollDown
 signal leftClick
 signal rightClick
 signal interact
+signal mouseModeChange(mode)
+@onready var tilemapMouseScene = preload("res://gameplayReferences/tileMapCursor.tscn")
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scrollUp"):
@@ -17,3 +19,12 @@ func _process(delta: float) -> void:
 		leftClick.emit()
 	if Input.is_action_just_pressed("rightClick"):
 		rightClick.emit()
+
+func setMouseMode(mode):
+	if mode == "tileMap":
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		global.world.add_child(tilemapMouseScene.instantiate())
+		mouseModeChange.emit(mode)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		mouseModeChange.emit(mode)
