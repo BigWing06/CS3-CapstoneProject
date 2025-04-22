@@ -114,8 +114,7 @@ position = Vector2(0, -4)
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_w5pk3")
 animation = &"walk"
-frame = 1
-frame_progress = 0.027524
+frame_progress = 0.522485
 
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
