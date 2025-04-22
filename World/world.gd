@@ -1,8 +1,10 @@
 extends Node2D
 
-var _playerScene = preload("res://Player/player.tscn")
+var _playerScene = preload("res://Player/Player.tscn")
 @export var basePosition = Vector2(0,0)
 @onready var base = $base
+@onready var UIParent = get_node("/root/Main/UIParent")
+
 var deathScreen = preload("res://deathScreen/death.tscn")
 signal gameover
 # Called when the node enters the scene tree for the first time.

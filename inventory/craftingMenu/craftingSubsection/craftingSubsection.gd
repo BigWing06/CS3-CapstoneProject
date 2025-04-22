@@ -14,6 +14,7 @@ func _ready() -> void:
 		if "recipe" in utils.resourceJSON[item].keys():
 			var itemDisplay = itemSlotDisplay.instantiate()
 			itemDisplay.display(item)
+			itemDisplay.add_to_group("craftingMenu")
 			itemDisplay.pressed.connect(func(): _displayForCraft(item))
 			gridContainer.add_child(itemDisplay)
 			if item == DEFAULT_ITEM:
@@ -42,6 +43,7 @@ func _checkResourceCraftability(): #Checks to see if the selected resoruce is cr
 		displaySectionContainer.get_node("craftButton").disabled = true
 
 func _on_craft_button_pressed() -> void:
+	AudioController.play_menu()
 	var inventory = _player.inventory
 	inventory.add(_selectedResource, 1)
 	inventory.addResourceDict(utils.resourceJSON[_selectedResource]["recipe"], -1)

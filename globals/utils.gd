@@ -61,3 +61,6 @@ func getClosestNode(callerNode, nodeList): #Find the closetes node in NodeList t
 				closestNode = node
 		return closestNode
 	return null
+func getEnemies():
+	return utils.enemyJSON.keys()
+	

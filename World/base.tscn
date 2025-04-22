@@ -1,19 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://67gqnq2brj81"]
+[gd_scene load_steps=5 format=3 uid="uid://c861p5obeeolj"]
 
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
 [ext_resource type="Texture2D" uid="uid://ptrxx35085bb" path="res://World/igloo.png" id="2_rqooa"]
+[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="3_h12s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i74hr"]
 size = Vector2(123, 86)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["base"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 32
+collision_mask = 40
 script = ExtResource("1_v6am7")
-
-[node name="enemySpawner" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -3)
@@ -23,12 +20,6 @@ shape = SubResource("RectangleShape2D_i74hr")
 scale = Vector2(5, 5)
 texture = ExtResource("2_rqooa")
 
-[node name="healthBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(100, 0)
-offset_top = -89.0
-offset_bottom = -62.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="healthBar" parent="." instance=ExtResource("3_h12s3")]
 
 [connection signal="healthChanged" from="." to="." method="updateHealthbar"]
-[connection signal="timeout" from="enemySpawner" to="." method="_spawnEnemyBase"]
