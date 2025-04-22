@@ -9,6 +9,8 @@ var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInsta
 @onready var _resourceDisplay = $MenuContainer/Control/resourceDisplay #Reference to the resource display node
 @onready var _itemSlotDisplay = preload("res://inventory/craftingMenu/itemSlotDisplay.tscn") #Reference to the itemSlotDisplay scene so that it can be instanced later
 @onready var _player = get_node("/root/Main/World/Player")
+@onready var _BGTexture = load("res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBG.png")
+@onready var _BGTextureHover = load("res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBGHover.png")
 var _selectedTowerInt = 0 #Integer value that gets changed to represent the tower that is being placed
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
@@ -85,7 +87,9 @@ func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type 
 
 func _onMouseEnter() -> void:
 	input.scrollMode = "build"
+	$MenuContainer/TextureRect.texture = _BGTextureHover
 
 
 func _onMouseExit() -> void:
 	input.scrollMode = "normal"
+	$MenuContainer/TextureRect.texture = _BGTexture
