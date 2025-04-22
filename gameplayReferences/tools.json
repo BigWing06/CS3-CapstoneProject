@@ -13,13 +13,13 @@
 	"stoneSword": {
 		"name": "Sword",
 		"type": "weapon", 
-		"attack":"basic_beaver",
-		"timeout":1
+		"attack":"sword",
+		"timeout":0.5
 	},
 	"bow":{
 		"name": "Bow",
 		"type": "weapon", 
-		"attack":"laser_eye",
+		"attack":"arrow",
 		"timeout":2
 	},
 	"hammer":{

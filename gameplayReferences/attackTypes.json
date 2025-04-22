@@ -1,4 +1,20 @@
 {
+	"sword":{
+		"type":"melee",
+		"cooldown":0.1,
+		"damage":1,
+		"radius":75
+	},"arrow":{
+		"type":"ranged",
+		"cooldown":1.5,
+		"speed":300,
+		"damage":2,
+		"lifetime":3,
+		"radius":200,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/Arrow.png",
+		"projectileSize":[25,25],
+		"durability":1
+	},
 	"laser_eye":{
 		"type":"ranged",
 		"cooldown":1.5,
