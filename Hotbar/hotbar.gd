@@ -14,3 +14,12 @@ func update(_items:Array): # Creates and itemSlotDisplay for each tool, sets par
 
 func set_active_tool(_toolName:String): # Changes the selected tool
 	_slots[_toolName].set_active()
+	var mouseMode = utils.readFromJSON(utils.toolsJSON[_toolName],"mouse")
+	if mouseMode:
+		if mouseMode == "tileMap":
+			input.setMouseMode("tileMap")
+		else:
+			input.setMouseMode("normal")
+	else:
+		input.setMouseMode("normal")
+		

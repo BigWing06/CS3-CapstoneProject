@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctgokpu63050y"]
+
+[ext_resource type="Texture2D" uid="uid://bbt2qfbmiex1c" path="res://inventory/craftingMenu/InventoryTextures/InventoryFrameLarge.png" id="1_walef"]
+[ext_resource type="Script" path="res://gameplayReferences/tile_map_cursor.gd" id="2_6en1i"]
+
+[node name="TileMapCursor" type="TextureRect"]
+texture_filter = 3
+offset_right = 33.0
+offset_bottom = 33.0
+texture = ExtResource("1_walef")
+stretch_mode = 2
+script = ExtResource("2_6en1i")
