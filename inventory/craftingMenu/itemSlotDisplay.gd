@@ -29,6 +29,11 @@ func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu
 				amountLbl.set("theme_override_colors/font_outline_color",Color8(186,24,28,255))
 				_changeTexture(state.DISABLED)
 				
+		if !hasAmount:
+				amountLbl.set("theme_override_colors/font_color",Color8(255,255,255))
+				amountLbl.set("theme_override_colors/font_outline_color",Color8(186,24,28,255))
+				_changeTexture(state.DISABLED)
+				
 	else:
 		amountLbl.visible = false
 	$Frame.texture = utils.loadImage(utils.appendToPath(utils.resourceImageRootPath, resource + ".png"))
@@ -43,6 +48,10 @@ func _revertState():
 
 func _on_mouse_entered() -> void:
 	_hoverTextInstance = hoverTextScene.instantiate()
+	_hoverTextInstance.text = _resourceData["name"] + " ("+str(global.player.inventory.getAmount(_resource))+")"
+	_UIParent.add_child(_hoverTextInstance)
+	_changeTexture(state.HOVER,false)
+
 	_hoverTextInstance.text = _resourceData["name"] + " ("+str(global.player.inventory.getAmount(_resource))+")"
 	_UIParent.add_child(_hoverTextInstance)
 	_changeTexture(state.HOVER,false)
@@ -73,3 +82,5 @@ func _removeActive(_sender,_groups): # Removes the active texture
 	if _sender != self and _inGroups:
 		_changeTexture(state.NORMAL)
 
+func get_resource(): # Returns the item slot's resource
+	return _resource

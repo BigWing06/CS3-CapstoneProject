@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cosp048qrpc6u"]
+
+[ext_resource type="PackedScene" uid="uid://ckpbcorfmdqes" path="res://startscreen/label_button.tscn" id="1_vi4bc"]
+[ext_resource type="Texture2D" uid="uid://b1ha34oq2oxvo" path="res://inventory/craftingMenu/craftingSubsection/BuildButtonNormal.png" id="2_sb2m2"]
+[ext_resource type="Texture2D" uid="uid://by3g3y8ca5sf7" path="res://inventory/craftingMenu/craftingSubsection/BuildButtonPressed.png" id="3_gx42h"]
+[ext_resource type="Texture2D" uid="uid://cqg5p5b4t4vee" path="res://inventory/craftingMenu/craftingSubsection/BuildButtonHover.png" id="4_ycjbc"]
+
+[node name="LabelButton" instance=ExtResource("1_vi4bc")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -9.5
+offset_right = 15.0
+offset_bottom = 9.5
+texture_normal = ExtResource("2_sb2m2")
+texture_pressed = ExtResource("3_gx42h")
+texture_hover = ExtResource("4_ycjbc")

@@ -1,5 +1,7 @@
 extends Control
 
+@onready var _normalFrame = preload("res://inventory/buildMenu/TowerPlacementAssets/TowerFrame.png")
+@onready var _highlightFrame = preload("res://inventory/buildMenu/TowerPlacementAssets/TowerFrame_Selected.png")
 var _towerPlacementData
 var _towerType
 
@@ -13,7 +15,7 @@ func update(tower, towerPlacementData): #This function is to be called by the re
 	
 func selectedTowerUpdate(tower): #This function is to be connected to the selectedTowerChanged signal in the crafting menu scipt, it updates the instance to reflect which tower is being placed
 	if tower == _towerType:
-		$ColorRect.color = Color(1, 0, 0)
+		$Frame.texture = _highlightFrame
 		call_deferred("grab_focus")
 	else:
-		$ColorRect.color = Color(0.14, 0.14, 0.14)
+		$Frame.texture = _normalFrame

@@ -8,6 +8,7 @@ signal death
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
+@onready var wave = get_parent().get_node("WaveSystem")
 
 @onready var toolTimeout = $toolTimeout
 @onready var _playerSprite = $playerSprite
@@ -33,7 +34,6 @@ func _ready():
 	$playerSprite.sprite_frames = ResourceLoader.load("res://Player/playerAnimation.tres")
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 	healthChange(_STARTING_HEALTH, false)
-	$enemySpawner.start()
 	inventory.add("stoneSword", 1)
 	inventory.add("bow", 1)
 	inventory.add("stoneAxe", 1)
@@ -43,6 +43,7 @@ func _ready():
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
 	_createHotbar()
+	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged) # Connects the items changed signal to the items changed vbox
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
@@ -125,7 +126,7 @@ func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index:
 	global.player_entered.emit(body_rid, body.name)
 
 func _spawnEnemyPlayer():
-	spawner.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
+	global.waveSystem.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
 	
 func attack(attackName): #calls and handles player attacks
 	var attackData = utils.attackJSON[attackName]

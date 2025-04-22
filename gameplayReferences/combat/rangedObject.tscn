@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://fvx6bensmp67"]
+[gd_scene load_steps=3 format=3 uid="uid://g8x307des4of"]
 
 [ext_resource type="Script" path="res://gameplayReferences/combat/ranged_object.gd" id="1_nlbqn"]
 
@@ -7,23 +7,13 @@ size = Vector2(10, 5)
 
 [node name="RangedObject" type="Area2D"]
 collision_layer = 16
-collision_mask = 6
+collision_mask = 38
 script = ExtResource("1_nlbqn")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(10, 5)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_stretch_ratio = 3.45
 
 [node name="TimeOut" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6lyeq")

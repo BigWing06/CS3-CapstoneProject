@@ -4,6 +4,7 @@ extends Node
 #@onready var UIParent = main.get_node("UIParent")
 @onready var world
 @onready var player
+@onready var waveSystem
 #
 var resourceManager = preload("res://inventory/resourceManager.gd").new()
 var WORLD_SEED:float

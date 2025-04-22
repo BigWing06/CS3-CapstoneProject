@@ -65,5 +65,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Craft"
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="HBoxContainer/displaySection/container/craftButton" to="." method="_on_craft_button_pressed"]
