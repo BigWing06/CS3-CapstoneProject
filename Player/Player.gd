@@ -41,8 +41,10 @@ func _ready():
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
 	inventory.add("chipsWood", 100)
-	inventory.add("wood", 100)
-	inventory.add("snowball", 100)
+	inventory.add("wood", 1000)
+	inventory.add("snowball", 1000)
+	inventory.add("compactStone",1000)
+	inventory.add("iceGem",1000)
 	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
 	_createHotbar()
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
