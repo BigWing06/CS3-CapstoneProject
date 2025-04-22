@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dea7dsqs0choo"
-path="res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"
+uid="uid://cfraycvwm7j7u"
+path="res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/HalfHeart.png"
-dest_files=["res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"]
+source_file="res://HealthBar/PlayerHealthBarRedTop.png"
+dest_files=["res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"]
 
 [params]
 

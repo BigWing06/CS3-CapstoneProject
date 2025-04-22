@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://jfsf5anyefp"]
+[gd_scene load_steps=4 format=3 uid="uid://jfsf5anyefp"]
 
-[ext_resource type="Script" path="res://HealthBar/HeartsContainer.gd" id="1_kq8iy"]
+[ext_resource type="Texture2D" uid="uid://dm0yy7mvln74o" path="res://HealthBar/PlayerHealthBarBG.png" id="1_damap"]
+[ext_resource type="Script" path="res://HealthBar/playerHealthBar.gd" id="1_kq8iy"]
+[ext_resource type="Texture2D" uid="uid://cfraycvwm7j7u" path="res://HealthBar/PlayerHealthBarRedTop.png" id="2_mtlxq"]
 
-[node name="HealthBar" type="CanvasLayer"]
-
-[node name="HeartsContainer" type="HBoxContainer" parent="."]
-offset_left = 13.0
-offset_top = 598.0
-offset_right = 53.0
-offset_bottom = 638.0
+[node name="PlayerHearts" type="TextureProgressBar"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+texture_under = ExtResource("1_damap")
+texture_progress = ExtResource("2_mtlxq")
 script = ExtResource("1_kq8iy")
