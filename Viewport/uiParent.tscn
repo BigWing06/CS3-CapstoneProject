@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=5 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
+[ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
+
+[node name="ItemsChanged" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.965
+anchor_top = 0.94
+anchor_right = 0.965
+anchor_bottom = 0.965
+offset_left = -220.0
+offset_top = -0.119995
+offset_right = 0.320068
+offset_bottom = -0.320007
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("4_vji0o")
 
 [node name="buildMenu" parent="." instance=ExtResource("2_nsqpp")]
 grow_horizontal = 1
