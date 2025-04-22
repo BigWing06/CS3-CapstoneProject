@@ -106,4 +106,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
+[node name="MouseSensor" type="Control" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="selectedTowerChanged" from="." to="." method="_on_selected_tower_changed"]
+[connection signal="mouse_entered" from="MenuContainer/MouseSensor" to="." method="_onMouseEnter"]
+[connection signal="mouse_exited" from="MenuContainer/MouseSensor" to="." method="_onMouseExit"]

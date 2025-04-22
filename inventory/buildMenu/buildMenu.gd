@@ -13,6 +13,8 @@ var _selectedTowerInt = 0 #Integer value that gets changed to represent the towe
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
 func _ready() -> void:
+	input.buildScrollUp.connect(_onScrollUp)
+	input.buildScrollDown.connect(_onScrollDown)
 	_player.buildMenu.connect(_toggleMenu) # If buildMenu signal is activated _toggleMenu
 	set_focus_mode(FOCUS_NONE)
 	for key in _towerTypesList: #Instances the craftingMenuTowerListInstance to create the list in the crafting menu
@@ -24,7 +26,7 @@ func _ready() -> void:
 func _onScrollDown() -> void:
 	_selectedTowerInt = (_selectedTowerInt + 1) % len(_towerTypesList) #Adds one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
 	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
-	
+
 func _onScrollUp() -> void:
 	_selectedTowerInt = (_selectedTowerInt - 1) % len(_towerTypesList) #Subtracts one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
 	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
@@ -66,13 +68,9 @@ func _toggleMenu() -> void: #Toggles the menu's visibility
 	visible = !visible
 	if visible: #Code that runs if the menu is going to be shown
 		selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
-		input.scrollDown.connect(_onScrollDown)
-		input.scrollUp.connect(_onScrollUp)
 		input.leftClick.connect(_build)
 	else: #Code that closes the build menu
 		_updatePlacingTower(null)
-		input.scrollDown.disconnect(_onScrollDown)
-		input.scrollUp.disconnect(_onScrollUp)
 		input.leftClick.disconnect(_build)
 
 func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type changes
@@ -83,3 +81,11 @@ func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type 
 		_towerInstance = _towerInstanceScene.instantiate()
 		_towerInstance.setup(tower)
 		global.world.add_child(_towerInstance)
+
+
+func _onMouseEnter() -> void:
+	input.scrollMode = "build"
+
+
+func _onMouseExit() -> void:
+	input.scrollMode = "normal"
