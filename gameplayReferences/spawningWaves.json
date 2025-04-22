@@ -3,7 +3,7 @@
 		"name":"First Wave",
 		"type":"orderedList",
 		"enemyData":[],
-		"duration":100,
+		"duration":10,
 		"amount":0
 	},
 	{
