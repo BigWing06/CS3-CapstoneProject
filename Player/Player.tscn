@@ -119,5 +119,6 @@ frame_progress = 0.027524
 
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
+[connection signal="mainInteract" from="." to="." method="runMainInteract"]
 [connection signal="body_shape_entered" from="reach" to="." method="_on_reach_body_shape_entered"]
 [connection signal="timeout" from="toolTimeout" to="." method="_on_tool_timeout_timeout"]

@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_o0oyn"]
 [ext_resource type="Texture2D" uid="uid://c5fv8p2q2btyj" path="res://Enemy/Animations/wolfSpritesheet.png" id="3_qp4h8"]
-[ext_resource type="PackedScene" path="res://gameplayReferences/combat/attackManager.tscn" id="4_o2lrc"]
-[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://HealthStatus/HealthStatus.tscn" id="4_sjfpo"]
+[ext_resource type="PackedScene" uid="uid://ba1gt0ug2w16j" path="res://gameplayReferences/combat/attackManager.tscn" id="4_o2lrc"]
+[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="4_sjfpo"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
 radius = 32.0

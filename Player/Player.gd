@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal chunkChanged
 signal healthChanged
 signal death
-
+signal mainInteract
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
@@ -48,7 +48,8 @@ func _ready():
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-	input.leftClick.connect(mainInteract)
+	mainInteract.connect(global.world.UIParent.get_node("ToolCooldown").start)
+	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(1))
 	input.scrollDown.connect(func(): cycleMode(-1))
 	
@@ -141,7 +142,7 @@ func cycleMode(direction): #Increaments throught the tools avaliable to the play
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-func mainInteract(): #Bound to the left click button and is connected to main tool interactions
+func runMainInteract(): #Bound to the left click button and is connected to main tool interactions
 	if (toolTimeout.is_stopped()):
 		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
 		if not timeout:
@@ -161,3 +162,5 @@ func mainInteract(): #Bound to the left click button and is connected to main to
 
 func _on_tool_timeout_timeout() -> void:
 	toolTimeout.stop()
+func getMode():
+	return _mode

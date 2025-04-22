@@ -5,7 +5,8 @@
 	},
 	"stoneAxe": {
 		"name": "Axe",
-		"type": "tool"
+		"type": "tool",
+		"timeout":0.25
 	},
 	"stoneSword": {
 		"name": "Sword",
@@ -17,6 +18,6 @@
 		"name": "Bow",
 		"type": "weapon", 
 		"attack":"laser_eye",
-		"timout":2
+		"timeout":2
 	}
 }

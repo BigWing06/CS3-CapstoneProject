@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://br64oftsd16ck"]
 
 [ext_resource type="Script" path="res://Tower/tower.gd" id="1_p08au"]
-[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://HealthStatus/HealthStatus.tscn" id="2_qn176"]
+[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="2_qn176"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owoy"]
 radius = 27.8927
