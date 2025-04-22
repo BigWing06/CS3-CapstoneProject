@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ba1gt0ug2w16j" path="res://gameplayReferences/combat/attackManager.tscn" id="4_o2lrc"]
 [ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="4_sjfpo"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8gpv"]
 radius = 32.0
 height = 64.0

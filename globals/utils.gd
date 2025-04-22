@@ -11,6 +11,7 @@ var resourceJSON
 var enemyJSON
 var attackJSON
 var toolsJSON
+var wavesJSON
 
 func _ready() -> void:
 	towerTypesJSON = readJSON("res://gameplayReferences/towerTypes.json")
@@ -18,6 +19,7 @@ func _ready() -> void:
 	enemyJSON = readJSON("res://gameplayReferences/enemyTypes.json")
 	attackJSON = readJSON("res://gameplayReferences/attackTypes.json")
 	toolsJSON = readJSON("res://gameplayReferences/tools.json")
+	wavesJSON = readJSON("res://gameplayReferences/spawningWaves.json")
 	
 func readJSON(path):
 	var _JSON = FileAccess.get_file_as_string(path)
