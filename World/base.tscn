@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://67gqnq2brj81"]
 
-[ext_resource type="Texture2D" uid="uid://b63xngnxoan4s" path="res://World/istockphoto-175389602-612x612.jpg" id="1_srp48"]
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
+[ext_resource type="Texture2D" uid="uid://ptrxx35085bb" path="res://World/igloo.png" id="2_rqooa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uwai"]
-size = Vector2(151, 94)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i74hr"]
+size = Vector2(123, 86)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["base"]]
 collision_layer = 8
@@ -16,11 +16,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1uwai")
+position = Vector2(-2.5, -3)
+shape = SubResource("RectangleShape2D_i74hr")
 
 [node name="Base" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_srp48")
+scale = Vector2(5, 5)
+texture = ExtResource("2_rqooa")
 
 [node name="healthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
