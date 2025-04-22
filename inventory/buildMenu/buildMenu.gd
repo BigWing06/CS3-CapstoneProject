@@ -1,7 +1,7 @@
 extends Control
 
 signal selectedTowerChanged(FOCUS_CLICK)
-
+signal buildMenu
 var _towerListScene = preload("res://inventory/buildMenu/buildMenuTowerListInstance.tscn") #Reference to scene for the tower menu list
 @onready var _towerDisplayList = $MenuContainer/scrollContainer/towerDisplayList #Stores refence to towerDispalyList node for use later
 @onready var _towerInstanceScene = preload("res://Tower/tower.tscn") #Stores a reference to the tower scene that will be instanced
@@ -13,6 +13,7 @@ var _selectedTowerInt = 0 #Integer value that gets changed to represent the towe
 var _towerInstance = null #Stores the instance copy of the tower scene that is in placing mode
 
 func _ready() -> void:
+	_player.buildMenu.connect(_toggleMenu) # If buildMenu signal is activated _toggleMenu
 	set_focus_mode(FOCUS_NONE)
 	for key in _towerTypesList: #Instances the craftingMenuTowerListInstance to create the list in the crafting menu
 		var towerListSceneInstance = _towerListScene.instantiate()
@@ -44,7 +45,7 @@ func _build() -> void: #Runs when the left mouse button is clicked and checks to
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):
 		_toggleMenu()
-		AudioController.play_menu()
+
 	
 func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
 	var towerInfo = utils.towerTypesJSON[tower]
@@ -61,6 +62,7 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 	_updatePlacingTower(tower)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
+	AudioController.play_menu()
 	visible = !visible
 	if visible: #Code that runs if the menu is going to be shown
 		selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
