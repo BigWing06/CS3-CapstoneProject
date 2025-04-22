@@ -30,28 +30,15 @@
 			"rangedAttacks":{"ice_spike":1}
 		}
 	},
-	"heavyIcicle": {
-		"name": "tempHeavyIcicle",
-		"recipe": {
-			"wood": 15,
-			"compactStone": 8,
-			"iceGem": 10
-		}
-	},
 	"pierceTower": {
 		"name": "Icicle Shooter",
 		"recipe": {
 			"wood": 20,
 			"compactStone": 10,
 			"iceGem": 5
-		}
-	},
-	"freezeTower": {
-		"name": "Snow Blower",
-		"recipe": {
-			"wood": 15,
-			"compactStone": 5,
-			"iceGem": 2
+		},
+		"attack":{
+			"rangedAttacks":{"beaver_skewer":1}
 		}
 	},
 	"woodWall": {
