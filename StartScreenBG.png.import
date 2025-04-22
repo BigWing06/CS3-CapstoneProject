@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:World/igloo.png.import
-uid="uid://ptrxx35085bb"
-path="res://.godot/imported/igloo.png-79eb38acde84194276df7d7c36044d67.ctex"
-========
-uid="uid://087bmcov1dmi"
+uid="uid://c45ygwjet3n0"
 path="res://.godot/imported/StartScreenBG.png-e3a0c5e2405c93a5b93af5f438fb5689.ctex"
->>>>>>>> main:StartScreenBG.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:World/igloo.png.import
-source_file="res://World/igloo.png"
-dest_files=["res://.godot/imported/igloo.png-79eb38acde84194276df7d7c36044d67.ctex"]
-========
 source_file="res://StartScreenBG.png"
 dest_files=["res://.godot/imported/StartScreenBG.png-e3a0c5e2405c93a5b93af5f438fb5689.ctex"]
->>>>>>>> main:StartScreenBG.png.import
 
 [params]
 

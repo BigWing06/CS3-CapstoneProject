@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:TileMap/Image Resources/tileset.png.import
-uid="uid://gm6vcm40agne"
-path="res://.godot/imported/tileset.png-c8e8a9a9661a9fb14b2bba5291740963.ctex"
-========
-uid="uid://cnuy7vq0ijjnw"
+uid="uid://bwtlb5bws735o"
 path="res://.godot/imported/Cursor.png-94a07d035f5e3e59d4291f25b17216dd.ctex"
->>>>>>>> main:Cursor.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:TileMap/Image Resources/tileset.png.import
-source_file="res://TileMap/Image Resources/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-c8e8a9a9661a9fb14b2bba5291740963.ctex"]
-========
 source_file="res://Cursor.png"
 dest_files=["res://.godot/imported/Cursor.png-94a07d035f5e3e59d4291f25b17216dd.ctex"]
->>>>>>>> main:Cursor.png.import
 
 [params]
 

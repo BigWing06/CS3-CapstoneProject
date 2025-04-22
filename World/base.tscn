@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c861p5obeeolj"]
 
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
-[ext_resource type="Texture2D" uid="uid://ptrxx35085bb" path="res://World/igloo.png" id="2_rqooa"]
+[ext_resource type="Texture2D" uid="uid://dj4s4wrwy4sye" path="res://World/igloo.png" id="2_rqooa"]
 [ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="3_h12s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i74hr"]
