@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crsvsujoj7vo3"
-path="res://.godot/imported/AnimatedWater.png-fd3a35fce9ee805f3b2f5228333ca858.ctex"
+uid="uid://dj4s4wrwy4sye"
+path="res://.godot/imported/igloo.png-79eb38acde84194276df7d7c36044d67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/AnimatedWater.png"
-dest_files=["res://.godot/imported/AnimatedWater.png-fd3a35fce9ee805f3b2f5228333ca858.ctex"]
+source_file="res://World/igloo.png"
+dest_files=["res://.godot/imported/igloo.png-79eb38acde84194276df7d7c36044d67.ctex"]
 
 [params]
 
