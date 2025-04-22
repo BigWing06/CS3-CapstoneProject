@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var base = get_parent().get_node("base")
 @onready var player = get_parent().get_node("Player")
+@onready var _waveProgress = get_parent().get_parent().get_node("UIParent/WaveProgress")
 @onready var enemySpawner: Timer = $enemySpawner
 @onready var waveTimer:Timer = $waveTimer
 @onready var _enemyScene = preload("res://Enemy/Enemy.tscn")
@@ -31,6 +32,7 @@ func start_wave(): #Function that actually starts and resets every wave. Max num
 	enemySpawner.wait_time = currentWaveInfo["duration"]/max_enemies_this_wave #Calculates how long to wait before spawning the next enemy
 	if currentWaveInfo["type"] == "randomWeighted":
 		currentRandomWeightedList = utils.randWeightedListSetup(currentWaveInfo["enemyData"])
+	_waveProgress.updateValue(currentWaveInfo["name"],currentWaveInfo["duration"]) # Tells the wave progress bar to update with the new wave data
 	enemySpawner.start()
 	waveTimer.start()
 	print("wait time", currentWaveInfo["duration"]/max_enemies_this_wave)

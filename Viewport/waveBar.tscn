@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://6j8qp1lktkul"]
+
+[ext_resource type="Texture2D" uid="uid://bgjcsfwayjhfj" path="res://ProgressBars/HealthBarBG.png" id="1_nx2ko"]
+[ext_resource type="Texture2D" uid="uid://c0clcq4yscbd1" path="res://ProgressBars/ProgressBarBlueTop.png" id="2_6e6qv"]
+
+[node name="WaveBar" type="HBoxContainer"]
+offset_right = 329.0
+offset_bottom = 45.0
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(216.125, 45)
+layout_mode = 2
+
+[node name="waveProgress" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 22.0
+scale = Vector2(2, 2)
+texture_under = ExtResource("1_nx2ko")
+texture_over = ExtResource("2_6e6qv")
+
+[node name="waveLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Current Wave: 4
+"
