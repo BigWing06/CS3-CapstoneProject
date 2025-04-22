@@ -15,7 +15,6 @@ signal mainInteract
 
 @export var speed = 400
 @export var _STARTING_HEALTH = 20
-
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
@@ -48,7 +47,7 @@ func _ready():
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-	mainInteract.connect(global.world.UIParent.get_node("ToolCooldown").start)
+	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start)
 	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(1))
 	input.scrollDown.connect(func(): cycleMode(-1))
@@ -58,7 +57,7 @@ func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player i
 	
 func _createHotbar(): # Creates the hotbar node and sets the items in it into the tools in the inventory
 	_hotbar = _hotbarScene.instantiate()
-	global.world.get_parent().get_node("UIParent").add_child(_hotbar)
+	global.world.get_parent().get_node("UIParent/CenterHUD").add_child(_hotbar)
 	var _hotbarList = []
 	for tool in inventory.getToolsList():
 		_hotbarList.append({"name":tool,"amount":inventory.getAmount(tool)})
@@ -164,3 +163,5 @@ func _on_tool_timeout_timeout() -> void:
 	toolTimeout.stop()
 func getMode():
 	return _mode
+func get_max_health(): # Returns the player's max health
+	return _STARTING_HEALTH

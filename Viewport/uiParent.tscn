@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
-[ext_resource type="PackedScene" uid="uid://pga4ouu77pby" path="res://ProgressBars/tool_cooldown.tscn" id="5_qi7ll"]
+[ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -32,4 +32,7 @@ grow_vertical = 1
 visible = false
 anchors_preset = -1
 
-[node name="ToolCooldown" parent="." instance=ExtResource("5_qi7ll")]
+[node name="CenterHUD" parent="." instance=ExtResource("5_e6lsy")]
+anchors_preset = -1
+anchor_top = 0.97
+anchor_bottom = 0.97
