@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfraycvwm7j7u" path="res://HealthBar/PlayerHealthBarRedTop.png" id="2_mtlxq"]
 
 [node name="PlayerHearts" type="TextureProgressBar"]
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
