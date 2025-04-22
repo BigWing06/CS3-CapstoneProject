@@ -1,0 +1,22 @@
+[
+	{
+		"name":"First Wave",
+		"type":"orderedList",
+		"enemyData":[],
+		"duration":10,
+		"amount":0
+	},
+	{
+		"name":"Second Wave",
+		"type":"orderedList",
+		"enemyData":["beaver", "beaver"],
+		"duration":1,
+		"amount":2
+	},
+	{
+		"name":"Third Wave",
+		"type":"random",
+		"duration":1,
+		"amount":30
+	}
+]
