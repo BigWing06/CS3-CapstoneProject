@@ -6,7 +6,7 @@
 			"snowball": 25
 		},
 		"attack":{
-			"rangedAttacks":{"laser_eye":1}
+			"rangedAttacks":{"snowball_fight":1}
 		}
 	},
 	"heavySnowball": {
@@ -15,6 +15,9 @@
 			"wood": 15,
 			"compactStone": 8,
 			"snowball": 30
+		},
+		"attack":{
+			"rangedAttacks":{"snowball_fight":3, "avalanche":2}
 		}
 	},
 	"basicIcicle": {
@@ -22,6 +25,9 @@
 		"recipe": {
 			"wood": 8,
 			"iceGem": 5
+		},
+		"attack":{
+			"rangedAttacks":{"ice_spike":1}
 		}
 	},
 	"heavyIcicle": {
