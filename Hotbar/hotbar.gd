@@ -9,7 +9,7 @@ func update(_items:Array): # Creates and itemSlotDisplay for each tool, sets par
 		_itemSlot.display(item["name"],item["amount"])
 		_itemSlot.add_to_group("hotbarSlots")
 		_itemSlot.set_clickable(false)
-		$hBox.add_child(_itemSlot)
+		add_child(_itemSlot)
 		_slots[item["name"]] = _itemSlot
 
 func set_active_tool(_toolName:String): # Changes the selected tool

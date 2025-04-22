@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2vgir25tslta"]
+[gd_scene load_steps=6 format=3 uid="uid://d2vgir25tslta"]
 
 [ext_resource type="Script" path="res://inventory/health_change.gd" id="1_o587o"]
+[ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="2_dt01y"]
 
 [sub_resource type="Animation" id="Animation_wjw0n"]
 resource_name = "Display"
@@ -74,14 +75,15 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_top = -40.0
 offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Amount" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dt01y")
 theme_override_font_sizes/font_size = 35
 text = "-50
 "

@@ -1,13 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dohb7sohljxyf"]
+[gd_scene load_steps=3 format=3 uid="uid://dohb7sohljxyf"]
 
 [ext_resource type="PackedScene" uid="uid://dbcpk0a8t4ern" path="res://World/world.tscn" id="1_n8kvi"]
-[ext_resource type="PackedScene" uid="uid://jfsf5anyefp" path="res://HealthBar/health_bar.tscn" id="2_kfkl4"]
 [ext_resource type="PackedScene" uid="uid://djwwygdbkecpf" path="res://Viewport/uiParent.tscn" id="3_ewwjv"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_n8kvi")]
-
-[node name="HealthBar" parent="." instance=ExtResource("2_kfkl4")]
 
 [node name="UIParent" parent="." instance=ExtResource("3_ewwjv")]

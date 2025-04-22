@@ -3,7 +3,7 @@
 		"name":"First Wave",
 		"type":"orderedList",
 		"enemyData":[],
-		"duration":10,
+		"duration":1,
 		"amount":0
 	},
 	{
@@ -17,6 +17,6 @@
 		"name":"Third Wave",
 		"type":"random",
 		"duration":1,
-		"amount":30
+		"amount":2
 	}
 ]

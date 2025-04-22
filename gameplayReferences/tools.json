@@ -21,5 +21,12 @@
 		"type": "weapon", 
 		"attack":"laser_eye",
 		"timeout":2
+	},
+	"hammer":{
+		"name":"Build Hammer",
+		"type":"signal",
+		"signal":"buildMenu",
+		"trigger":"scrollEnd,scrollStart",
+		"timeout":0.1
 	}
 }

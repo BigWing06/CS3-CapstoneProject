@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dea7dsqs0choo"
-path="res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"
+uid="uid://do5hfdfo7t8f3"
+path="res://.godot/imported/TowerPlacementBGHover.png-0d97ebed9ebc622d0906e226876e9e4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/HalfHeart.png"
-dest_files=["res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"]
+source_file="res://inventory/buildMenu/TowerPlacementAssets/TowerPlacementBGHover.png"
+dest_files=["res://.godot/imported/TowerPlacementBGHover.png-0d97ebed9ebc622d0906e226876e9e4a.ctex"]
 
 [params]
 

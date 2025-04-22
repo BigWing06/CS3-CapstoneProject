@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2qk5xsfvhhx8"
-path="res://.godot/imported/FullHeart.png-effaa925b74dfff92a9acc31ef484212.ctex"
+uid="uid://r1h45p3hb2hr"
+path="res://.godot/imported/Hammer.png-6093eaf8c02e65f2bd129788b295875d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/FullHeart.png"
-dest_files=["res://.godot/imported/FullHeart.png-effaa925b74dfff92a9acc31ef484212.ctex"]
+source_file="res://gameplayReferences/resourceIcons/Hammer.png"
+dest_files=["res://.godot/imported/Hammer.png-6093eaf8c02e65f2bd129788b295875d.ctex"]
 
 [params]
 
