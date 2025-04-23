@@ -39,8 +39,29 @@ texture = ExtResource("2_68yc5")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Control" type="Control" parent="MenuContainer"]
+[node name="scrollContainer" type="ScrollContainer" parent="MenuContainer"]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.465
+anchor_right = 0.836
+anchor_bottom = 0.94
+offset_left = -1.90735e-05
+offset_right = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+vertical_scroll_mode = 3
+
+[node name="towerDisplayList" type="VBoxContainer" parent="MenuContainer/scrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="MenuContainer"]
+layout_mode = 2
+anchors_preset = 0
 anchor_left = 0.115
 anchor_top = 0.07
 anchor_right = 0.835
@@ -88,22 +109,14 @@ offset_bottom = 0.397598
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="scrollContainer" type="ScrollContainer" parent="MenuContainer"]
+[node name="MouseSensor" type="Control" parent="MenuContainer"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.113
-anchor_top = 0.465
-anchor_right = 0.836
-anchor_bottom = 0.94
+anchor_top = 0.445
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-follow_focus = true
-vertical_scroll_mode = 3
-
-[node name="towerDisplayList" type="VBoxContainer" parent="MenuContainer/scrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
 
 [connection signal="selectedTowerChanged" from="." to="." method="_on_selected_tower_changed"]
+[connection signal="mouse_entered" from="MenuContainer/MouseSensor" to="." method="_onMouseEnter"]
+[connection signal="mouse_exited" from="MenuContainer/MouseSensor" to="." method="_onMouseExit"]

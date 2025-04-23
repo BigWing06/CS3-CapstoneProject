@@ -6,7 +6,7 @@
 			"snowball": 25
 		},
 		"attack":{
-			"rangedAttacks":{"laser_eye":1}
+			"rangedAttacks":{"snowball_fight":1}
 		}
 	},
 	"heavySnowball": {
@@ -15,6 +15,9 @@
 			"wood": 15,
 			"compactStone": 8,
 			"snowball": 30
+		},
+		"attack":{
+			"rangedAttacks":{"snowball_fight":3, "avalanche":2}
 		}
 	},
 	"basicIcicle": {
@@ -22,14 +25,9 @@
 		"recipe": {
 			"wood": 8,
 			"iceGem": 5
-		}
-	},
-	"heavyIcicle": {
-		"name": "tempHeavyIcicle",
-		"recipe": {
-			"wood": 15,
-			"compactStone": 8,
-			"iceGem": 10
+		},
+		"attack":{
+			"rangedAttacks":{"ice_spike":1}
 		}
 	},
 	"pierceTower": {
@@ -38,14 +36,9 @@
 			"wood": 20,
 			"compactStone": 10,
 			"iceGem": 5
-		}
-	},
-	"freezeTower": {
-		"name": "Snow Blower",
-		"recipe": {
-			"wood": 15,
-			"compactStone": 5,
-			"iceGem": 2
+		},
+		"attack":{
+			"rangedAttacks":{"beaver_skewer":1}
 		}
 	},
 	"woodWall": {

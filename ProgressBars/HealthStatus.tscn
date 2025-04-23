@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3do47yylporf"]
 
-[ext_resource type="Texture2D" uid="uid://bffwb3yf46dc6" path="res://HealthStatus/HealthBarBG.png" id="1_xm2bg"]
-[ext_resource type="Texture2D" uid="uid://c2uxi7yhu6310" path="res://HealthStatus/HealthBarTop.png" id="2_cy2ne"]
+[ext_resource type="Texture2D" uid="uid://bgjcsfwayjhfj" path="res://ProgressBars/HealthBarBG.png" id="1_xm2bg"]
+[ext_resource type="Texture2D" uid="uid://c2uxi7yhu6310" path="res://ProgressBars/ProgressBarRedTop.png" id="2_cy2ne"]
 
 [node name="healthBar" type="TextureProgressBar"]
 texture_filter = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgjcsfwayjhfj"
-path="res://.godot/imported/HealthBarBG.png-23d32e951642eab1c7692d11960b9bee.ctex"
+uid="uid://dxshkdxtbikhm"
+path="res://.godot/imported/armour.png-845881eda3fd3bb55302000182cc0dad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthStatus/HealthBarBG.png"
-dest_files=["res://.godot/imported/HealthBarBG.png-23d32e951642eab1c7692d11960b9bee.ctex"]
+source_file="res://gameplayReferences/resourceIcons/armour.png"
+dest_files=["res://.godot/imported/armour.png-845881eda3fd3bb55302000182cc0dad.ctex"]
 
 [params]
 

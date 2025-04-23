@@ -85,5 +85,8 @@
 	},
 	"bow":{
 		"name": "Bow"
+	},
+	"hammer":{
+		"name" : "Build Hammer"
 	}
 }

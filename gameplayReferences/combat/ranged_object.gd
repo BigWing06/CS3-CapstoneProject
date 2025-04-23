@@ -27,7 +27,7 @@ func _checkValidTarget(target, attackableGroups): #Checks to see if the given ta
 func _on_body_entered(body: Node2D) -> void: # If it hits the player cause damage and then disappear
 	if(not body == _attacker):
 		if body.is_in_group("base"):
-			if "player" in _attackerGroups:
+			if not &"player" in _attackerGroups:
 				body.healthChange(_damage*-1)
 			queue_free()
 		else:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxx3mon6tmjuw"
-path="res://.godot/imported/TileMapTestWater.png-2b2f38f44c58a49b1fe12dd157f1f754.ctex"
+uid="uid://dhbfxfsm77fqg"
+path="res://.godot/imported/stoneAxe.png-096cb7dd76b8d5011504fd4fd4a83bd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/Image Resources/TileMapTestWater.png"
-dest_files=["res://.godot/imported/TileMapTestWater.png-2b2f38f44c58a49b1fe12dd157f1f754.ctex"]
+source_file="res://gameplayReferences/resourceIcons/stoneAxe.png"
+dest_files=["res://.godot/imported/stoneAxe.png-096cb7dd76b8d5011504fd4fd4a83bd0.ctex"]
 
 [params]
 

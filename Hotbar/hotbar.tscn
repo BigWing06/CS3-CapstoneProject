@@ -2,20 +2,12 @@
 
 [ext_resource type="Script" path="res://Hotbar/hotbar.gd" id="1_66lj0"]
 
-[node name="Hotbar" type="Control"]
-layout_mode = 3
+[node name="Hotbar" type="HBoxContainer"]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.87
 anchor_right = 0.5
-anchor_bottom = 0.97
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 100.0
 grow_horizontal = 2
-grow_vertical = 0
 script = ExtResource("1_66lj0")
-
-[node name="hBox" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0

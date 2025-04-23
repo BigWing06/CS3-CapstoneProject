@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dea7dsqs0choo"
-path="res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"
+uid="uid://d0rwdkg6vh5co"
+path="res://.godot/imported/bow.png-be94e40d31d2c257bc6adce040e4557f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/HalfHeart.png"
-dest_files=["res://.godot/imported/HalfHeart.png-b67594d6ecd89c7e2383e667ea2ab9ea.ctex"]
+source_file="res://gameplayReferences/resourceIcons/bow.png"
+dest_files=["res://.godot/imported/bow.png-be94e40d31d2c257bc6adce040e4557f.ctex"]
 
 [params]
 

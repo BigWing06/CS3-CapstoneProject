@@ -30,6 +30,7 @@ AudioController="*res://Audio/audio_controller.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://Cursor.png"
 
 [global_group]
 
@@ -115,3 +116,7 @@ muteBgmusic={
 2d_physics/layer_5="playerDamage"
 2d_physics/layer_6="base"
 2d_physics/layer_7="droppedItems"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

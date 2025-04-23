@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsf0gjcs25oe"
-path="res://.godot/imported/AnimatedWater.png-7a2afc5eec975e197b87ec6b41c05ec2.ctex"
+uid="uid://bwtlb5bws735o"
+path="res://.godot/imported/Cursor.png-94a07d035f5e3e59d4291f25b17216dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/Image Resources/AnimatedWater.png"
-dest_files=["res://.godot/imported/AnimatedWater.png-7a2afc5eec975e197b87ec6b41c05ec2.ctex"]
+source_file="res://Cursor.png"
+dest_files=["res://.godot/imported/Cursor.png-94a07d035f5e3e59d4291f25b17216dd.ctex"]
 
 [params]
 
