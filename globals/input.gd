@@ -12,6 +12,8 @@ signal mouseModeChange(mode)
 signal UI_Mouse(_location)
 @onready var tilemapMouseScene = preload("res://gameplayReferences/tileMapCursor.tscn")
 var _regularMouseMode = "normal"
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS 
 var scrollMode = "normal"
 var _scrollTypes = {"normal":[scrollUp,scrollDown],"build":[buildScrollUp,buildScrollDown]} # List of all the types of scrolling signals and their actual signal objects
 func _process(delta: float) -> void:
@@ -44,3 +46,7 @@ func toggleUIState(_value:bool):
 		_createNormalMouse()
 	else:
 		setMouseMode(_regularMouseMode)
+
+func pauseMode(mode:bool):
+	print(mode)
+	get_tree().paused = mode
