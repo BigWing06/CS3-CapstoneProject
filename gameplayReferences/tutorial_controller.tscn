@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmblccoofb4ow"]
+[gd_scene load_steps=3 format=3 uid="uid://cmblccoofb4ow"]
 
 [ext_resource type="Script" path="res://Viewport/tutorialXontroller.gd" id="1_1ol8e"]
+[ext_resource type="Texture2D" uid="uid://ds3hpmmqev846" path="res://tutorial1.png" id="2_p6pif"]
 
 [node name="tutorialController" type="Control"]
 process_mode = 2
@@ -20,4 +21,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch_mode = 5
+texture = ExtResource("2_p6pif")
+expand_mode = 5
