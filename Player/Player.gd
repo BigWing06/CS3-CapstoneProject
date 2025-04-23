@@ -142,11 +142,15 @@ func attack(attackName): #calls and handles player attacks
 	attackInstance.attack(attackPoint, attackName, self, null, ["enemy"])
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
-	_checkSignalTool(_mode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
+	var _endingMode = _mode # The outgoing mode
+	
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
+	
+	_checkSignalTool(_endingMode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
 	_checkSignalTool(_mode,"scrollStart") # Checks the current tool for the scrollStart signal trigger
+
 func _checkSignalTool(_tool, _trigger:String="enter"): # Checks to see if it is a signal tool, if it is emits the signal, also checks to see if it has the correct trigger
 	if utils.toolsJSON[_tool]["type"] == "signal":
 		if _trigger in utils.toolsJSON[_tool]["trigger"]:
