@@ -1,7 +1,6 @@
 extends Control
 
 func _ready() -> void:
-	modulate = Color8(0,0,0,0)
 	visible=false
 func showDeathScreen():
 	visible=true
