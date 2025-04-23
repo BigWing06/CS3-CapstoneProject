@@ -45,6 +45,7 @@ func _ready():
 	inventory.add("snowball", 1000)
 	inventory.add("compactStone",1000)
 	inventory.add("iceGem",1000)
+	inventory.add("stone",1000)
 	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
 	_createHotbar()
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
