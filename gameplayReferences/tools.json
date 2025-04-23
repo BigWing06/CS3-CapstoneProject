@@ -20,7 +20,7 @@
 		"name": "Bow",
 		"type": "weapon", 
 		"attack":"arrow",
-		"timeout":2
+		"timeout":1
 	},
 	"hammer":{
 		"name":"Build Hammer",
