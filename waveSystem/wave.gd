@@ -26,7 +26,7 @@ func start_wave(): #Function that actually starts and resets every wave. Max num
 	if not current_Wave >= len(utils.wavesJSON):
 		currentWaveInfo = utils.wavesJSON[current_Wave]
 	else:
-		currentWaveInfo = {"name":"Infinite Mode", "amount":round(randf()*current_Wave)+10, "duration":randi_range(10, 45), "type":"random"}
+		currentWaveInfo = {"name":"Infinite Mode", "amount":round(randi_range(current_Wave-5,current_Wave+5)), "duration":randi_range(10, 45), "type":"random"}
 	max_enemies_this_wave = currentWaveInfo["amount"] #Checks to see how many enemies need to spawn this wave
 	waveTimer.wait_time = currentWaveInfo["duration"]
 	enemySpawner.wait_time = currentWaveInfo["duration"]/max_enemies_this_wave #Calculates how long to wait before spawning the next enemy

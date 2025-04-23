@@ -189,4 +189,5 @@ func get_max_health(): # Returns the player's max health
 
 
 func _on_health_timer_timeout() -> void:
-	healthChange(1)
+	if _health < _STARTING_HEALTH:
+		healthChange(1)

@@ -47,3 +47,9 @@ visible = false
 mouse_filter = 2
 
 [node name="DamageWarning" parent="." instance=ExtResource("8_fceoe")]
+
+[node name="skipWaveBttn" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="button_down" from="skipWaveBttn" to="." method="_on_skip_wave_bttn_button_down"]

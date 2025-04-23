@@ -90,5 +90,28 @@
 		"attack":{
 			"rangedAttacks":{"laser_eye":1}
 		}
+	},
+	"penguinmastermind": {
+		"name":"Supervillain Penguin",
+		"targetMode":"playerFocused",
+		"health":18,
+		"speed":150,
+		"drops":[
+				{
+					"resource":"chipsWood",
+					"minAmount":1,
+					"maxAmount":5,
+					"chance":0.7
+				},
+				{
+					"resource":"snowball",
+					"minAmount":3,
+					"maxAmount":10,
+					"chance":0.95
+				}
+			],
+		"attack":{
+			"rangedAttacks":{"laser_eye":1}
+		}
 	}
 }
