@@ -86,7 +86,7 @@ texture_filter = 1
 position = Vector2(813, 277)
 scale = Vector2(2.65625, 2.65625)
 sprite_frames = ExtResource("6_03eb3")
-animation = &"walk"
+animation = &"idle"
 
 [connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Quit_Button" to="." method="_on_end_button_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 [ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
-[ext_resource type="PackedScene" uid="uid://bewwxsy2784v5" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="PackedScene" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
