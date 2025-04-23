@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=9 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 [ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
-[ext_resource type="PackedScene" uid="uid://bewwxsy2784v5" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="PackedScene" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
 [ext_resource type="PackedScene" uid="uid://c72cw44vj0oy4" path="res://player_death.tscn" id="7_ix22k"]
+[ext_resource type="PackedScene" uid="uid://t1ev12a4l7q7" path="res://damage_warning.tscn" id="8_fceoe"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -42,3 +43,7 @@ anchor_bottom = 0.97
 [node name="WaveProgress" parent="." instance=ExtResource("6_gyyec")]
 
 [node name="PlayerDeath" parent="." instance=ExtResource("7_ix22k")]
+visible = false
+
+[node name="DamageWarning" parent="." instance=ExtResource("8_fceoe")]
+anchors_preset = 15

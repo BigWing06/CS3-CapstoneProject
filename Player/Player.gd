@@ -5,6 +5,7 @@ signal healthChanged
 signal death
 signal mainInteract
 signal buildMenu
+signal damage
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
@@ -53,7 +54,8 @@ func _ready():
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start)
+	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start) 
+	damage.connect(global.world.UIParent.get_node("DamageWarning").play) # Connects the signal to the damage warning animation
 	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(-1))
 	input.scrollDown.connect(func(): cycleMode(1))
@@ -100,6 +102,7 @@ func healthChange(_amount:float, displayChange = true): # Funciton to cause dama
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
+		damage.emit()
 		if _health<=0:
 			death.emit()
 		if displayChange:
