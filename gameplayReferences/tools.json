@@ -1,11 +1,14 @@
 {
 	"stonePickaxe": {
 		"name": "Pickaxe",
-		"type": "tool"
+		"type": "tool",
+		"mouse":"tileMap"
 	},
 	"stoneAxe": {
 		"name": "Axe",
-		"type": "tool"
+		"type": "tool",
+		"mouse":"tileMap",
+		"timeout":0.25
 	},
 	"stoneSword": {
 		"name": "Sword",
@@ -17,6 +20,13 @@
 		"name": "Bow",
 		"type": "weapon", 
 		"attack":"laser_eye",
-		"timout":2
+		"timeout":2
+	},
+	"hammer":{
+		"name":"Build Hammer",
+		"type":"signal",
+		"signal":"buildMenu",
+		"trigger":"scrollEnd,scrollStart",
+		"timeout":0.1
 	}
 }

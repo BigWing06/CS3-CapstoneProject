@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1rgl0x6u324p"]
+
+[ext_resource type="PackedScene" uid="uid://pga4ouu77pby" path="res://ProgressBars/tool_cooldown.tscn" id="1_ro04p"]
+[ext_resource type="PackedScene" uid="uid://jfsf5anyefp" path="res://HealthBar/health_bar.tscn" id="2_lg3a4"]
+
+[node name="CenterHUD" type="VBoxContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ToolCooldown" parent="." instance=ExtResource("1_ro04p")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayerHearts" parent="." instance=ExtResource("2_lg3a4")]
+layout_mode = 2
+size_flags_horizontal = 4

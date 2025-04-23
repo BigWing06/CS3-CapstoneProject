@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://br64oftsd16ck"]
+[gd_scene load_steps=6 format=3 uid="uid://br64oftsd16ck"]
 
 [ext_resource type="Script" path="res://Tower/tower.gd" id="1_p08au"]
+[ext_resource type="PackedScene" uid="uid://c3do47yylporf" path="res://ProgressBars/HealthStatus.tscn" id="2_qn176"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5owoy"]
 radius = 27.8927
@@ -14,9 +15,9 @@ gradient = SubResource("Gradient_5t0mp")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Tower" type="StaticBody2D"]
-collision_layer = 0
-collision_mask = 8
+[node name="Tower" type="StaticBody2D" groups=["base"]]
+collision_layer = 32
+collision_mask = 32
 script = ExtResource("1_p08au")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,4 +36,9 @@ scale = Vector2(5, 5)
 texture = SubResource("GradientTexture2D_4nl6p")
 
 [node name="towerIcon" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+
+[node name="healthBar" parent="." instance=ExtResource("2_qn176")]
+visible = false
+
+[connection signal="death" from="." to="." method="_on_death"]
+[connection signal="healthChanged" from="." to="." method="_on_health_changed"]

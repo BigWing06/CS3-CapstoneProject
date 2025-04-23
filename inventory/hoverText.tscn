@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxiwsugnu1oo7"]
+[gd_scene load_steps=4 format=3 uid="uid://bxiwsugnu1oo7"]
 
+[ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="1_12clj"]
 [ext_resource type="Script" path="res://inventory/hoverText.gd" id="1_p3gmv"]
+[ext_resource type="Texture2D" uid="uid://doymm85oqssar" path="res://inventory/craftingMenu/InventoryTextures/NamePlate.png" id="2_so0s3"]
 
 [node name="Label" type="Label"]
 top_level = true
@@ -10,19 +12,22 @@ offset_top = -73.0
 offset_right = 19.01
 offset_bottom = -50.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_12clj")
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_p3gmv")
 
-[node name="HoverText" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0.544974, 0.544974, 0.544974, 1)
+texture = ExtResource("2_so0s3")
+expand_mode = 3

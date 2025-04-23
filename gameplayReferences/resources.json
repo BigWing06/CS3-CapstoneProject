@@ -82,5 +82,11 @@
 			"wood": 3,
 			"compactStone": 2
 		}
+	},
+	"bow":{
+		"name": "Bow"
+	},
+	"hammer":{
+		"name" : "Build Hammer"
 	}
 }

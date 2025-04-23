@@ -3,50 +3,68 @@ extends CharacterBody2D
 signal chunkChanged
 signal healthChanged
 signal death
-
+signal mainInteract
+signal buildMenu
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
+@onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
+@onready var wave = get_parent().get_node("WaveSystem")
 
 @onready var toolTimeout = $toolTimeout
 @onready var _playerSprite = $playerSprite
 
 @export var speed = 400
 @export var _STARTING_HEALTH = 20
-
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
-var _health
-var _enemySpawnDistance = 100 #Sets how far away from the player enemies will spawn
+var _health = 0
+var _enemySpawnDistance = 500 #Sets how far away from the player enemies will spawn
 var _toolList = [] #Stores the list of tools the player has in inventory
 var _mode #String value of selected tool
 var _modeInt = 0 #Index of selcted tool in toollist
-
+var _hotbar
 var _collision
 
 func _ready():
+	global.player = self
+	global.world.gameover.connect(queue_free)
 	screen_size = get_viewport_rect().size
 	$playerSprite.sprite_frames = ResourceLoader.load("res://Player/playerAnimation.tres")
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
-	_health= _STARTING_HEALTH
-	$enemySpawner.start()
+	healthChange(_STARTING_HEALTH, false)
 	inventory.add("stoneSword", 1)
 	inventory.add("bow", 1)
 	inventory.add("stoneAxe", 1)
+	inventory.add("hammer", 1)
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
+	inventory.add("chipsWood", 100)
 	inventory.add("wood", 100)
 	inventory.add("snowball", 100)
+	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
+	_createHotbar()
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
-	input.leftClick.connect(mainInteract)
+	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
+	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start)
+	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(1))
 	input.scrollDown.connect(func(): cycleMode(-1))
+	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
-
+	
+func _createHotbar(): # Creates the hotbar node and sets the items in it into the tools in the inventory
+	_hotbar = _hotbarScene.instantiate()
+	global.world.get_parent().get_node("UIParent/CenterHUD").add_child(_hotbar)
+	var _hotbarList = []
+	for tool in inventory.getToolsList():
+		_hotbarList.append({"name":tool,"amount":inventory.getAmount(tool)})
+	_hotbar.update(_hotbarList)
+	
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
@@ -74,19 +92,19 @@ func _process(delta):
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
 		
-func healthChange(_amount:float): # Funciton to cause damage to player
+func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
 		if _health<=0:
 			death.emit()
-		_displayHealthChange(_amount)
-		$DamageAnimation.play("Damage")
-		AudioController.play_hit()
+		if displayChange:
+			_displayHealthChange(_amount)
+			AudioController.play_hit()
+			$DamageAnimation.play("Damage")
 	elif _amount > 0:
-		_health+=_health
-		_displayHealthChange(_health)
-		healthChanged.emit()
+		if displayChange:
+			_displayHealthChange(_amount)
 
 func _displayHealthChange(_amount: float): # Creates a scene to display an animation of the health change near the player
 	var _healthChange = _healthChangeScene.instantiate()
@@ -101,15 +119,16 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 	global.world.get_node("TileMaps").playerRenderNeighborChunks(getCurrentChunk())
 
 func _on_death() -> void:
-	#self.queue_free()
+	position = Vector2.ZERO
+	inventory.clear()
+	healthChange(_STARTING_HEALTH, false)
 	AudioController.deathToggle = false
-	pass
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)
 
 func _spawnEnemyPlayer():
-	spawner.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
+	global.waveSystem.spawnEnemy(utils.getRandomRadiusPosition(position, _enemySpawnDistance))
 	
 func attack(attackName): #calls and handles player attacks
 	var attackData = utils.attackJSON[attackName]
@@ -121,17 +140,25 @@ func attack(attackName): #calls and handles player attacks
 	attackInstance.attack(attackPoint, attackName, self, null, ["enemy"])
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
+	_checkSignalTool(_mode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
+	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
+	_checkSignalTool(_mode,"scrollStart") # Checks the current tool for the scrollStart signal trigger
+func _checkSignalTool(_tool, _trigger:String="enter"): # Checks to see if it is a signal tool, if it is emits the signal, also checks to see if it has the correct trigger
+	if utils.toolsJSON[_tool]["type"] == "signal":
+		if _trigger in utils.toolsJSON[_tool]["trigger"]:
+			emit_signal(utils.toolsJSON[_tool]["signal"])
 		
-func mainInteract(): #Bound to the left click button and is connected to main tool interactions
+func runMainInteract(): #Bound to the left click button and is connected to main tool interactions
 	if (toolTimeout.is_stopped()):
 		var timeout = utils.readFromJSON(utils.toolsJSON[_mode], "timeout")
 		if not timeout:
 			timeout = 0
 		toolTimeout.wait_time = timeout
 		toolTimeout.start()
-		if utils.toolsJSON[_mode]["type"] == "weapon":
+		var _toolType = utils.toolsJSON[_mode]["type"]
+		if _toolType == "weapon":
 			attack(utils.toolsJSON[_mode]["attack"])
 		if _mode == "stoneAxe":
 			var treeMap = global.world.get_node("TileMaps").get_node("Trees")
@@ -144,3 +171,7 @@ func mainInteract(): #Bound to the left click button and is connected to main to
 
 func _on_tool_timeout_timeout() -> void:
 	toolTimeout.stop()
+func getMode():
+	return _mode
+func get_max_health(): # Returns the player's max health
+	return _STARTING_HEALTH
