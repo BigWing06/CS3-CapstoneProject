@@ -46,6 +46,7 @@ func _ready():
 	inventory.add("compactStone",1000)
 	inventory.add("iceGem",1000)
 	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
+	death.connect(global.world.UIParent.get_node("PlayerDeath").showDeathScreen) # Connects the death signal to the show death screen function
 	_createHotbar()
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
