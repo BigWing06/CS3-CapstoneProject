@@ -2,31 +2,36 @@
 	"stonePickaxe": {
 		"name": "Pickaxe",
 		"type": "tool",
-		"mouse":"tileMap"
+		"mouse": "tileMap",
+		"verb": "Dig"
 	},
 	"stoneAxe": {
 		"name": "Axe",
 		"type": "tool",
-		"mouse":"tileMap",
-		"timeout":0.25
+		"mouse": "tileMap",
+		"timeout": 0.25,
+		"verb": "Collect"
 	},
 	"stoneSword": {
 		"name": "Sword",
-		"type": "weapon", 
-		"attack":"sword",
-		"timeout":0.5
+		"type": "weapon",
+		"attack": "sword",
+		"timeout": 0.5,
+		"verb": "Attack"
 	},
-	"bow":{
+	"bow": {
 		"name": "Bow",
-		"type": "weapon", 
-		"attack":"arrow",
-		"timeout":0.5
+		"type": "weapon",
+		"attack": "arrow",
+		"timeout": 0.5,
+		"verb": "Shoot"
 	},
-	"hammer":{
-		"name":"Build Hammer",
-		"type":"signal",
-		"signal":"buildMenu",
-		"trigger":"scrollEnd,scrollStart",
-		"timeout":0.1
+	"hammer": {
+		"name": "Build Hammer",
+		"type": "signal",
+		"signal": "buildMenu",
+		"trigger": "scrollEnd,scrollStart",
+		"timeout": 0.1,
+		"verb": "Build"
 	}
 }

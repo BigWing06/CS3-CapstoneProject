@@ -1,93 +1,112 @@
 [
 	{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":60,
-		"amount":0
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 60,
+		"amount": 0
 	},
 	{
-		"name":"Barging Beavers",
-		"type":"orderedList",
-		"enemyData":["beaver", "beaver"],
-		"duration":25,
-		"amount":2
+		"name": "Barging Beavers",
+		"type": "orderedList",
+		"enemyData": [
+			"beaver",
+			"beaver"
+		],
+		"duration": 25,
+		"amount": 2
 	},
 	{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":45,
-		"amount":0
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 45,
+		"amount": 0
 	},
 	{
-		"name":"Wild Wolves",
-		"type":"orderedList",
-		"enemyData":["wolf", "wolf"],
-		"duration":25,
-		"amount":2
+		"name": "Wild Wolves",
+		"type": "orderedList",
+		"enemyData": [
+			"wolf",
+			"wolf"
+		],
+		"duration": 25,
+		"amount": 2
 	},
 	{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":45,
-		"amount":0
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 45,
+		"amount": 0
 	},
 	{
-		"name":"Frozen Tundra",
-		"type":"randomWeighted",
-		"enemyData":{"penguin":6,"polarbear":1,"wolf":4},
-		"duration":70,
-		"amount":10
-	},
-		{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":45,
-		"amount":0
-	},
-		{
-		"name":"Frozen Tundra 2",
-		"type":"randomWeighted",
-		"enemyData":{"penguin":6,"polarbear":1,"wolf":4},
-		"duration":70,
-		"amount":20
+		"name": "Frozen Tundra",
+		"type": "randomWeighted",
+		"enemyData": {
+			"penguin": 6,
+			"polarbear": 1,
+			"wolf": 4
+		},
+		"duration": 70,
+		"amount": 10
 	},
 	{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":10,
-		"amount":0
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 45,
+		"amount": 0
 	},
-			{
-		"name":"Beavers Beavers Beavers!",
-		"type":"randomWeighted",
-		"enemyData":{"beaver":1},
-		"duration":3,
-		"amount":5
+	{
+		"name": "Frozen Tundra 2",
+		"type": "randomWeighted",
+		"enemyData": {
+			"penguin": 6,
+			"polarbear": 1,
+			"wolf": 4
+		},
+		"duration": 70,
+		"amount": 20
 	},
-		{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":60,
-		"amount":0
+	{
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 10,
+		"amount": 0
 	},
-				{
-		"name":"Polar bears and penguins?",
-		"type":"randomWeighted",
-		"enemyData":{"polarbear":1,"penguinmastermind":3},
-		"duration":45,
-		"amount":15
+	{
+		"name": "Beavers Beavers Beavers!",
+		"type": "randomWeighted",
+		"enemyData": {
+			"beaver": 1
+		},
+		"duration": 3,
+		"amount": 5
 	},
-			{
-		"name":"Enemies Aproaching",
-		"type":"orderedList",
-		"enemyData":[],
-		"duration":60,
-		"amount":0
+	{
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 60,
+		"amount": 0
+	},
+	{
+		"name": "Polar bears and penguins?",
+		"type": "randomWeighted",
+		"enemyData": {
+			"polarbear": 1,
+			"penguinmastermind": 3
+		},
+		"duration": 45,
+		"amount": 15
+	},
+	{
+		"name": "Enemies Aproaching",
+		"type": "orderedList",
+		"enemyData": [],
+		"duration": 60,
+		"amount": 0
 	}
 ]

@@ -1,117 +1,124 @@
 {
-	"beaver":{
-		"name":"Beaver",
-		"targetMode":"hybrid",
-		"health":25,
-		"speed":500,
-		"drops":
-			[
-				{
-					"resource":"chipsWood",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":1
-				}
-			],
-		"attack":{
-			"meleeAttacks":{"basic_beaver":1},
-			"meleeSight":250,
-			"rangedSight":1000
+	"beaver": {
+		"name": "Beaver",
+		"targetMode": "hybrid",
+		"health": 25,
+		"speed": 500,
+		"drops": [
+			{
+				"resource": "chipsWood",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 1
+			}
+		],
+		"attack": {
+			"meleeAttacks": {
+				"basic_beaver": 1
+			},
+			"meleeSight": 250,
+			"rangedSight": 1000
 		}
 	},
-	
-	"polarbear":{
-		"name":"Polar Bear",
-		"targetMode":"baseFocused",
-		"health":30,
-		"speed":60,
-		"drops":[
-				{
-					"resource":"chipsWood",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":0.7
-				},
-				{
-					"resource":"snowball",
-					"minAmount":2,
-					"maxAmount":7,
-					"chance":1
-				}
-			],
-		"attack":{
-			"meleeAttacks":{"claw":3,"claw_advanced":1}
+	"polarbear": {
+		"name": "Polar Bear",
+		"targetMode": "baseFocused",
+		"health": 30,
+		"speed": 60,
+		"drops": [
+			{
+				"resource": "chipsWood",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 0.7
+			},
+			{
+				"resource": "snowball",
+				"minAmount": 2,
+				"maxAmount": 7,
+				"chance": 1
+			}
+		],
+		"attack": {
+			"meleeAttacks": {
+				"claw": 3,
+				"claw_advanced": 1
+			}
 		}
 	},
-	
 	"wolf": {
-		"name":"Wolf",
-		"targetMode":"hybrid",
-		"health":15,
-		"speed":70,
-		"drops":[
-				{
-					"resource":"chipsWood",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":1
-				},
-				{
-					"resource":"snowball",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":0.3
-				}
-			],
-		"attack":{
-			"meleeAttacks":{"bite":1}
+		"name": "Wolf",
+		"targetMode": "hybrid",
+		"health": 15,
+		"speed": 70,
+		"drops": [
+			{
+				"resource": "chipsWood",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 1
+			},
+			{
+				"resource": "snowball",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 0.3
+			}
+		],
+		"attack": {
+			"meleeAttacks": {
+				"bite": 1
+			}
 		}
 	},
-	
 	"penguin": {
-		"name":"Bionic Eye Penguin",
-		"targetMode":"playerFocused",
-		"health":8,
-		"speed":150,
-		"drops":[
-				{
-					"resource":"chipsWood",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":0.7
-				},
-				{
-					"resource":"snowball",
-					"minAmount":1,
-					"maxAmount":3,
-					"chance":1
-				}
-			],
-		"attack":{
-			"rangedAttacks":{"laser_eye":1}
+		"name": "Bionic Eye Penguin",
+		"targetMode": "playerFocused",
+		"health": 8,
+		"speed": 150,
+		"drops": [
+			{
+				"resource": "chipsWood",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 0.7
+			},
+			{
+				"resource": "snowball",
+				"minAmount": 1,
+				"maxAmount": 3,
+				"chance": 1
+			}
+		],
+		"attack": {
+			"rangedAttacks": {
+				"laser_eye": 1
+			}
 		}
 	},
 	"penguinmastermind": {
-		"name":"Supervillain Penguin",
-		"targetMode":"playerFocused",
-		"health":18,
-		"speed":150,
-		"drops":[
-				{
-					"resource":"chipsWood",
-					"minAmount":1,
-					"maxAmount":5,
-					"chance":0.7
-				},
-				{
-					"resource":"snowball",
-					"minAmount":3,
-					"maxAmount":10,
-					"chance":1
-				}
-			],
-		"attack":{
-			"rangedAttacks":{"laser_eye":1}
+		"name": "Supervillain Penguin",
+		"targetMode": "playerFocused",
+		"health": 18,
+		"speed": 150,
+		"drops": [
+			{
+				"resource": "chipsWood",
+				"minAmount": 1,
+				"maxAmount": 5,
+				"chance": 0.7
+			},
+			{
+				"resource": "snowball",
+				"minAmount": 3,
+				"maxAmount": 10,
+				"chance": 1
+			}
+		],
+		"attack": {
+			"rangedAttacks": {
+				"laser_eye": 1
+			}
 		}
 	}
 }

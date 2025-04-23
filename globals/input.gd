@@ -9,8 +9,9 @@ signal leftClick
 signal rightClick
 signal interact
 signal mouseModeChange(mode)
+signal UI_Mouse(_location)
 @onready var tilemapMouseScene = preload("res://gameplayReferences/tileMapCursor.tscn")
-
+var _regularMouseMode = "normal"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS 
 var scrollMode = "normal"
@@ -27,12 +28,24 @@ func _process(delta: float) -> void:
 		
 func setMouseMode(mode):
 	if mode == "tileMap":
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		global.world.add_child(tilemapMouseScene.instantiate())
-		mouseModeChange.emit(mode)
+		_createTilemapMouse()
+		_regularMouseMode = "tileMap"
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouseModeChange.emit(mode)
+		_createNormalMouse()
+		_regularMouseMode = "normal"
+func _createTilemapMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	global.world.add_child(tilemapMouseScene.instantiate())
+	mouseModeChange.emit("tileMap")
+func _createNormalMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouseModeChange.emit("normal")
+func toggleUIState(_value:bool):
+	UI_Mouse.emit(_value)
+	if _value:
+		_createNormalMouse()
+	else:
+		setMouseMode(_regularMouseMode)
 
 func pauseMode(mode:bool):
 	print(mode)
