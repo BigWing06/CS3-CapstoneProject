@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=15 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dv2vneirvx0hc" path="res://inventory/craftingMenu/SmallLabelButtonPressed.png" id="10_225i5"]
 [ext_resource type="Texture2D" uid="uid://do6mq6hhldwxt" path="res://inventory/craftingMenu/SmallLabelButtonHover.png" id="11_mr57o"]
 [ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="12_u5n0g"]
+[ext_resource type="PackedScene" uid="uid://dql18t1pgs7lo" path="res://ControlVisuals/control_visual_btn.tscn" id="13_dnmhj"]
+[ext_resource type="Script" path="res://ControlVisuals/leftClickControl.gd" id="14_wcjky"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -79,5 +81,28 @@ theme_override_font_sizes/font_size = 16
 text = "Skip Wave"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ControlVisuals" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.955
+anchor_right = 0.034
+anchor_bottom = 0.955
+offset_left = -0.168003
+offset_top = -27.84
+offset_right = 83.832
+offset_bottom = 0.160034
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="ControlVisuals"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_u5n0g")
+theme_override_font_sizes/font_size = 31
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="LeftClick" parent="ControlVisuals" instance=ExtResource("13_dnmhj")]
+layout_mode = 2
+script = ExtResource("14_wcjky")
 
 [connection signal="pressed" from="skipWaveBttn" to="." method="_on_skip_wave_bttn_button_down"]

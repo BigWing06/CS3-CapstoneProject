@@ -48,6 +48,7 @@ func _revertState():
 	_changeTexture(_currentState)
 
 func _on_mouse_entered() -> void:
+	input.toggleUIState(true)
 	_hoverTextInstance = hoverTextScene.instantiate()
 	_hoverTextInstance.text = _resourceData["name"] + " ("+str(global.player.inventory.getAmount(_resource))+")"
 	_UIParent.add_child(_hoverTextInstance)
@@ -58,6 +59,7 @@ func _on_mouse_entered() -> void:
 	_changeTexture(state.HOVER,false)
 
 func _on_mouse_exited() -> void:
+	input.toggleUIState(false)
 	_hoverTextInstance.queue_free()
 	_revertState()
 func set_clickable(_clickMode:bool = true, _function=null) -> void:  # Removes the ability to select the item, also has the ability to add a clickable function bind
@@ -71,7 +73,8 @@ func set_clickable(_clickMode:bool = true, _function=null) -> void:  # Removes t
 func _on_pressed() -> void:
 	set_active()
 	AudioController.play_menu()
-	function.call()
+	if function:
+		function.call()
 	
 func set_active() -> void: # Sets this button as the selected item slot
 	_changeTexture(state.ACTIVE)

@@ -6,6 +6,7 @@ signal death
 signal mainInteract
 signal buildMenu
 signal damage
+signal toolChanged(_tool)
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
@@ -52,6 +53,7 @@ func _ready():
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
 	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start) 
 	damage.connect(global.world.UIParent.get_node("DamageWarning").play) # Connects the signal to the damage warning animation
+	toolChanged.connect(global.world.UIParent.get_node("ControlVisuals/LeftClick").setTool) 
 	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(-1))
 	input.scrollDown.connect(func(): cycleMode(1))
@@ -155,6 +157,7 @@ func cycleMode(direction): #Increaments throught the tools avaliable to the play
 	var _endingMode = _mode # The outgoing mode
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
+	toolChanged.emit(_mode)
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
 	_checkSignalTool(_endingMode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
 	_checkSignalTool(_mode,"scrollStart") # Checks the current tool for the scrollStart signal trigger
@@ -162,6 +165,7 @@ func changeMode(_newMode): # Changes the tool mode based on string key rather th
 	var _endingMode = _mode # The outgoing mode
 	_modeInt = _getToolInt(_newMode)
 	_mode = _toolList[_modeInt]
+	toolChanged.emit(_mode)
 	_hotbar.set_active_tool(_toolList[_modeInt])
 	_checkSignalTool(_endingMode,"scrollEnd")
 	_checkSignalTool(_mode,"scrollStart")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dql18t1pgs7lo"]
+
+[ext_resource type="Texture2D" uid="uid://qo0n2dt6d50i" path="res://ControlVisuals/LeftClick.png" id="1_07rg2"]
+[ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="4_8au82"]
+
+[node name="ControlVisualBtn" type="TextureRect"]
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+texture = ExtResource("1_07rg2")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.264
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_8au82")
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
