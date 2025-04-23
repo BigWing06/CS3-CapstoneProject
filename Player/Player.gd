@@ -55,8 +55,8 @@ func _ready():
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
 	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start)
 	input.leftClick.connect(func(): mainInteract.emit())
-	input.scrollUp.connect(func(): cycleMode(1))
-	input.scrollDown.connect(func(): cycleMode(-1))
+	input.scrollUp.connect(func(): cycleMode(-1))
+	input.scrollDown.connect(func(): cycleMode(1))
 	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
