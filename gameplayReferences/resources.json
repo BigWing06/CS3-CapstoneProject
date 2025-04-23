@@ -15,7 +15,10 @@
 		"name": "Silver"
 	},
 	"iceGem": {
-		"name": "Ice Gem"
+		"name": "Ice Gem",
+		"recipe":{
+			"snowball":15
+		}
 	},
 	"snowball": {
 		"name": "Snowball"

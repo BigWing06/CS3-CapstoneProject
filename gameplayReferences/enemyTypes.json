@@ -31,6 +31,12 @@
 					"minAmount":1,
 					"maxAmount":5,
 					"chance":0.7
+				},
+				{
+					"resource":"snowball",
+					"minAmount":2,
+					"maxAmount":7,
+					"chance":0.8
 				}
 			],
 		"attack":{
@@ -49,10 +55,16 @@
 					"minAmount":1,
 					"maxAmount":5,
 					"chance":0.7
+				},
+				{
+					"resource":"snowball",
+					"minAmount":1,
+					"maxAmount":5,
+					"chance":0.3
 				}
 			],
 		"attack":{
-			"meleeAttacks":{"basic_beaver":1}
+			"meleeAttacks":{"bite":1}
 		}
 	},
 	
@@ -67,6 +79,12 @@
 					"minAmount":1,
 					"maxAmount":5,
 					"chance":0.7
+				},
+				{
+					"resource":"snowball",
+					"minAmount":1,
+					"maxAmount":3,
+					"chance":0.95
 				}
 			],
 		"attack":{

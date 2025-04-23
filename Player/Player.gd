@@ -172,7 +172,8 @@ func runMainInteract(): #Bound to the left click button and is connected to main
 			attack(utils.toolsJSON[_mode]["attack"])
 		if _mode == "stoneAxe":
 			var treeMap = global.world.get_node("TileMaps").get_node("Trees")
-			var _localPosition = treeMap.local_to_map(treeMap.to_local(get_global_mouse_position())) #get position from tile rid
+			var _cursorPos
+			var _localPosition = treeMap.local_to_map(treeMap.to_local(round((get_global_mouse_position())/(treeMap.tile_set.tile_size.x*treeMap.scale.x))*treeMap.tile_set.tile_size.x*treeMap.scale.x)) #get position from tile rid
 			var _cell = treeMap.get_cell_tile_data(_localPosition)
 			if _cell:
 				var _resource = (_cell.get_custom_data("resource_given")) #recives the type from custom data from tile date
