@@ -124,7 +124,6 @@ func _on_death() -> void:
 	position = Vector2.ZERO
 	inventory.clear()
 	healthChange(_STARTING_HEALTH, false)
-	AudioController.deathToggle = false
 
 func _on_reach_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	global.player_entered.emit(body_rid, body.name)

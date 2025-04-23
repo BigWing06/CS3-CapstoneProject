@@ -21,6 +21,7 @@ func attack(_position, _attackName, attacker, _target=null, _affectedGroups=[]):
 	var _attackData = utils.attackJSON[_attackName] #JSON data of the attack being carried out
 	_raycast.position = attacker.position
 	_raycast.target_position = to_local(_position) # Points the raycast towards the player
+	AudioController.play_attack(_attackName)
 	if _attackData["type"] == "ranged": # If a ranged attack set up and adopt a projectile instance
 		var projectile = _projectileScene.instantiate()
 		var _direction = _raycast.target_position.normalized()
