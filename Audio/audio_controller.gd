@@ -21,7 +21,10 @@ func play_hit():
 
 func play_attack(attackName):
 	if playAudio:
-		get_node(attackName).play()
+		if get_node(attackName):
+			get_node(attackName).play()
+		else:
+			get_node("hit").play()
 		
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("muteSfx"):
