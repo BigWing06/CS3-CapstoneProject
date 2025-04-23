@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c2uxi7yhu6310" path="res://ProgressBars/ProgressBarRedTop.png" id="2_cy2ne"]
 
 [node name="healthBar" type="TextureProgressBar"]
+z_index = 1
 texture_filter = 1
 custom_minimum_size = Vector2(100, 0)
 offset_left = -50.0
