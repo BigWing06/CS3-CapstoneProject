@@ -28,10 +28,12 @@ func _ready() -> void:
 func _onScrollDown() -> void:
 	_selectedTowerInt = (_selectedTowerInt + 1) % len(_towerTypesList) #Adds one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
 	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
+	AudioController.play_scroll()
 
 func _onScrollUp() -> void:
 	_selectedTowerInt = (_selectedTowerInt - 1) % len(_towerTypesList) #Subtracts one to the selectecdTowerInt variable so that the selection can change Note: modulous is used to keep the value within the list bounds
 	selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Signal emited for the craftingMenuTowerListInstance scenes to connect to to change which item is highlighted
+	AudioController.play_scroll()
 	
 func _build() -> void: #Runs when the left mouse button is clicked and checks to see if the player can built the tower and then builds it
 	if _towerInstance.checkPlacementArea(): #Checks to make sure that the position is valid

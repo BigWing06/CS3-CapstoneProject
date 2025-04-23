@@ -1,6 +1,6 @@
 extends Node2D
 
-var deathToggle = true
+var attackName
 @export var playAudio = true
 
 func _ready():
@@ -11,11 +11,18 @@ func play_menu():
 	if playAudio:
 		$menuSelect.play()
 
+func play_scroll():
+	if playAudio:
+		$scroll.play()
+
 func play_hit():
 	if playAudio:
-		if deathToggle:
-			$hit.play()
+		$hit.play()
 
+func play_attack(attackName):
+	if playAudio:
+		get_node(attackName).play()
+		
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("muteSfx"):
 		playAudio = !playAudio
