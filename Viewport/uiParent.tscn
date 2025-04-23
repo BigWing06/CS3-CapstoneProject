@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=9 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 [ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
 [ext_resource type="PackedScene" uid="uid://bewwxsy2784v5" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="Texture2D" uid="uid://3l51sm6taqap" path="res://Compass.png" id="7_0j737"]
+[ext_resource type="Script" path="res://Viewport/compass.gd" id="8_vt0da"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -39,3 +41,9 @@ anchor_top = 0.97
 anchor_bottom = 0.97
 
 [node name="WaveProgress" parent="." instance=ExtResource("6_gyyec")]
+
+[node name="Compass" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(44, 594)
+texture = ExtResource("7_0j737")
+script = ExtResource("8_vt0da")
