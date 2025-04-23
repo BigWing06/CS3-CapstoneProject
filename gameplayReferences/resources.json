@@ -44,18 +44,6 @@
 			"stone": 6
 		}
 	},
-	"wallWood": {
-		"name": "Wood Wall",
-		"recipe": {
-			"wood": 8
-		}
-	},
-	"wallStone": {
-		"name": "Stone Wall",
-		"recipe": {
-			"compactStone": 10
-		}
-	},
 	"armour": {
 		"name": "Armour",
 		"recipe": {

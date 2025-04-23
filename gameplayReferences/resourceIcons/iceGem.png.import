@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0vum4r53ocwi"
-path="res://.godot/imported/wallWood.png-468ecfb45cfc0e3bf319f9a7deca2549.ctex"
+uid="uid://bmjhd6gngso48"
+path="res://.godot/imported/iceGem.png-d13c74c9fdef77e0f4115c29105a4526.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplayReferences/resourceIcons/wallWood.png"
-dest_files=["res://.godot/imported/wallWood.png-468ecfb45cfc0e3bf319f9a7deca2549.ctex"]
+source_file="res://gameplayReferences/resourceIcons/iceGem.png"
+dest_files=["res://.godot/imported/iceGem.png-d13c74c9fdef77e0f4115c29105a4526.ctex"]
 
 [params]
 
