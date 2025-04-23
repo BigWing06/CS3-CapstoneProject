@@ -583,10 +583,13 @@ chunkSize = Vector2i(25, 25)
 chunkPlayerBuffer = 8
 
 [node name="Terrain" type="TileMapLayer" parent="."]
+scale = Vector2(2.5, 2.5)
 tile_set = SubResource("TileSet_nj143")
 
 [node name="Trees" type="TileMapLayer" parent="."]
+scale = Vector2(2.5, 2.5)
 tile_set = SubResource("TileSet_idgq3")
 
 [node name="Decorations" type="TileMapLayer" parent="."]
+scale = Vector2(2.5, 2.5)
 tile_set = SubResource("TileSet_nuhvg")
