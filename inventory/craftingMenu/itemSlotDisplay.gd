@@ -13,6 +13,7 @@ var _hoverTextInstance
 var _resourceData
 var _resource
 var _currentState = state.NORMAL
+var function # The function to be called on itemSlot press
 func _ready() -> void:
 	_UIParent.itemSlotClicked.connect(_removeActive)
 func display(resource, amount = -2,hasAmount=true): #Called by the crafting menu script to show a specific resource
@@ -59,16 +60,18 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()
 	_revertState()
-func set_clickable(_clickMode:bool = true) -> void:  # Removes the ability to select the item
-	self.disabled = true
+func set_clickable(_clickMode:bool = true, _function=null) -> void:  # Removes the ability to select the item, also has the ability to add a clickable function bind
 	if _clickMode:
 		self.focus_mode=Control.FOCUS_ALL
+		function = _function
 	else:
 		self.focus_mode=Control.FOCUS_NONE
+		self.disabled = true
 		
 func _on_pressed() -> void:
 	set_active()
 	AudioController.play_menu()
+	function.call()
 	
 func set_active() -> void: # Sets this button as the selected item slot
 	_changeTexture(state.ACTIVE)
