@@ -64,6 +64,7 @@ func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player i
 	
 func _createHotbar(): # Creates the hotbar node and sets the items in it into the tools in the inventory
 	_hotbar = _hotbarScene.instantiate()
+	_hotbar.player=self
 	global.world.get_parent().get_node("UIParent/CenterHUD").add_child(_hotbar)
 	var _hotbarList = []
 	for tool in inventory.getToolsList():
@@ -147,14 +148,20 @@ func attack(attackName): #calls and handles player attacks
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
 	var _endingMode = _mode # The outgoing mode
-	
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-	
 	_checkSignalTool(_endingMode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
 	_checkSignalTool(_mode,"scrollStart") # Checks the current tool for the scrollStart signal trigger
-
+func changeMode(_newMode): # Changes the tool mode based on string key rather than _intMode
+	var _endingMode = _mode # The outgoing mode
+	_modeInt = _getToolInt(_newMode)
+	_mode = _toolList[_modeInt]
+	_hotbar.set_active_tool(_toolList[_modeInt])
+	_checkSignalTool(_endingMode,"scrollEnd")
+	_checkSignalTool(_mode,"scrollStart")
+func _getToolInt(_checkMode):
+	return _toolList.find(_checkMode,0)
 func _checkSignalTool(_tool, _trigger:String="enter"): # Checks to see if it is a signal tool, if it is emits the signal, also checks to see if it has the correct trigger
 	if utils.toolsJSON[_tool]["type"] == "signal":
 		if _trigger in utils.toolsJSON[_tool]["trigger"]:

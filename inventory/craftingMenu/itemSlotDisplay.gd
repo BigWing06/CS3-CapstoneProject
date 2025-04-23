@@ -61,17 +61,16 @@ func _on_mouse_exited() -> void:
 	_hoverTextInstance.queue_free()
 	_revertState()
 func set_clickable(_clickMode:bool = true, _function=null) -> void:  # Removes the ability to select the item
-	self.disabled = true
 	if _clickMode:
 		self.focus_mode=Control.FOCUS_ALL
 		function = _function
 	else:
 		self.focus_mode=Control.FOCUS_NONE
+		self.disabled = true
 		
 func _on_pressed() -> void:
 	set_active()
 	AudioController.play_menu()
-	print(function)
 	function.call()
 	
 func set_active() -> void: # Sets this button as the selected item slot

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c72cw44vj0oy4"]
+[gd_scene load_steps=7 format=3 uid="uid://c1p6m83lo0rwx"]
 
 [ext_resource type="Script" path="res://Viewport/player_death.gd" id="1_83myg"]
 [ext_resource type="SpriteFrames" uid="uid://bpv1q67vmcmb1" path="res://Enemy/Animations/beaverAnimations.tres" id="2_kxgkn"]

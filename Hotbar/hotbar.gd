@@ -1,15 +1,14 @@
 extends Control
 
 var _slots = {}
-
+var player
 func update(_items:Array): # Creates and itemSlotDisplay for each tool, sets parameters, and adds it to the hotbar
 	for item in _items:
 		var _itemSlot = load("res://inventory/craftingMenu/itemSlotDisplay.tscn").instantiate()
 		_itemSlot.custom_minimum_size = Vector2(85,85)
 		_itemSlot.display(item["name"],item["amount"])
 		_itemSlot.add_to_group("hotbarSlots")
-		print(item)
-		_itemSlot.set_clickable(true, func():set_active_tool(item["name"]))
+		_itemSlot.set_clickable(true, func():player.changeMode(item["name"]))
 		add_child(_itemSlot)
 		_slots[item["name"]] = _itemSlot
 

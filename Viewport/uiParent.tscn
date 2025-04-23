@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 [ext_resource type="PackedScene" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
-[ext_resource type="PackedScene" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
-[ext_resource type="PackedScene" path="res://player_death.tscn" id="7_ix22k"]
+[ext_resource type="PackedScene" uid="uid://c1aj2wm7lc6p4" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="PackedScene" uid="uid://c1p6m83lo0rwx" path="res://player_death.tscn" id="7_ix22k"]
 [ext_resource type="PackedScene" path="res://damage_warning.tscn" id="8_fceoe"]
 
 [node name="UIParent" type="CanvasLayer"]

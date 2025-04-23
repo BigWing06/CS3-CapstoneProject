@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bewwxsy2784v5"]
+[gd_scene load_steps=8 format=3 uid="uid://c1aj2wm7lc6p4"]
 
 [ext_resource type="Texture2D" uid="uid://jle3h4xpbl31" path="res://ProgressBars/ProgressBarLargeBG.png" id="1_3lvrt"]
 [ext_resource type="Script" path="res://waveSystem/wave_progress.gd" id="1_ekmnf"]
