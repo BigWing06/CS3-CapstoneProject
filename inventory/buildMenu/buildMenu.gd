@@ -69,17 +69,18 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 	_updatePlacingTower(tower)
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
-	AudioController.play_menu()
-	if utils.readFromJSON(utils.toolsJSON[_player.getMode()],"signal") == "buildMenu": # If the build menu tool is in use, make sure menu does not close
-		visible = true
-	else:
-		visible = !visible
-	if visible: #Code that runs if the menu is going to be shown
-		selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
-		input.leftClick.connect(_build)
-	else: #Code that closes the build menu
-		_updatePlacingTower(null)
-		input.leftClick.disconnect(_build)
+	if !get_parent().get_node("craftingMenu").visible:
+		AudioController.play_menu()
+		if utils.readFromJSON(utils.toolsJSON[_player.getMode()],"signal") == "buildMenu": # If the build menu tool is in use, make sure menu does not close
+			visible = true
+		else:
+			visible = !visible
+		if visible: #Code that runs if the menu is going to be shown
+			selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
+			input.leftClick.connect(_build)
+		else: #Code that closes the build menu
+			_updatePlacingTower(null)
+			input.leftClick.disconnect(_build)
 
 func _updatePlacingTower(tower) -> void: #Updates the tower preview if the type changes
 	if _towerInstance != null:
