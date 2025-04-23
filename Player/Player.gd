@@ -93,7 +93,11 @@ func _process(delta):
 		_preChunk = _chunk
 		_chunk = getCurrentChunk()
 		chunkChanged.emit()
-		
+	if Input.is_action_just_pressed("toggleBuildMenu"):
+		if _mode != "hammer":
+			changeMode("hammer") ### Sets the mode to hammer if build menu is toggled by "e" key, I don't love this but it works for now
+		else:
+			cycleMode(1)
 func healthChange(_amount:float, displayChange = true): # Funciton to cause damage to player
 	_health+=_amount
 	healthChanged.emit()

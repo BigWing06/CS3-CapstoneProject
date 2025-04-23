@@ -48,11 +48,6 @@ func _build() -> void: #Runs when the left mouse button is clicked and checks to
 			_updatePlacingTower(_towerTypesList[_selectedTowerInt])
 			AudioController.play_menu()
 	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggleBuildMenu"):
-		if utils.readFromJSON(utils.toolsJSON[_player.getMode()],"signal") != "buildMenu":
-			_toggleMenu()
-
 	
 func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
 	var towerInfo = utils.towerTypesJSON[tower]
