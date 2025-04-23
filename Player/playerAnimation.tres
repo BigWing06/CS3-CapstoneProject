@@ -1,6 +1,14 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://darntfroh20ps"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://darntfroh20ps"]
 
 [ext_resource type="Texture2D" uid="uid://480n6khwf57p" path="res://Player/playerSpritesheet.png" id="1_btnyi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyxqc"]
+atlas = ExtResource("1_btnyi")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtt7s"]
+atlas = ExtResource("1_btnyi")
+region = Rect2(160, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15ciq"]
 atlas = ExtResource("1_btnyi")
@@ -24,6 +32,17 @@ region = Rect2(128, 0, 32, 48)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyxqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtt7s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_15ciq")

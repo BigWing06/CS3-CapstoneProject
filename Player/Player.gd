@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * speed
 		_playerSprite.play("walk")
 	else:
-		_playerSprite.stop()
+		_playerSprite.play("idle")
 	if velocity.x > 0:
 		_playerSprite.flip_h = false
 	elif velocity.x < 0:
