@@ -23,7 +23,8 @@ func _process(delta: float) -> void:
 		AudioController.play_menu()
 		
 func _toggleMenu():
-	visible = !visible
+	if !get_parent().get_node("buildMenu").visible:
+		visible = !visible
 
 func _setSection(section): #Called when a button is clicked to change the subsection 
 	if _activeSection != section:
