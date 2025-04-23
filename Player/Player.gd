@@ -11,6 +11,7 @@ signal damage
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
 @onready var inventory = preload("res://inventory/inventory.gd").new()
 @onready var wave = get_parent().get_node("WaveSystem")
+@onready var _itemDropScene = preload("res://inventory/droppedItem.tscn")
 
 @onready var toolTimeout = $toolTimeout
 @onready var _playerSprite = $playerSprite
@@ -41,12 +42,7 @@ func _ready():
 	inventory.add("hammer", 1)
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
-	inventory.add("chipsWood", 100)
-	inventory.add("wood", 1000)
-	inventory.add("snowball", 1000)
-	inventory.add("compactStone",1000)
-	inventory.add("iceGem",1000)
-	inventory.add("stone",1000)
+	inventory.add("wood", 10)
 	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
 	death.connect(global.world.UIParent.get_node("PlayerDeath").showDeathScreen) # Connects the death signal to the show death screen function
 	_createHotbar()
@@ -127,6 +123,11 @@ func _on_chunk_changed() -> void: #Run when the player enters a new chunk
 
 func _on_death() -> void:
 	position = Vector2.ZERO
+	var drops = inventory.getResourceDict()
+	for drop in drops.keys():
+		var dropInstance = _itemDropScene.instantiate()
+		global.world.add_child(dropInstance)
+		dropInstance.setup(position, drop, ceil(drops[drop]/2))
 	inventory.clear()
 	healthChange(_STARTING_HEALTH, false)
 

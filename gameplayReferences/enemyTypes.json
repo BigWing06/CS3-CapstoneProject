@@ -10,7 +10,7 @@
 					"resource":"chipsWood",
 					"minAmount":1,
 					"maxAmount":5,
-					"chance":0.7
+					"chance":1
 				}
 			],
 		"attack":{
@@ -36,7 +36,7 @@
 					"resource":"snowball",
 					"minAmount":2,
 					"maxAmount":7,
-					"chance":0.8
+					"chance":1
 				}
 			],
 		"attack":{
@@ -54,7 +54,7 @@
 					"resource":"chipsWood",
 					"minAmount":1,
 					"maxAmount":5,
-					"chance":0.7
+					"chance":1
 				},
 				{
 					"resource":"snowball",
@@ -84,7 +84,7 @@
 					"resource":"snowball",
 					"minAmount":1,
 					"maxAmount":3,
-					"chance":0.95
+					"chance":1
 				}
 			],
 		"attack":{
@@ -107,7 +107,7 @@
 					"resource":"snowball",
 					"minAmount":3,
 					"maxAmount":10,
-					"chance":0.95
+					"chance":1
 				}
 			],
 		"attack":{

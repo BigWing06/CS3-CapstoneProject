@@ -18,7 +18,7 @@
 		"type":"randomWeighted",
 		"enemyData":{"penguin":6,"polarbear":1,"wolf":4},
 		"duration":70,
-		"amount":15
+		"amount":25
 	},
 		{
 		"name":"Enemies Aproaching",
@@ -32,7 +32,7 @@
 		"type":"randomWeighted",
 		"enemyData":{"penguin":6,"polarbear":1,"wolf":4},
 		"duration":70,
-		"amount":25
+		"amount":45
 	},
 	{
 		"name":"Enemies Aproaching",
@@ -60,7 +60,7 @@
 		"type":"randomWeighted",
 		"enemyData":{"polarbear":1,"penguinmastermind":3},
 		"duration":45,
-		"amount":20
+		"amount":30
 	},
 			{
 		"name":"Enemies Aproaching",
