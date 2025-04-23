@@ -68,7 +68,10 @@ func _on_selected_tower_changed(tower: Variant) -> void: #This function is calle
 		
 func _toggleMenu() -> void: #Toggles the menu's visibility
 	AudioController.play_menu()
-	visible = !visible
+	if utils.readFromJSON(utils.toolsJSON[_player.getMode()],"signal") == "buildMenu": # If the build menu tool is in use, make sure menu does not close
+		visible = true
+	else:
+		visible = !visible
 	if visible: #Code that runs if the menu is going to be shown
 		selectedTowerChanged.emit(_towerTypesList[_selectedTowerInt]) #Emmited to make sure that the highlighted tower matches what is selected
 		input.leftClick.connect(_build)
