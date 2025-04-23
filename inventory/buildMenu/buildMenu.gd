@@ -48,7 +48,8 @@ func _build() -> void: #Runs when the left mouse button is clicked and checks to
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggleBuildMenu"):
-		_toggleMenu()
+		if utils.readFromJSON(utils.toolsJSON[_player.getMode()],"signal") != "buildMenu":
+			_toggleMenu()
 
 	
 func _on_selected_tower_changed(tower: Variant) -> void: #This function is called when the selected tower needs to change. Connected to tower changed signal
