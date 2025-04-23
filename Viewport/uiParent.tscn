@@ -42,4 +42,3 @@ anchor_bottom = 0.97
 [node name="WaveProgress" parent="." instance=ExtResource("6_gyyec")]
 
 [node name="PlayerDeath" parent="." instance=ExtResource("7_ix22k")]
-modulate = Color(1, 1, 1, 1)
