@@ -17,6 +17,7 @@ func _ready() -> void:
 	self.add_child(_player)
 	base.spawnBase(basePosition)
 	base.death.connect(_onGameEnd)
+	#global.world.UIParent.get_node("tutorialController").displayMessage("sdrf")
 
 func _onGameEnd():
 	input.setMouseMode("normal")
