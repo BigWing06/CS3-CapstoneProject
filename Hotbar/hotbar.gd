@@ -8,7 +8,7 @@ func update(_items:Array): # Creates and itemSlotDisplay for each tool, sets par
 		_itemSlot.custom_minimum_size = Vector2(85,85)
 		_itemSlot.display(item["name"],item["amount"])
 		_itemSlot.add_to_group("hotbarSlots")
-		_itemSlot.set_clickable(true, func():player.changeMode(item["name"]))
+		_itemSlot.set_clickable(true, func():player.changeMode(item["name"])) # Makes the hot bar item clickable and binds its onclick function to the player's changeMode method
 		add_child(_itemSlot)
 		_slots[item["name"]] = _itemSlot
 
