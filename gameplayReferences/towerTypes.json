@@ -7,7 +7,7 @@
 		},
 		"attack":{
 			"rangedAttacks":{"snowball_fight":1}
-		}
+		},
 	},
 	"heavySnowball": {
 		"name": "Giant Snowball Catapult",
@@ -30,23 +30,12 @@
 			"rangedAttacks":{"ice_spike":1}
 		}
 	},
-	"pierceTower": {
-		"name": "Icicle Shooter",
-		"recipe": {
-			"wood": 20,
-			"compactStone": 10,
-			"iceGem": 5
-		},
-		"attack":{
-			"rangedAttacks":{"beaver_skewer":1}
-		}
-	},
 	"woodWall": {
 		"name": "Wood Wall",
 		"recipe": {
 			"wood": 8
 		},
-		"placementMode":"grid"
+		"placementMode":"grid",
 	},
 	"stoneWall": {
 		"name": "Stone Wall",

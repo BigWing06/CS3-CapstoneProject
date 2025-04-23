@@ -27,8 +27,13 @@ func setup(tower):
 	_towerData = utils.towerTypesJSON[_tower]
 	_mode = "setup"
 	$towerIcon.texture = utils.loadImage(utils.towerImageRootPath + _tower + ".png")
-	$towerIcon.scale = Vector2(_size/$towerIcon.texture.get_width(), _size/$towerIcon.texture.get_height()) #Calculates scale to match size of the image
-	$placementZone/CollisionShape2D.shape.radius = (_size-5)/2
+	if utils.readFromJSON(_towerData,"placementMode") == "grid":
+		$towerIcon.scale = Vector2(1,1)
+		$placementZone/CollisionShape2D.shape.radius = ((_size-5)/2)
+	else:
+		$towerIcon.scale = Vector2(2,2)
+		$placementZone/CollisionShape2D.shape.radius = ((_size-5)/2)*2
+	
 	
 func _ready() -> void:
 	if _mode == "setup": #This is included so that the tower is under the mouse pointer when initially created
