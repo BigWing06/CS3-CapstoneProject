@@ -16,7 +16,7 @@ signal damage
 @onready var _playerSprite = $playerSprite
 
 @export var speed = 400
-@export var _STARTING_HEALTH = 20
+@export var _STARTING_HEALTH = 50
 var screen_size
 var _chunk: Vector2i
 var _preChunk: Vector2i = Vector2i(0,0) #Keeps track of the previous chunk the player was in
