@@ -59,7 +59,6 @@ func _ready():
 	input.leftClick.connect(func(): mainInteract.emit())
 	input.scrollUp.connect(func(): cycleMode(-1))
 	input.scrollDown.connect(func(): cycleMode(1))
-	
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 	
@@ -103,6 +102,7 @@ func healthChange(_amount:float, displayChange = true): # Funciton to cause dama
 	healthChanged.emit()
 	if _amount < 0:
 		damage.emit()
+		$HealthTimer.start()
 		if _health<=0:
 			death.emit()
 		if displayChange:
@@ -186,3 +186,7 @@ func getMode():
 	return _mode
 func get_max_health(): # Returns the player's max health
 	return _STARTING_HEALTH
+
+
+func _on_health_timer_timeout() -> void:
+	healthChange(1)

@@ -114,8 +114,13 @@ scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_w5pk3")
 animation = &"idle"
 
+[node name="HealthTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="mainInteract" from="." to="." method="runMainInteract"]
 [connection signal="body_shape_entered" from="reach" to="." method="_on_reach_body_shape_entered"]
 [connection signal="timeout" from="toolTimeout" to="." method="_on_tool_timeout_timeout"]
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

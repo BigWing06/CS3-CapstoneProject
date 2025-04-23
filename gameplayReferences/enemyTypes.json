@@ -2,7 +2,7 @@
 	"beaver":{
 		"name":"Beaver",
 		"targetMode":"hybrid",
-		"health":90,
+		"health":15,
 		"speed":500,
 		"drops":
 			[
@@ -23,7 +23,7 @@
 	"polarbear":{
 		"name":"Polar Bear",
 		"targetMode":"baseFocused",
-		"health":220,
+		"health":30,
 		"speed":60,
 		"drops":[
 				{
@@ -47,7 +47,7 @@
 	"wolf": {
 		"name":"Wolf",
 		"targetMode":"hybrid",
-		"health":4,
+		"health":9,
 		"speed":70,
 		"drops":[
 				{
@@ -71,7 +71,7 @@
 	"penguin": {
 		"name":"Bionic Eye Penguin",
 		"targetMode":"playerFocused",
-		"health":2,
+		"health":6,
 		"speed":150,
 		"drops":[
 				{
