@@ -48,7 +48,7 @@ func build():
 		var attackManager = attackManagerScene.instantiate()
 		add_child(attackManager)
 		attackManager._setupAttacks(_towerData["attack"], ["enemy"])
-	set_collision_layer_value(4, true)
+	set_collision_layer_value(6, true)
 	
 	
 func _process(delta: float) -> void:
