@@ -1,12 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=20 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
-[ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
-[ext_resource type="PackedScene" uid="uid://bewwxsy2784v5" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
-[ext_resource type="PackedScene" uid="uid://c72cw44vj0oy4" path="res://player_death.tscn" id="7_ix22k"]
+[ext_resource type="PackedScene" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
+[ext_resource type="PackedScene" uid="uid://c1aj2wm7lc6p4" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="PackedScene" uid="uid://c1p6m83lo0rwx" path="res://player_death.tscn" id="7_ix22k"]
 [ext_resource type="PackedScene" path="res://damage_warning.tscn" id="8_fceoe"]
 [ext_resource type="Texture2D" uid="uid://cl44wos2rqmek" path="res://inventory/craftingMenu/SmallLabelButtonNormal.png" id="9_j6bof"]
 [ext_resource type="Texture2D" uid="uid://dv2vneirvx0hc" path="res://inventory/craftingMenu/SmallLabelButtonPressed.png" id="10_225i5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://ControlVisuals/WASD.gd" id="15_eqaj8"]
 [ext_resource type="Texture2D" uid="uid://dv4x04ofgpd74" path="res://ControlVisuals/Scroll.png" id="15_r2a83"]
 [ext_resource type="Script" path="res://ControlVisuals/scroll.gd" id="16_7pyaa"]
+[ext_resource type="PackedScene" path="res://gameplayReferences/tutorial_controller.tscn" id="19_p2qsc"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -132,5 +133,7 @@ theme_override_fonts/font = ExtResource("12_u5n0g")
 text = "WASD
 "
 vertical_alignment = 1
+
+[node name="tutorialController" parent="." instance=ExtResource("19_p2qsc")]
 
 [connection signal="pressed" from="skipWaveBttn" to="." method="_on_skip_wave_bttn_button_down"]
