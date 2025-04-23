@@ -2,19 +2,19 @@
 	"basicSnowball": {
 		"name": "Snowball Tower",
 		"recipe": {
-			"wood": 8,
-			"snowball": 25
+			"wood": 4,
+			"snowball": 2
 		},
 		"attack":{
 			"rangedAttacks":{"snowball_fight":1}
-		},
+		}
 	},
 	"heavySnowball": {
 		"name": "Giant Snowball Catapult",
 		"recipe": {
 			"wood": 15,
-			"compactStone": 8,
-			"snowball": 30
+			"compactStone": 4,
+			"snowball": 15
 		},
 		"attack":{
 			"rangedAttacks":{"snowball_fight":3, "avalanche":2}
@@ -23,8 +23,8 @@
 	"basicIcicle": {
 		"name": "Icicle Slingshot",
 		"recipe": {
-			"wood": 8,
-			"iceGem": 5
+			"wood": 4,
+			"iceGem": 2
 		},
 		"attack":{
 			"rangedAttacks":{"ice_spike":1}
@@ -33,14 +33,14 @@
 	"woodWall": {
 		"name": "Wood Wall",
 		"recipe": {
-			"wood": 8
+			"wood": 3
 		},
-		"placementMode":"grid",
+		"placementMode":"grid"
 	},
 	"stoneWall": {
 		"name": "Stone Wall",
 		"recipe": {
-			"stone": 10
+			"stone": 5
 		},
 		"placementMode":"grid"
 	}

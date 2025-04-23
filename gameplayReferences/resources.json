@@ -2,7 +2,7 @@
 	"wood": {
 		"name": "Wood",
 		"recipe": {
-			"chipsWood": 12
+			"chipsWood": 3
 		}
 	},
 	"stone": {
@@ -17,7 +17,7 @@
 	"iceGem": {
 		"name": "Ice Gem",
 		"recipe":{
-			"snowball":15
+			"snowball":10
 		}
 	},
 	"snowball": {
