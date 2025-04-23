@@ -1,17 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://djwwygdbkecpf"]
+[gd_scene load_steps=14 format=3 uid="uid://djwwygdbkecpf"]
 
 [ext_resource type="Script" path="res://Viewport/ui_parent.gd" id="1_vomrg"]
 [ext_resource type="PackedScene" uid="uid://dfrt33c1gjcjo" path="res://inventory/buildMenu/buildMenu.tscn" id="2_nsqpp"]
 [ext_resource type="PackedScene" uid="uid://4an7svyd3c01" path="res://inventory/craftingMenu/craftingMenu.tscn" id="3_3xali"]
 [ext_resource type="Script" path="res://Viewport/items_changed.gd" id="4_vji0o"]
 [ext_resource type="PackedScene" uid="uid://b1rgl0x6u324p" path="res://ProgressBars/status_bars.tscn" id="5_e6lsy"]
-[ext_resource type="PackedScene" uid="uid://c1aj2wm7lc6p4" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
-[ext_resource type="PackedScene" uid="uid://c1p6m83lo0rwx" path="res://player_death.tscn" id="7_ix22k"]
-[ext_resource type="PackedScene" uid="uid://t1ev12a4l7q7" path="res://damage_warning.tscn" id="8_fceoe"]
+[ext_resource type="PackedScene" uid="uid://bewwxsy2784v5" path="res://waveSystem/wave_progress.tscn" id="6_gyyec"]
+[ext_resource type="PackedScene" uid="uid://c72cw44vj0oy4" path="res://player_death.tscn" id="7_ix22k"]
+[ext_resource type="PackedScene" path="res://damage_warning.tscn" id="8_fceoe"]
 [ext_resource type="Texture2D" uid="uid://cl44wos2rqmek" path="res://inventory/craftingMenu/SmallLabelButtonNormal.png" id="9_j6bof"]
 [ext_resource type="Texture2D" uid="uid://dv2vneirvx0hc" path="res://inventory/craftingMenu/SmallLabelButtonPressed.png" id="10_225i5"]
 [ext_resource type="Texture2D" uid="uid://do6mq6hhldwxt" path="res://inventory/craftingMenu/SmallLabelButtonHover.png" id="11_mr57o"]
 [ext_resource type="FontFile" uid="uid://c32arsggg4kna" path="res://startscreen/Nihonium113.ttf" id="12_u5n0g"]
+[ext_resource type="PackedScene" uid="uid://cmblccoofb4ow" path="res://gameplayReferences/tutorial_controller.tscn" id="13_la144"]
 
 [node name="UIParent" type="CanvasLayer"]
 script = ExtResource("1_vomrg")
@@ -79,5 +80,7 @@ theme_override_font_sizes/font_size = 16
 text = "Skip Wave"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="tutorialController" parent="." instance=ExtResource("13_la144")]
 
 [connection signal="pressed" from="skipWaveBttn" to="." method="_on_skip_wave_bttn_button_down"]

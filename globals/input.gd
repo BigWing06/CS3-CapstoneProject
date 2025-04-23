@@ -11,6 +11,8 @@ signal interact
 signal mouseModeChange(mode)
 @onready var tilemapMouseScene = preload("res://gameplayReferences/tileMapCursor.tscn")
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS 
 var scrollMode = "normal"
 var _scrollTypes = {"normal":[scrollUp,scrollDown],"build":[buildScrollUp,buildScrollDown]} # List of all the types of scrolling signals and their actual signal objects
 func _process(delta: float) -> void:
@@ -31,3 +33,7 @@ func setMouseMode(mode):
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		mouseModeChange.emit(mode)
+
+func pauseMode(mode:bool):
+	print(mode)
+	get_tree().paused = mode
