@@ -10,13 +10,13 @@
 		"name":"Second Wave",
 		"type":"orderedList",
 		"enemyData":["beaver", "beaver"],
-		"duration":1,
+		"duration":10,
 		"amount":2
 	},
 	{
 		"name":"Third Wave",
 		"type":"random",
-		"duration":1,
-		"amount":2
+		"duration":15,
+		"amount":3
 	}
 ]

@@ -1,4 +1,20 @@
 {
+	"sword":{
+		"type":"melee",
+		"cooldown":0.1,
+		"damage":5,
+		"radius":75
+	},"arrow":{
+		"type":"ranged",
+		"cooldown":1.5,
+		"speed":300,
+		"damage":3,
+		"lifetime":3,
+		"radius":200,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/Arrow.png",
+		"projectileSize":[25,25],
+		"durability":1
+	},
 	"laser_eye":{
 		"type":"ranged",
 		"cooldown":1.5,
@@ -7,7 +23,7 @@
 		"lifetime":3,
 		"radius":200,
 		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/LaserBeam.png",
-		"projectileSize":[25,15],
+		"projectileSize":[25,25],
 		"durability":3
 	},
 	"claw":{
@@ -34,4 +50,48 @@
 		"damage":1,
 		"radius":75
 	},
+	"snowball_fight":{
+		"type":"ranged",
+		"cooldown":1.5,
+		"speed":300,
+		"damage":1,
+		"lifetime":1,
+		"radius":200,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/SnowballProjectile.png",
+		"projectileSize":[25,25],
+		"durability":1
+	},
+		"avalanche":{
+		"type":"ranged",
+		"cooldown":3,
+		"speed":150,
+		"damage":5,
+		"lifetime":1,
+		"radius":300,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/Avalanche.png",
+		"projectileSize":[25,25],
+		"durability":1
+	},
+	"ice_spike":{
+		"type":"ranged",
+		"cooldown":0.5,
+		"speed":500,
+		"damage":0.5,
+		"lifetime":1,
+		"radius":500,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/Icicle.png",
+		"projectileSize":[25,25],
+		"durability":1
+	},
+	"beaver_skewer":{
+		"type":"ranged",
+		"cooldown":2,
+		"speed":300,
+		"damage":0.5,
+		"lifetime":5,
+		"radius":200,
+		"projectileSprite":"res://gameplayReferences/combat/ProjectileAssets/Icicle.png",
+		"projectileSize":[25,25],
+		"durability":3
+	}
 }

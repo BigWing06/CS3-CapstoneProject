@@ -4,6 +4,9 @@ extends StaticBody2D
 @onready var towerRange = $towerRange
 @onready var healthBar = $healthBar
 
+@onready var greenTowerCircle = preload("res://Tower/towerPlacementGreen.png")
+@onready var redTowerCircle = preload("res://Tower/towerPlacementRed.png")
+
 @onready var _player = get_node("/root/Main/World/Player")
 @onready var attackManagerScene = preload("res://gameplayReferences/combat/attackManager.tscn")
 
@@ -45,7 +48,7 @@ func build():
 		var attackManager = attackManagerScene.instantiate()
 		add_child(attackManager)
 		attackManager._setupAttacks(_towerData["attack"], ["enemy"])
-	set_collision_layer_value(4, true)
+	set_collision_layer_value(6, true)
 	
 	
 func _process(delta: float) -> void:
@@ -66,9 +69,9 @@ func checkPlacementResources() -> bool: #Checks to see if the player has the res
 func updatePlacementCircle(): #Changes the color of the placement circle so that the player can know if the current placement is valid
 	if checkPlacementArea():
 		if checkPlacementResources():
-			towerRange.modulate = Color(0, 255, 0)
+			towerRange.texture = greenTowerCircle
 			return
-	towerRange.modulate = Color(255, 0, 0)
+	towerRange.texture = redTowerCircle
 	
 func _getNewTarget(): #Used for getting the target of the enemy
 	return utils.getClosestNode(self, get_tree().get_nodes_in_group("enemy"))

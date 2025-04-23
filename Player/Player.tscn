@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ro8j"]
 size = Vector2(224, 225.5)
 
-[sub_resource type="Animation" id="Animation_bfpha"]
+[sub_resource type="Animation" id="Animation_nkapn"]
 resource_name = "Damage"
 length = 0.5
 tracks/0/type = "value"
@@ -22,12 +22,12 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0.678431), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_wda2n"]
+[sub_resource type="Animation" id="Animation_7ymuj"]
 resource_name = "Heal"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("playerSprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0.729412, 0, 0.709804), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_xyjpc"]
+[sub_resource type="Animation" id="Animation_s5tds"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -53,12 +53,11 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0tv8"]
-resource_local_to_scene = true
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kudv"]
 _data = {
-"Damage": SubResource("Animation_bfpha"),
-"Heal": SubResource("Animation_wda2n"),
-"RESET": SubResource("Animation_xyjpc")
+"Damage": SubResource("Animation_nkapn"),
+"Heal": SubResource("Animation_7ymuj"),
+"RESET": SubResource("Animation_s5tds")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f42df"]
@@ -84,7 +83,7 @@ shape = SubResource("RectangleShape2D_0ro8j")
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_g0tv8")
+"": SubResource("AnimationLibrary_2kudv")
 }
 
 [node name="HealthChangePoint" type="Marker2D" parent="."]
@@ -113,12 +112,15 @@ texture_filter = 3
 position = Vector2(0, -4)
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_w5pk3")
-animation = &"walk"
-frame = 1
-frame_progress = 0.027524
+animation = &"idle"
+
+[node name="HealthTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [connection signal="chunkChanged" from="." to="." method="_on_chunk_changed"]
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="mainInteract" from="." to="." method="runMainInteract"]
 [connection signal="body_shape_entered" from="reach" to="." method="_on_reach_body_shape_entered"]
 [connection signal="timeout" from="toolTimeout" to="." method="_on_tool_timeout_timeout"]
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

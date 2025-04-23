@@ -20,7 +20,7 @@ var _resource #variable passed through inventory method
 var _spawnSafeDistance = 10 #Controls how far away from spawn that lakes and trees start generating
 
 func _ready() -> void:
-	global.WORLD_SEED = 788687
+	global.WORLD_SEED = randi_range(0,22222222)
 	_terrainNoise.seed = global.WORLD_SEED
 	_terrainNoise.frequency = 0.02
 	_terrainNoise.fractal_octaves = 3

@@ -15,7 +15,10 @@
 		"name": "Silver"
 	},
 	"iceGem": {
-		"name": "Ice Gem"
+		"name": "Ice Gem",
+		"recipe":{
+			"snowball":15
+		}
 	},
 	"snowball": {
 		"name": "Snowball"
@@ -42,18 +45,6 @@
 		"name": "Compacted Stone",
 		"recipe": {
 			"stone": 6
-		}
-	},
-	"wallWood": {
-		"name": "Wood Wall",
-		"recipe": {
-			"wood": 8
-		}
-	},
-	"wallStone": {
-		"name": "Stone Wall",
-		"recipe": {
-			"compactStone": 10
 		}
 	},
 	"armour": {

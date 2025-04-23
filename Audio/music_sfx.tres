@@ -5,6 +5,13 @@ resource_name = "Compressor"
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_e67pv"]
 resource_name = "Compressor"
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dfpq20gx82qyy"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_y6ioc"]
+resource_name = "Compressor"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_e67pv"]
+resource_name = "Compressor"
 
 [resource]
 bus/1/name = &"hit"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfraycvwm7j7u"
-path="res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"
+uid="uid://cyy45v57cvp83"
+path="res://.godot/imported/EndScreen.png-e9c4a48ae42a3bb323a9d71230a44eb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/PlayerHealthBarRedTop.png"
-dest_files=["res://.godot/imported/PlayerHealthBarRedTop.png-c16f2815a3cc9dc1a9149079c9ada1b4.ctex"]
+source_file="res://deathScreen/EndScreen.png"
+dest_files=["res://.godot/imported/EndScreen.png-e9c4a48ae42a3bb323a9d71230a44eb5.ctex"]
 
 [params]
 

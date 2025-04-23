@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm0yy7mvln74o"
-path="res://.godot/imported/PlayerHealthBarBG.png-78e84713081885b4990b16981e731c26.ctex"
+uid="uid://do6mq6hhldwxt"
+path="res://.godot/imported/SmallLabelButtonHover.png-259050c722f5e81a6407d41ae8fe3397.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/PlayerHealthBarBG.png"
-dest_files=["res://.godot/imported/PlayerHealthBarBG.png-78e84713081885b4990b16981e731c26.ctex"]
+source_file="res://inventory/craftingMenu/SmallLabelButtonHover.png"
+dest_files=["res://.godot/imported/SmallLabelButtonHover.png-259050c722f5e81a6407d41ae8fe3397.ctex"]
 
 [params]
 

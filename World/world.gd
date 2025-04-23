@@ -19,6 +19,7 @@ func _ready() -> void:
 	base.death.connect(_onGameEnd)
 
 func _onGameEnd():
+	input.setMouseMode("normal")
 	base.death.disconnect(_onGameEnd)
 	gameover.emit()
 	print(get_tree())

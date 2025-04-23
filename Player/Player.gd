@@ -5,6 +5,7 @@ signal healthChanged
 signal death
 signal mainInteract
 signal buildMenu
+signal damage
 @onready var _healthChangeScene = preload("res://inventory/health_change.tscn") # The health change animation scene
 @onready var _attackScene = preload("res://gameplayReferences/combat/attack.tscn")
 @onready var _hotbarScene = preload("res://Hotbar/hotbar.tscn")
@@ -41,19 +42,23 @@ func _ready():
 	_health = _STARTING_HEALTH
 	##### Remove these as they are used for test of the gui
 	inventory.add("chipsWood", 100)
-	inventory.add("wood", 100)
-	inventory.add("snowball", 100)
+	inventory.add("wood", 1000)
+	inventory.add("snowball", 1000)
+	inventory.add("compactStone",1000)
+	inventory.add("iceGem",1000)
+	inventory.add("stone",1000)
 	inventory.resourcesChanged.connect(global.world.UIParent.get_node("ItemsChanged").itemsChanged)
+	death.connect(global.world.UIParent.get_node("PlayerDeath").showDeathScreen) # Connects the death signal to the show death screen function
 	_createHotbar()
 	for tool in inventory.getToolsList(): #Sets up tool list for tool switching
 		_toolList.append(tool)
 	_mode = _toolList[0] #Sets the first tool as the default value for the player
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
-	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start)
+	mainInteract.connect(global.world.UIParent.get_node("CenterHUD/ToolCooldown").start) 
+	damage.connect(global.world.UIParent.get_node("DamageWarning").play) # Connects the signal to the damage warning animation
 	input.leftClick.connect(func(): mainInteract.emit())
-	input.scrollUp.connect(func(): cycleMode(1))
-	input.scrollDown.connect(func(): cycleMode(-1))
-	
+	input.scrollUp.connect(func(): cycleMode(-1))
+	input.scrollDown.connect(func(): cycleMode(1))
 func getCurrentChunk() -> Vector2i: #Returns the current chunk that the player is in
 	return global.world.get_node("TileMaps").getChunk(position)
 	
@@ -79,7 +84,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * speed
 		_playerSprite.play("walk")
 	else:
-		_playerSprite.stop()
+		_playerSprite.play("idle")
 	if velocity.x > 0:
 		_playerSprite.flip_h = false
 	elif velocity.x < 0:
@@ -96,6 +101,8 @@ func healthChange(_amount:float, displayChange = true): # Funciton to cause dama
 	_health+=_amount
 	healthChanged.emit()
 	if _amount < 0:
+		damage.emit()
+		$HealthTimer.start()
 		if _health<=0:
 			death.emit()
 		if displayChange:
@@ -139,11 +146,15 @@ func attack(attackName): #calls and handles player attacks
 	attackInstance.attack(attackPoint, attackName, self, null, ["enemy"])
 	
 func cycleMode(direction): #Increaments throught the tools avaliable to the player when they scroll
-	_checkSignalTool(_mode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
+	var _endingMode = _mode # The outgoing mode
+	
 	_modeInt = (_modeInt+direction)%len(_toolList)
 	_mode = _toolList[_modeInt]
 	_hotbar.set_active_tool(_toolList[_modeInt]) # Sets the selected hotbar item
+	
+	_checkSignalTool(_endingMode,"scrollEnd") # Checks the current tool for the scrollEnd signal trigger
 	_checkSignalTool(_mode,"scrollStart") # Checks the current tool for the scrollStart signal trigger
+
 func _checkSignalTool(_tool, _trigger:String="enter"): # Checks to see if it is a signal tool, if it is emits the signal, also checks to see if it has the correct trigger
 	if utils.toolsJSON[_tool]["type"] == "signal":
 		if _trigger in utils.toolsJSON[_tool]["trigger"]:
@@ -161,7 +172,8 @@ func runMainInteract(): #Bound to the left click button and is connected to main
 			attack(utils.toolsJSON[_mode]["attack"])
 		if _mode == "stoneAxe":
 			var treeMap = global.world.get_node("TileMaps").get_node("Trees")
-			var _localPosition = treeMap.local_to_map(treeMap.to_local(get_global_mouse_position())) #get position from tile rid
+			var _cursorPos
+			var _localPosition = treeMap.local_to_map(treeMap.to_local(round((get_global_mouse_position())/(treeMap.tile_set.tile_size.x*treeMap.scale.x))*treeMap.tile_set.tile_size.x*treeMap.scale.x)) #get position from tile rid
 			var _cell = treeMap.get_cell_tile_data(_localPosition)
 			if _cell:
 				var _resource = (_cell.get_custom_data("resource_given")) #recives the type from custom data from tile date
@@ -174,3 +186,7 @@ func getMode():
 	return _mode
 func get_max_health(): # Returns the player's max health
 	return _STARTING_HEALTH
+
+
+func _on_health_timer_timeout() -> void:
+	healthChange(1)

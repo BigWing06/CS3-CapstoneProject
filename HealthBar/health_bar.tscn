@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://jfsf5anyefp"]
 
-[ext_resource type="Texture2D" uid="uid://dm0yy7mvln74o" path="res://HealthBar/PlayerHealthBarBG.png" id="1_damap"]
 [ext_resource type="Script" path="res://HealthBar/playerHealthBar.gd" id="1_kq8iy"]
-[ext_resource type="Texture2D" uid="uid://cfraycvwm7j7u" path="res://HealthBar/PlayerHealthBarRedTop.png" id="2_mtlxq"]
+[ext_resource type="Texture2D" uid="uid://jle3h4xpbl31" path="res://ProgressBars/ProgressBarLargeBG.png" id="1_tap0f"]
+[ext_resource type="Texture2D" uid="uid://b0he2tnprx4ig" path="res://ProgressBars/ProgressBarLargeRedTop.png" id="2_1skm1"]
 
 [node name="PlayerHearts" type="TextureProgressBar"]
 anchors_preset = 12
@@ -12,6 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
-texture_under = ExtResource("1_damap")
-texture_progress = ExtResource("2_mtlxq")
+texture_under = ExtResource("1_tap0f")
+texture_progress = ExtResource("2_1skm1")
 script = ExtResource("1_kq8iy")

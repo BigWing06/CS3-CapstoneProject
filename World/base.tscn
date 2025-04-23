@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c861p5obeeolj"]
+[gd_scene load_steps=9 format=3 uid="uid://c861p5obeeolj"]
 
 [ext_resource type="Script" path="res://World/base.gd" id="1_v6am7"]
 [ext_resource type="Texture2D" uid="uid://dj4s4wrwy4sye" path="res://World/igloo.png" id="2_rqooa"]
@@ -6,6 +6,61 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i74hr"]
 size = Vector2(123, 86)
+
+[sub_resource type="Animation" id="Animation_bfpha"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0.678431), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wda2n"]
+resource_name = "Heal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.729412, 0, 0.709804), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xyjpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0tv8"]
+resource_local_to_scene = true
+_data = {
+"Damage": SubResource("Animation_bfpha"),
+"Heal": SubResource("Animation_wda2n"),
+"RESET": SubResource("Animation_xyjpc")
+}
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["base"]]
 collision_layer = 32
@@ -21,5 +76,10 @@ scale = Vector2(5, 5)
 texture = ExtResource("2_rqooa")
 
 [node name="healthBar" parent="." instance=ExtResource("3_h12s3")]
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g0tv8")
+}
 
 [connection signal="healthChanged" from="." to="." method="updateHealthbar"]
