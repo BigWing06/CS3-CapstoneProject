@@ -20,9 +20,9 @@ func healthChange(_amount:float): # Funciton to cause damage to player
 	if _amount < 0:
 		if _health<=0:
 			death.emit()
+		$DamageAnimation.play("Damage")
 	elif _amount > 0:
 		_health+=_health
-		healthChanged.emit()
 		
 func updateHealthbar():
 	healthBar.value = _health
